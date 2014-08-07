@@ -14,14 +14,13 @@
 #content {
 /*  width: 80%;*/
   height: 100%;
-  /*background-color: pink;*/
+/*  background-color: pink;*/
   display: inline-block;
   float:right;
   margin-left: 300px;
 }
 
 #links {
-  margin-left: 50px;
   margin-top: 50px;
 }
 
@@ -36,6 +35,7 @@
   text-decoration: none;
   font-family: 'Quicksand', sans-serif;
   color: white;
+  margin-left: 3rem;
 }
 
 .menu :hover {
@@ -49,7 +49,9 @@
   width: 100%;
 }
 
-
+#content-container {
+  margin-left: 50px;
+}
 
 
 
