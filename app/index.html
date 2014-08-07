@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
   <link rel="stylesheet" href="css/app.css"/>
   <link rel="stylesheet" href="css/profile.css"/>
+  <link rel="stylesheet" href="css/login.css"/>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <link href='http://fonts.googleapis.com/css?family=Poiret+One|Quicksand:400,700|Josefin+Sans|Just+Me+Again+Down+Here|Julius+Sans+One|Ruda' rel='stylesheet' type='text/css'>
   <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
@@ -34,7 +35,12 @@
        }(document, 'script', 'facebook-jssdk'));
   </script>
 </head>
-<body>
+<body ng-controller='MainController' , ng-class='bodyStyle'>
+
+  <video autoplay loop poster="http://demosthenes.info/assets/videos/polina.jpg" id="bgvid" ng-class='videoClass' ng-show'showLogin'>
+    <source src="http://demosthenes.info/assets/videos/polina.webm" type="video/webm">
+    <source src="http://demosthenes.info/assets/videos/polina.mp4" type="video/mp4">
+  </video>
 
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>

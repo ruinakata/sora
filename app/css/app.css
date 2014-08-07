@@ -1,4 +1,6 @@
-
+.app-body{
+  background-color: red;
+}
 
 #navbar {
   width: 300px;
