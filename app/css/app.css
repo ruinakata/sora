@@ -31,22 +31,31 @@
   color: white;
 }
 
-#links a {
+
+.menu span{
   text-decoration: none;
   font-family: 'Quicksand', sans-serif;
   color: white;
   margin-left: 3rem;
 }
 
-.menu :hover {
-  font-size: 1.5rem;
+
+.menu:hover {
+  background-color: white;
+  font-size: 1.5em;
+  color: #FC5F3F;
+}
+
+.menu span:hover{
   color:#FC5F3F;
 }
 
 .menu {
+  /*background-color: black;*/
   padding-top: 15px;
   padding-bottom: 15px;
   width: 100%;
+  cursor: pointer;
 }
 
 #content-container {
