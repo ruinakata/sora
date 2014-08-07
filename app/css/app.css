@@ -28,3 +28,41 @@
   content: "";
   padding: 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+html {
+  overflow: hidden;
+}
+
+#sidebar { 
+  background-color: #FC5F3F;
+  float: left;
+  left: 300px;
+  margin-left: -300px;
+  position: relative;
+  width: 300px;
+  overflow-y: auto;
+}
+
+#contentWrapper { 
+  float: left;
+  width: 100%;
+}
+
+#content {
+  background: #ccc;
+  margin-left: 300px;
+  overflow-y: auto;
+}
