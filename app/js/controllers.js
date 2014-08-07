@@ -2,8 +2,8 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', [])
-  .controller('LoginCtr', ['$scope', function($scope) {
+ angular.module('profile', [])
+ Sora.controller('ProfileCtr', ['$scope', function($scope) {
 
   }]);
 
