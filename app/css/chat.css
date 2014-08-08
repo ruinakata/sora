@@ -1,7 +1,9 @@
 .chat-box {
 	width: 40%;
 	height: 40em;
-	border: 2px solid red;
+	padding-top: 3em;
+	/*text-align: center;*/
+	/*border: 2px solid red;*/
 }
 
 .chat-stream {
@@ -9,12 +11,25 @@
 	height: 86%;
 	float: left;
 	overflow: scroll;
-	background: rgba(252, 95, 64, 0.6);
-	border-radius:
+	/*background: rgba(252, 95, 64, 0.6);*/
+	background-origin:content-box;
+	background: rgba(255, 255, 255, 0.95);
+	border: 1px solid #FC5F3F;
+
+	/*border-top-right-radius: 4px;*/
+	/*border-top-left-radius: 4px;*/
+
 }
 
 .chat-stream ul {
+	width: 100%;
 	list-style-type: none;
+	margin: 0 0;
+	-webkit-padding-start: 0px;
+	padding-start: 0px;
+	font-family: 'Quicksand', sans-serif;
+	text-align: center;
+	font-size: 120%;
 }
 
 .chat-stream li {
@@ -37,10 +52,15 @@
 }
 
 .actual-user-reply {
-	border: 1px solid red;
+
+	border: 1px solid white;
+	border-radius: 8px;
+	color: white;
+	background: #FC5F3F;
 	display: inline-block;
 	float: right;
 	width: 40%;
+	margin-right: 1em;
 	/*font-size: */
 }
 
