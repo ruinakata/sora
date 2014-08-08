@@ -9,10 +9,20 @@
 	height: 86%;
 	float: left;
 	overflow: scroll;
+	background: rgba(252, 95, 64, 0.6);
+	border-radius:
 }
 
 .chat-stream ul {
 	list-style-type: none;
+}
+
+.chat-stream li {
+	display: inline-block;
+	width: 100%;
+	/*border: 1px solid green;*/
+
+
 }
 
 .reply-text {
@@ -27,14 +37,16 @@
 }
 
 .actual-user-reply {
+	border: 1px solid red;
 	display: inline-block;
 	float: right;
-	width: 70%;
+	width: 40%;
 	/*font-size: */
 }
 
 .other-user-reply {
+	border: 1px solid blue;
 	display: inline-block;
 	float: left;
-	width: 70%;
+	width: 40%;
 }

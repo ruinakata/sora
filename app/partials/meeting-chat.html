@@ -1,7 +1,11 @@
 <div class="chat-box">
 	<div class="chat-stream">
 		<ul>
-			<li ng-repeat="conv in conversationRoom" ng-class='chat.feedClass(conv.replyUsrId)'>{{conv.text}}</li>
+			<li ng-repeat="conv in conversationRoom">
+				<div ng-class='chat.feedClass(conv.replyUsrId)'>
+					{{conv.text}}
+				</div>
+			</li>
 		</ul>
 	</div>
 	<div class="reply-text">
