@@ -14,8 +14,11 @@ angular.module('Sora', [
 config(['$routeProvider', 'FacebookProvider', function($routeProvider, FacebookProvider) {
   FacebookProvider.init('358277447659197');
   $routeProvider.when('/login', {templateUrl: 'partials/login.html', controller: 'LoginCtr'});
+  //$routeProvider.when('/profile', {templateUrl: 'partials/profile.html', controller: 'ProfileCtr'});
+  $routeProvider.when('/profile', {templateUrl: 'partials/profile.html', controller: 'showProfileCtr'});
   $routeProvider.when('/home', {templateUrl: 'partials/home.html', controller: 'homeController'});
-  $routeProvider.when('/profile', {templateUrl: 'partials/profile.html', controller: 'ProfileCtr'});
+
+
   $routeProvider.otherwise({redirectTo: '/login'});
 }]).
 
