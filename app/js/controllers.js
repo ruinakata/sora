@@ -2,8 +2,9 @@
 
 /* Controllers */
 
- angular.module('profile', ['firebase'])
- .controller('ProfileCtr', ['$scope', '$rootScope', '$firebase', '$http', 'Facebook', 'FacebookPromises', function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises) {
+ var profileModule = angular.module('profile', ['firebase'])
+
+ profileModule.controller('ProfileCtr', ['$scope', '$rootScope', '$firebase', '$http', 'Facebook', 'FacebookPromises', function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises) {
 		console.log("is facebook ready?", Facebook.isReady());
  		if ($scope.loggedInToFacebook) {
  			getMyFacebookInfo();
@@ -18,11 +19,6 @@
 	 			}
 	 		});
  		}
-		// var profileRef = new Firebase("https://amber-fire-4122.firebaseio.com/users/")
-		// profileRef.on('value', function(snapshot) {
-		// 	console.log("snapshot", snapshot.val());
-		// })
-
 
 
  		function getMyFacebookInfo() {
@@ -62,8 +58,26 @@
  		}
 
 
-
   }]);
+
+profileModule.controller('showProfileCtr', ['$scope', '$rootScope', '$firebase', 'Facebook', 
+	function($scope, $rootScope, $firebase, Facebook){
+
+			var showProfileRef = new Firebase("https://amber-fire-4122.firebaseio.com/users/")
+			showProfileRef.on('value', function(snapshot) {
+			console.log("snapshot", snapshot.val());
+			var users = snapshot.val();
+			console.log("fbid", $rootScope)
+		})
+}]);
+
+
+
+
+
+
+
+
 
 
  angular.module('SoraLogin', [])
