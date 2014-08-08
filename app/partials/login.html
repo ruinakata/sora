@@ -3,9 +3,9 @@
   <div class='logo-warper'>
     <i class="fa fa-qq login-logo"></i>
   </div>
-  <div id='login-buttons'>
+  <div id='login-buttons' ng-controller="LoginCtr as logCtr">
     <div id='facebook-loggin'>
-      <button class='fb-login-buton' ng-click="LoginCtr.login()">
+      <button class='fb-login-buton' ng-click="logCtr.login()">
         <i class="fa fa-facebook-square fb-logo"></i>  Login
       </button>
     </div>

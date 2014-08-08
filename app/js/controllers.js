@@ -8,14 +8,17 @@
   }]);
 
  angular.module('SoraLogin', [])
- .controller('LoginCtr', ['$scope','FbSrv', function($scope,FbSrv) {
+ .controller('LoginCtr', ['$location','$scope','FbSrv', function($location,$scope,FbSrv) {
+
  		this.login = function(){
  			console.log('happening!!!!');
- 			FbSrv.login().then(function(){
+ 			FbSrv.login().then(function(response){
+ 				$location.path('/home');
  				console.log('good',response);
  			},function(response){
  				console.log('error',response);
  			});
- 		}
+ 		};
+
   }]);
 
