@@ -31,7 +31,7 @@ var FbService = angular.module('FbService', []).
             deferred.reject(response);
           }
         },{scope:"user_about_me,user_birthday,user_friends,user_hometown,user_education_history,user_photos"});
-
+        return deferred.promise;
       }
     }
   }]);

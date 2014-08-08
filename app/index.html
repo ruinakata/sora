@@ -34,10 +34,11 @@
          fjs.parentNode.insertBefore(js, fjs);
        }(document, 'script', 'facebook-jssdk'));
   </script>
+  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body ng-controller='MainController' , ng-class='bodyStyle'>
-
-  <video autoplay loop poster="http://demosthenes.info/assets/videos/polina.jpg" id="bgvid" ng-class='videoClass' ng-show'showLogin'>
+<div id='fb-root'></div>
+  <video autoplay loop poster="" id="bgvid" ng-class='videoClass' ng-show'showLogin'>
     <source src="http://demosthenes.info/assets/videos/polina.webm" type="video/webm">
     <source src="http://demosthenes.info/assets/videos/polina.mp4" type="video/mp4">
   </video>

@@ -16,12 +16,23 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/login'});
 }]).
 
-controller('MainController',['$scope','$route',function($scope,$route){
+controller('MainController',['$scope','$route','FbSrv',function($scope,$route,FbSrv){
+
+
+
   $scope.showLogin = false;
   $scope.$on('$locationChangeSuccess',function(){
+
+    // FbSrv.checkLoginState()
+    // .then(function(response){
+    //   console.log('login status',response);
+    // },function(response){
+    //   console.log('login status error',response);
+    // });
+    // console.log('casa')
+
     if($route.current.redirectTo){
       if($route.current.redirectTo == '/login'){
-
         $scope.videoClass = 'bgvid-show'
         $scope.bodyStyle = "login-body";
         $scope.showLogin = true;
