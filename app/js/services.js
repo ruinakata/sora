@@ -5,12 +5,12 @@
 
 // Demonstrate how to register services
 // In this case it is a simple value service.
-var FbService = angular.module('FbService', []).
-  factory('FbSrv',['$q',function($q){
+var FbService = angular.module('FbService', ['facebook']).
+  factory('FacebookPromises' ,['$q', 'Facebook', function($q, Facebook){
     return{
       checkLoginState : function(){
         var deferred = $q.defer();
-        FB.getLoginStatus(function(response){
+        Facebook.getLoginStatus(function(response) {
           if(response.status){
             deferred.resolve(response);
           } else {
@@ -20,9 +20,9 @@ var FbService = angular.module('FbService', []).
         return deferred.promise;
       },
 
-      login : function(){
+      login : function() {
         var deferred = $q.defer();
-        FB.login(function(response){
+        Facebook.login(function(response) {
           if (response.status === 'connected') {
             deferred.resolve(response);
           } else if (response.status === 'not_authorized') {
@@ -32,11 +32,28 @@ var FbService = angular.module('FbService', []).
           }
         },{scope:"user_about_me,user_birthday,user_friends,user_hometown,user_education_history,user_photos"});
         return deferred.promise;
+      },
+
+      query : function(query, method, params) {
+        var deferred = $q.defer();
+        Facebook.api(query, method, params, function(response) {
+          if (response.error) {
+            deferred.reject(response);
+          } else {
+            deferred.resolve(response);
+          }
+        });
+        return deferred.promise;
       }
     }
   }]);
 
+<<<<<<< HEAD
   var FireBaseService = angular.module('FireBaseService',["firebase"]).
+=======
+
+  var FireBaseService = angular.module('FireBaseService',[]).
+>>>>>>> 7840ce112c199714c2d4b01cd4def3cdd40cefef
     factory('FireSrv',[ "$firebase",function($firebase){
       var that = this;
       var ref = new Firebase("https://amber-fire-4122.firebaseio.com/");
@@ -45,3 +62,4 @@ var FbService = angular.module('FbService', []).
         FirebaseSync : sync
       }
     }]);
+
