@@ -60,14 +60,20 @@
 
   }]);
 
-profileModule.controller('showProfileCtr', ['$scope', '$rootScope', '$firebase', 'Facebook', 
-	function($scope, $rootScope, $firebase, Facebook){
+profileModule.controller('showProfileCtr', ['$scope', '$rootScope', '$firebase', 'Facebook', 'FacebookPromises',
+	function($scope, $rootScope, $firebase, Facebook, FacebookPromises){
 
 			var showProfileRef = new Firebase("https://amber-fire-4122.firebaseio.com/users/")
+
 			showProfileRef.on('value', function(snapshot) {
 			console.log("snapshot", snapshot.val());
 			var users = snapshot.val();
-			console.log("fbid", $rootScope)
+			console.log("fbidddd", FacebookPromises.userId);
+			var fbookid = FacebookPromises.userId
+			console.log(users);
+			console.log("ihope this works", users[fbookid]);
+			$scope.$apply($scope.me = users[fbookid]); 
+			console.log($scope.me)
 		})
 }]);
 

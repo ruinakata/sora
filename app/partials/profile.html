@@ -4,20 +4,24 @@
 
       <div class="profpic">
       
-        <img class="picture" ng-src="{{profile.photos.0}}" />
+        <img class="picture" ng-src="{{me.photos.0}}" />
       </div>
       <div class="name">
-               <h1 id="profname"> {{profile.name}} </h1>
+               <h1 id="profname"> {{me.name}} </h1>
       </div>
 
       <div class="infocontainer">
         <div class="info">
-          <strong><p>Education: </p></strong>{{profile.education}}<br>
-          <strong><p>Birthday: </p></strong>{{profile.birthday}}<br>
+          <strong><p>Education: </p></strong>{{me.education}}<br>
+          <strong><p>Birthday: </p></strong>{{me.birthday}}<br>
           <strong><p>About me: </p></strong>
           <button id="editabout">Edit</button> <br>
           <strong><p>Photos: </p></strong>
-          {{profile.photos}}
+            <div ng-repeat="photo in me.photos" >
+              <img ng-src="{{photo}}">
+            </div>
+
+   <!--        {{me.photos}} -->
         </div>
       </div>
       
