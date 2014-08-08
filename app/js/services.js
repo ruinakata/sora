@@ -36,12 +36,12 @@ var FbService = angular.module('FbService', []).
     }
   }]);
 
-  var FireBaseService = angular.module('FireBaseService',[]).
+  var FireBaseService = angular.module('FireBaseService',["firebase"]).
     factory('FireSrv',[ "$firebase",function($firebase){
       var that = this;
       var ref = new Firebase("https://amber-fire-4122.firebaseio.com/");
       var sync = $firebase(ref);
       return {
-        FirebaseSync : that.sync
+        FirebaseSync : sync
       }
     }]);

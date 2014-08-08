@@ -7,11 +7,13 @@ angular.module('Sora', [
   'profile',
   'SoraLogin',
   'FbService',
+  'FireBaseService',
+  'home'
 ]).
 config(['$routeProvider', function($routeProvider) {
 
   $routeProvider.when('/login', {templateUrl: 'partials/login.html', controller: 'LoginCtr'});
-  $routeProvider.when('/home', {templateUrl: 'partials/home.html', controller: 'LoginCtr'});
+  $routeProvider.when('/home', {templateUrl: 'partials/home.html', controller: 'homeController'});
   $routeProvider.when('/profile', {templateUrl: 'partials/profile.html', controller: 'ProfileCtr'});
   $routeProvider.otherwise({redirectTo: '/login'});
 }]).
