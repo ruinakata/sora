@@ -35,3 +35,13 @@ var FbService = angular.module('FbService', []).
       }
     }
   }]);
+
+  var FireBaseService = angular.module('FireBaseService',[]).
+    factory('FireSrv',[ "$firebase",function($firebase){
+      var that = this;
+      var ref = new Firebase("https://amber-fire-4122.firebaseio.com/");
+      var sync = $firebase(ref);
+      return {
+        FirebaseSync : that.sync
+      }
+    }]);
