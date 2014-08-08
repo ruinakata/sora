@@ -7,39 +7,38 @@ angular.module('Sora', [
   'profile',
   'SoraLogin',
   'FbService',
+  'FireBaseService',
+  'home',
   'firebase'
 ]).
 config(['$routeProvider', 'FacebookProvider', function($routeProvider, FacebookProvider) {
   FacebookProvider.init('358277447659197');
   $routeProvider.when('/login', {templateUrl: 'partials/login.html', controller: 'LoginCtr'});
+
   $routeProvider.when('/home', {templateUrl: 'partials/home.html', controller: 'LoginCtr'});
   //$routeProvider.when('/profile', {templateUrl: 'partials/profile.html', controller: 'ProfileCtr'});
   $routeProvider.when('/profile', {templateUrl: 'partials/profile.html', controller: 'showProfileCtr'});
+
+  $routeProvider.when('/home', {templateUrl: 'partials/home.html', controller: 'homeController'});
+  $routeProvider.when('/profile', {templateUrl: 'partials/profile.html', controller: 'ProfileCtr'});
+
   $routeProvider.otherwise({redirectTo: '/login'});
 }]).
 
-controller('MainController',['$scope', '$route', 'Facebook',function($scope, $route, Facebook){
+controller('MainController',['$scope', '$route', 'Facebook','FacebookPromises',function($scope, $route, Facebook,FacebookPromises){
 
   $scope.showLogin = false;
   $scope.loggedInToFacebook = false;
   $scope.$on('$locationChangeSuccess',function() {
 
     Facebook.getLoginStatus(function(response) {
+      FacebookPromises.userId = response.authResponse.userID;
       console.log(response);
       if (response.status === 'connected') {
         $scope.loggedInToFacebook = true;
       } else {
       }
     });
-
-    // FbSrv.checkLoginState()
-    // .then(function(response){
-    //   console.log('login status',response);
-    // },function(response){
-    //   console.log('login status error',response);
-    // });
-    // console.log('casa')
-
     if($route.current.redirectTo){
       if($route.current.redirectTo == '/login'){
         $scope.videoClass = 'bgvid-show'

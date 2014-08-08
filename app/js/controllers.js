@@ -87,6 +87,7 @@ profileModule.controller('showProfileCtr', ['$scope', '$rootScope', '$firebase',
  			console.log('happening!!!!');
  			FacebookPromises.login()
  				.then(function(response){
+	 				// FacebookPromises.userId =  response.authResponse.userID;
 	 				$location.path('/home');
 	 				console.log('good',response);
 	 			},function(response){
@@ -96,5 +97,9 @@ profileModule.controller('showProfileCtr', ['$scope', '$rootScope', '$firebase',
 
   }]);
 
+ var home = angular.module('home',[]);
 
+ home.controller('homeController',['$scope',function($scope){
+
+ }]);
 
