@@ -1,7 +1,15 @@
-<br>
-Partial
-<br>
-<input type="text" ng-model="data.text">
+<div class="chat-box">
+	<div class="chat-stream">
+		<ul>
+			<li ng-repeat="conv in conversationRoom" ng-class='chat.feedClass(conv.replyUsrId)'>{{conv.text}}</li>
+		</ul>
+	</div>
+	<div class="reply-text">
+		<input type="text" ng-keypress="chat.addReply($event)" ng-model="reply">
+	</div>
+</div>
+
+
 
 
 

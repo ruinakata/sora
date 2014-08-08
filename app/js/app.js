@@ -8,7 +8,7 @@ angular.module('Sora', [
   'SoraLogin',
   'FbService',
   'FireBaseService',
-  'home'
+  'home',
   'firebase'
 ]).
 config(['$routeProvider', 'FacebookProvider', function($routeProvider, FacebookProvider) {
@@ -19,13 +19,14 @@ config(['$routeProvider', 'FacebookProvider', function($routeProvider, FacebookP
   $routeProvider.otherwise({redirectTo: '/login'});
 }]).
 
-controller('MainController',['$scope', '$route', 'Facebook',function($scope, $route, Facebook){
+controller('MainController',['$scope', '$route', 'Facebook','FacebookPromises',function($scope, $route, Facebook,FacebookPromises){
 
   $scope.showLogin = false;
   $scope.loggedInToFacebook = false;
   $scope.$on('$locationChangeSuccess',function() {
 
     Facebook.getLoginStatus(function(response) {
+      FacebookPromises.userId = response.authResponse.userID;
       console.log(response);
       if (response.status === 'connected') {
         $scope.loggedInToFacebook = true;

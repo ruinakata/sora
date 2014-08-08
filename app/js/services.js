@@ -8,10 +8,16 @@
 var FbService = angular.module('FbService', ['facebook']).
   factory('FacebookPromises' ,['$q', 'Facebook', function($q, Facebook){
     return{
+
+      userId : 'initial',
+
       checkLoginState : function(){
         var deferred = $q.defer();
         Facebook.getLoginStatus(function(response) {
           if(response.status){
+            if(response.status == "connected"){
+              this.userId = response.authResponse.userID;
+            }
             deferred.resolve(response);
           } else {
             deferred.reject(response);
@@ -48,18 +54,18 @@ var FbService = angular.module('FbService', ['facebook']).
     }
   }]);
 
-<<<<<<< HEAD
   var FireBaseService = angular.module('FireBaseService',["firebase"]).
-=======
-
-  var FireBaseService = angular.module('FireBaseService',[]).
->>>>>>> 7840ce112c199714c2d4b01cd4def3cdd40cefef
     factory('FireSrv',[ "$firebase",function($firebase){
       var that = this;
       var ref = new Firebase("https://amber-fire-4122.firebaseio.com/");
       var sync = $firebase(ref);
+
+      var refCR = new Firebase("https://amber-fire-4122.firebaseio.com/chat_room");
+      var FirebaseSyncChatRoom = $firebase(refCR);
+
       return {
-        FirebaseSync : sync
+        FirebaseSync : sync,
+        syncChtRm : FirebaseSyncChatRoom
       }
     }]);
 

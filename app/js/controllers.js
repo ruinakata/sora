@@ -40,6 +40,7 @@
  			console.log('happening!!!!');
  			FacebookPromises.login()
  				.then(function(response){
+	 				// FacebookPromises.userId =  response.authResponse.userID;
 	 				$location.path('/home');
 	 				console.log('good',response);
 	 			},function(response){
@@ -49,13 +50,9 @@
 
   }]);
 
-<<<<<<< HEAD
  var home = angular.module('home',[]);
 
  home.controller('homeController',['$scope',function($scope){
 
  }]);
-=======
-
->>>>>>> 7840ce112c199714c2d4b01cd4def3cdd40cefef
 
