@@ -6,17 +6,18 @@
           
 
           <div class="profpic">
-            <img class="picture" src="https://lh4.googleusercontent.com/-AMPSBpndbbo/AAAAAAAAAAI/AAAAAAAAADU/rzt5PAGoekI/photo.jpg">
+            <!-- <img class="picture" src="https://lh4.googleusercontent.com/-AMPSBpndbbo/AAAAAAAAAAI/AAAAAAAAADU/rzt5PAGoekI/photo.jpg"> -->
+            <img class="picture" ng-src="{{profileinfo.photos.data[0].source}}" />
           </div>
           <div class="name">
-                   <h1 id="profname"> RUI </h1>
+                   <h1 id="profname"> {{profileinfo.name}} </h1>
           </div>
 
           <div class="infocontainer">
             <div class="info">
-              Info goes here<br>
-              hometown: westborough <br>
-              pets: none<br>
+              <strong><p>Education: </p></strong>{{profileinfo.education[profileinfo.education.length-1].school.name}}<br>
+              <strong><p>Birthday: </p></strong>{{profileinfo.birthday}}<br>
+              <strong><p>About me: </p></strong>
             </div>
           </div>
           

@@ -3,25 +3,33 @@
 
 angular.module('Sora', [
   'ngRoute',
-  'FbService',
+  'facebook',
   'profile',
   'SoraLogin',
   'FbService',
+  'firebase'
 ]).
-config(['$routeProvider', function($routeProvider) {
-
+config(['$routeProvider', 'FacebookProvider', function($routeProvider, FacebookProvider) {
+  FacebookProvider.init('358277447659197');
   $routeProvider.when('/login', {templateUrl: 'partials/login.html', controller: 'LoginCtr'});
   $routeProvider.when('/home', {templateUrl: 'partials/home.html', controller: 'LoginCtr'});
   $routeProvider.when('/profile', {templateUrl: 'partials/profile.html', controller: 'ProfileCtr'});
   $routeProvider.otherwise({redirectTo: '/login'});
 }]).
 
-controller('MainController',['$scope','$route','FbSrv',function($scope,$route,FbSrv){
-
-
+controller('MainController',['$scope', '$route', 'Facebook',function($scope, $route, Facebook){
 
   $scope.showLogin = false;
-  $scope.$on('$locationChangeSuccess',function(){
+  $scope.loggedInToFacebook = false;
+  $scope.$on('$locationChangeSuccess',function() {
+
+    Facebook.getLoginStatus(function(response) {
+      console.log(response);
+      if (response.status === 'connected') {
+        $scope.loggedInToFacebook = true;
+      } else {
+      }
+    });
 
     // FbSrv.checkLoginState()
     // .then(function(response){
