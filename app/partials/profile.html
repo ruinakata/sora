@@ -15,13 +15,16 @@
           <strong><p>Education: </p></strong>{{me.education}}<br>
           <strong><p>Birthday: </p></strong>{{me.birthday}}<br>
           <strong><p>About me: </p></strong>
-          <button id="editabout">Edit</button> <br>
+          <button class="buttons" id="editabout">Edit</button> <br><br>
+          <textarea id="aboutme" placeholder="I like to..."></textarea>
+          <button class="buttons" id="submitaboutme">Submit</button>
           <strong><p>Photos: </p></strong>
             <div ng-repeat="photo in me.photos" >
               <img ng-src="{{photo}}">
             </div>
 
-   <!--        {{me.photos}} -->
+
+
         </div>
       </div>
       
@@ -29,8 +32,6 @@
 
   </div>
 </div>
-
-
 
 
 
