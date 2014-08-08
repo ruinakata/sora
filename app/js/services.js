@@ -49,13 +49,13 @@ var FbService = angular.module('FbService', ['facebook']).
   }]);
 
 
-// var DataService = angular.module('DataService', []).
-//   factory('DataSrv', ['$firebase',function($firebase) {
-//       return {
-//         // now we can use $firebase to synchronize data between clients and the server!
-//         ref : new Firebase("https://radiant-fire-317.firebaseio.com/"),
-//         sync : $firebase(ref)
-//       }
+  var FireBaseService = angular.module('FireBaseService',[]).
+    factory('FireSrv',[ "$firebase",function($firebase){
+      var that = this;
+      var ref = new Firebase("https://amber-fire-4122.firebaseio.com/");
+      var sync = $firebase(ref);
+      return {
+        FirebaseSync : that.sync
+      }
+    }]);
 
-//     });
-//   ]);
