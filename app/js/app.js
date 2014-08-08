@@ -6,7 +6,7 @@ angular.module('Sora', [
   'FbService',
   'profile',
   'SoraLogin',
-  'FbService'
+  'FbService',
 ]).
 config(['$routeProvider', function($routeProvider) {
 
