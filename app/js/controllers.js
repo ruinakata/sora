@@ -71,14 +71,7 @@
 				console.log($scope.me);
 		});
 
-// form
-	
-	//  function submitAboutMe(){
-	// 	console.log("ng click happenned");
-	// 	console.log("aboutmeis", $scope.aboutmetext);
-	// };
-
-		 this.submitAboutMe =function(){
+		this.submitAboutMe =function(){
 			console.log("ng click happenned");
 			console.log("aboutmeis", $scope.aboutmetext);
 		};
