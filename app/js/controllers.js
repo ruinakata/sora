@@ -59,38 +59,33 @@
 
 
 
- 			var showProfileRef = new Firebase("https://amber-fire-4122.firebaseio.com/users/")
-
-			showProfileRef.on('value', function(snapshot) {
+ 		var showProfileRef = new Firebase("https://amber-fire-4122.firebaseio.com/users/")
+		showProfileRef.on('value', function(snapshot) {
 				console.log("snapshot", snapshot.val());
 				var users = snapshot.val();
 				console.log("fbidddd", FacebookPromises.userId);
-				var fbookid = FacebookPromises.userId
+				var fbookid = FacebookPromises.userId;
 				console.log(users);
 				console.log("ihope this works", users[fbookid]);
 				$scope.$apply($scope.me = users[fbookid]); 
-				console.log($scope.me)
-			})
+				console.log($scope.me);
+		});
 
+// form
+	
+	//  function submitAboutMe(){
+	// 	console.log("ng click happenned");
+	// 	console.log("aboutmeis", $scope.aboutmetext);
+	// };
+
+		 this.submitAboutMe =function(){
+			console.log("ng click happenned");
+			console.log("aboutmeis", $scope.aboutmetext);
+		};
 
   }]);
 
-// profileModule.controller('showProfileCtr', ['$scope', '$rootScope', '$firebase', 'Facebook', 'FacebookPromises',
-// 	function($scope, $rootScope, $firebase, Facebook, FacebookPromises){
 
-// 			var showProfileRef = new Firebase("https://amber-fire-4122.firebaseio.com/users/")
-
-// 			showProfileRef.on('value', function(snapshot) {
-// 				console.log("snapshot", snapshot.val());
-// 				var users = snapshot.val();
-// 				console.log("fbidddd", FacebookPromises.userId);
-// 				var fbookid = FacebookPromises.userId
-// 				console.log(users);
-// 				console.log("ihope this works", users[fbookid]);
-// 				$scope.$apply($scope.me = users[fbookid]); 
-// 				console.log($scope.me)
-// 			})
-// }]);
 
 
 
