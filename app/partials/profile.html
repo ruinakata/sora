@@ -1,4 +1,4 @@
-<div class="outercontainer">
+<div class="outercontainer" ng-controller="ProfileCtr as ctr">
   <div class="middlecontainer">
       
 
@@ -15,22 +15,38 @@
           <strong><p>Education: </p></strong>{{me.education}}<br>
           <strong><p>Birthday: </p></strong>{{me.birthday}}<br>
           <strong><p>About me: </p></strong>
-          <button id="editabout">Edit</button> <br>
+          <button class="buttons" id="editabout">Edit</button> <br><br>
+  <!--       angular form !!! -->
+          <!-- <form ng-submit="submit()" > -->
+            <textarea ng-model="aboutmetext" id="aboutme" placeholder="I like to..."></textarea>
+            <input ng-click="ctr.submitAboutMe()" type="submit" class="buttons" value="Submit" />
+          <!-- </form> -->
+
+
           <strong><p>Photos: </p></strong>
             <div ng-repeat="photo in me.photos" >
               <img ng-src="{{photo}}">
             </div>
 
-   <!--        {{me.photos}} -->
+
         </div>
       </div>
-      
-
-
   </div>
 </div>
 
 
 
-
+// <script>
+//   angular.module('submitExample', [])
+//     .controller('ExampleController', ['$scope', function($scope) {
+//       $scope.list = [];
+//       $scope.text = 'hello';
+//       $scope.submit = function() {
+//         if ($scope.text) {
+//           $scope.list.push(this.text);
+//           $scope.text = '';
+//         }
+//       };
+//     }]);
+// </script>
 

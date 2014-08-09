@@ -51,12 +51,28 @@
 /*	background-color: blue;*/
 }
 
+#aboutme {
+	width: 500px;
+	height: 200px;
+}
 
+.buttons {
+	background-color: #5D90FC;
+	color: white;
+	border-radius: 10px;
+	border: 1px solid white;
+	padding: 10px 20px 10px 20px;
+	outline: none;
+}
 
-
-
-
-
+.buttons:hover {
+	background-color: #5DFCE7;
+	color: white;
+	border-radius: 10px;
+	border: 1px solid white;
+	padding: 10px 20px 10px 20px;
+	outline: none;
+}
 
 
 
