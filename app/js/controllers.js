@@ -8,7 +8,8 @@
 		console.log("is facebook ready?", Facebook.isReady());
  		if ($scope.loggedInToFacebook) {
  			getMyFacebookInfo();
- 		} else {
+ 		} 
+ 		else {
 	 		$scope.$watch(function() {
 	 			return $scope.loggedInToFacebook;
 	 		},
@@ -19,6 +20,8 @@
 	 			}
 	 		});
  		}
+
+
 
 
  		function getMyFacebookInfo() {
@@ -69,6 +72,15 @@
 				console.log("ihope this works", users[fbookid]);
 				$scope.$apply($scope.me = users[fbookid]); 
 				console.log($scope.me);
+
+
+				// when aboutme exists, don't show exit form. when clicked show edit form.
+				$scope.aboutmeexists = false
+				if ($scope.me.aboutme) {
+					$scope.aboutmeexists = true
+				}
+				console.log("about me exists", $scope.aboutmeexists)
+
 		});
 
 // when submit button is clicked, save about me text to firebase
@@ -79,6 +91,8 @@
 			var meRef = showProfileRef.child(fbid);
 			meRef.update({aboutme: $scope.aboutmetext})
 		};
+
+
 
   }]);
 
