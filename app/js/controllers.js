@@ -71,13 +71,16 @@
 				console.log($scope.me);
 		});
 
+// when submit button is clicked, save about me text to firebase
 		this.submitAboutMe =function(){
-			console.log("ng click happenned");
 			console.log("aboutmeis", $scope.aboutmetext);
+			console.log(FacebookPromises.userId);
+			var fbid = FacebookPromises.userId;
+			var meRef = showProfileRef.child(fbid);
+			meRef.update({aboutme: $scope.aboutmetext})
 		};
 
   }]);
-
 
 
 
