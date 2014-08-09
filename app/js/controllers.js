@@ -22,8 +22,6 @@
  		}
 
 
-
-
  		function getMyFacebookInfo() {
  			console.log('kicking off get my facebook info');
 	 		FacebookPromises.query('me', 'get', { fields: 'id,name,about,birthday,education,photos,education' })
@@ -97,9 +95,23 @@
   }]);
 
 
+profileModule.controller('PostCtr', ['$scope', '$rootScope', '$firebase', '$http', 'Facebook', 'FacebookPromises', function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises) {
+		console.log("in post controller")
 
+		var postref = new Firebase("https://amber-fire-4122.firebaseio.com/posts/")
+		var mypostref = new Firebase("https://amber-fire-4122.firebaseio.com/posts/" + FacebookPromises.userId)
 
+		this.submitPost = function(){
+			console.log("in submit post method");
+			console.log("description", $scope.posttext);
+			console.log("area", $scope.area)
+			console.log(FacebookPromises.userId)
+			var postObj = {area: $scope.area, description: $scope.posttext, date: $scope.date, postedon: Date.now()}
+			mypostref.push(postObj)
+			
+		};
 
+  }]);
 
 
 

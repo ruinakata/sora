@@ -1,0 +1,16 @@
+
+
+<div ng-controller="PostCtr as ctr">
+	
+	<div class="postcontainer">
+		<textarea id="posttextarea" ng-model="posttext" placeholder="Write a description here"></textarea>
+		<br><br>
+		Area: <input type="text" ng-model="area"/> <br>
+		Date: <input type="text" ng-model="date"/> <br><br>
+		<input ng-click="ctr.submitPost()" class="buttons" id="submitpostbutton" value="Submit" />
+
+	
+	</div>
+
+
+</div>
