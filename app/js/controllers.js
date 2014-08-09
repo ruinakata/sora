@@ -49,7 +49,7 @@
 			 		syncObject.$bindTo($scope, 'profile');
 
 	 				var profile = { name: name, birthday: birthday, photos: photos, education: education };
-	 				profileRef.set(profile);
+	 				profileRef.update(profile);
 			 		
 	 				
 	 			}, function(response) {
