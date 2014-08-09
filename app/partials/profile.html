@@ -1,9 +1,9 @@
 <div class="outercontainer" ng-controller="ProfileCtr as ctr">
   <div class="middlecontainer">
-      
+
 
       <div class="profpic">
-      
+
         <img class="picture" ng-src="{{me.photos.0}}" />
       </div>
       <div class="name">
@@ -19,7 +19,7 @@
   <!--       angular form !!! -->
           <!-- <form ng-submit="submit()" > -->
             <textarea ng-model="aboutmetext" id="aboutme" placeholder="I like to..."></textarea>
-            <input ng-click="ctr.submitAboutMe()" type="submit" class="buttons" value="Submit" />
+            <input ng-click="ctr.submitAboutMe()" type="button"/>
           <!-- </form> -->
 
 
