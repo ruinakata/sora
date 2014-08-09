@@ -1,7 +1,23 @@
+/*event details*/
+.post-details {
+	width: 100%;
+	float: left;
+	background-color:rgba(252, 95, 64, 0.69);
+}
+
+
+
+.event-details {
+	width: 40%;
+	float: left;
+	padding-left: 2em;
+}
+
 .chat-box {
 	width: 40%;
 	height: 40em;
 	padding-top: 3em;
+	display: inline-block;
 	/*text-align: center;*/
 	/*border: 2px solid red;*/
 }
@@ -36,8 +52,6 @@
 	display: inline-block;
 	width: 100%;
 	/*border: 1px solid green;*/
-
-
 }
 
 .reply-text {
@@ -70,3 +84,77 @@
 	float: left;
 	width: 40%;
 }
+
+/*event organizer*/
+
+.event-organizer {
+	width: 15%;
+	float: left;
+	text-align: center;
+	margin-left:10%;
+	margin-right:10%;
+	margin-top:12px;
+	margin-bottom: 12px;
+	padding-bottom:7px;
+	border-radius: 3px;
+	border: 1px solid white;
+	cursor: pointer;
+}
+
+.event-organizer:hover{
+	background-color:rgba(253, 163, 144, 0.89);
+}
+
+/*event organizer elemnts*/
+
+.picture-chat {
+	border-radius: 50%;
+	width: 10rem;
+	/*padding-bottom: 12px*/
+}
+
+.profpic-chat {
+	display: inline-block;
+}
+
+/*logged users*/
+
+.logged-users {
+	background-color: rgba(252, 142, 64, 0.79);
+	height: 40rem;
+	width: 26%;
+	display: inline-block;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+.logged-users-box {
+	margin-top: 4rem;
+	margin-bottom: 4rem;
+	height: 32rem;
+	width: 90%;
+	margin-left: 4%;
+	margin-right: 4%;
+	background-color: rgba(2, 59, 100, 0.89);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

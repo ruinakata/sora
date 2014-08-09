@@ -9,6 +9,20 @@
       templateUrl:'partials/meeting-chat.html',
       controller: ['$scope','FireSrv','FacebookPromises',function($scope,FireSrv,FacebookPromises){
 
+        // temporal organizer
+        $scope.organizer = {};
+        $scope.organizer.name = "lorem ipsum";
+        $scope.organizer.photo = "https://scontent-a-dfw.xx.fbcdn.net/hphotos-xpf1/t31.0-8/1529892_10152203030936394_3485758498983018165_o.jpg";
+        // temporal organizer
+
+        //temporal event info
+        $scope.meeting = {};
+        $scope.meeting.name = "Drinks and sausages";
+        $scope.meeting.location = "Lemon park bar";
+        $scope.meeting.spots = 15;
+        $scope.meeting.going = 10;
+        //temporal event info
+
         console.log('seeee:',FacebookPromises.userId);
 
         var syncArray = FireSrv.syncChtRm.$asArray();

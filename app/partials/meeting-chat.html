@@ -1,4 +1,22 @@
-<div class="chat-box">
+<div id="post-details" class="post-details">
+	<div class="event-organizer">
+		<h3>{{organizer.name}}</h3>
+		<div class="profpic-chat"><img class="picture-chat" ng-src="{{organizer.photo}}"></div>
+	</div>
+	<div class="event-details">
+		<h1>{{meeting.name}}</h1>
+		<div><label>Location:</label> {{meeting.location}}</div>
+		<div><label>Spots left: </label> <span>{{meeting.spots - meeting.going}}/{{meeting.spots}}</span></div>
+	</div>
+</div>
+
+<div id="logged-users" class="logged-users">
+	<div class="logged-users-box">
+
+	</div>
+</div>
+
+<div id="chat-box" class="chat-box">
 	<div class="chat-stream">
 		<ul>
 			<li ng-repeat="conv in conversationRoom">
@@ -12,6 +30,8 @@
 		<input type="text" ng-keypress="chat.addReply($event)" ng-model="reply">
 	</div>
 </div>
+
+<div id="rigth-panel"></div>
 
 
 
