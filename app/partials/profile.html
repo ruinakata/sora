@@ -15,18 +15,19 @@
           <strong><p>Education: </p></strong>{{me.education}}<br>
           <strong><p>Birthday: </p></strong>{{me.birthday}}<br>
           <strong><p>About me: </p></strong>
-          <button class="buttons" id="editabout">Edit</button> <br><br>
-  <!--       angular form !!! -->
-          <!-- <form ng-submit="submit()" > -->
-            <textarea ng-model="aboutmetext" id="aboutme" placeholder="I like to..."></textarea>
-            <input ng-click="ctr.submitAboutMe()" type="button"/>
-          <!-- </form> -->
 
+          <div id="aboutmegoeshere">{{me.aboutme}}</div>
+          <br>
+          <button ng-click="aboutmeexists = !aboutmeexists" class="buttons" id="editabout">Edit</button> <br><br>
+          <div id="editaboutme" ng-hide="aboutmeexists">
+            <textarea  ng-model="aboutmetext" id="aboutme" placeholder="I like to..."></textarea> <br><br>
+            <input ng-click="ctr.submitAboutMe()" class="buttons" value="Submit" />
+          </div>
 
           <strong><p>Photos: </p></strong>
-            <div ng-repeat="photo in me.photos" >
-              <img ng-src="{{photo}}">
-            </div>
+          <div ng-repeat="photo in me.photos" >
+            <img ng-src="{{photo}}">
+          </div>
 
 
         </div>
