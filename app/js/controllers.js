@@ -119,10 +119,15 @@ profileModule.controller('PostCtr', ['$scope', '$rootScope', '$firebase', '$http
 
 	// when page loads show all posts
 		postref.on('value', function(snapshot) {
-			console.log("snapshot in post", snapshot.val());
-			$scope.$apply($scope.allposts = snapshot.val());
-
-			console.log("allthe posts:", $scope.allposts)
+			var allpostsobject = snapshot.val();
+			var array = []
+			var keyarray = [];
+			for (var k in allpostsobject) {keyarray.push(k)};
+			for (var i=0; i<keyarray.length; i++) {
+				array.push(allpostsobject[keyarray[i]]);
+			}
+			//$scope.$apply($scope.allposts = snapshot.val());
+			$scope.$apply($scope.allposts = array.reverse());
 		});
 
   }]);
