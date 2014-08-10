@@ -2,7 +2,7 @@
 .post-details {
 	width: 100%;
 	float: left;
-	background-color:rgba(252, 95, 64, 0.69);
+	background-color:rgba(255, 251, 250, 0.82);
 }
 
 
@@ -29,10 +29,12 @@
 	height: 86%;
 	float: left;
 	overflow: scroll;
+	/*border-top-left-radius:
+	border-top-right-radius:4px;*/
 	/*background: rgba(252, 95, 64, 0.6);*/
 	background-origin:content-box;
 	background: rgba(255, 255, 255, 0.95);
-	border: 1px solid rgba(2, 59, 100, 0.89);
+	/*border: 1px solid rgba(2, 59, 100, 0.89);*/
 
 	/*border-top-right-radius: 4px;*/
 	/*border-top-left-radius: 4px;*/
@@ -66,8 +68,8 @@
 	float: right;
 	width: 40%;
 	margin-right: 1em;
+	/*white-space: pre-wrap;*/
 	overflow: auto;
-	/*font-size: */
 }
 
 .other-user-reply {
@@ -84,16 +86,30 @@
 /*Reply box*/
 
 .reply-text {
+	margin-top: 2px;
+	border: 0.5px solid #FC5F3F;
 	width: 100%;
 	height: 12%;
 	float: left;
+	background-color: rgba(254, 196, 185, 0.82);
 }
 
 .reply-text input {
 	width: 100%;
 	height: 100%;
+	padding: 0px 0px;
+	border-width: 0px;
+	border-bottom-right-radius:4px;
+	border-bottom-left-radius:4px;
 }
 
+.reply-text input:focus  {
+	border-color: 2px solid rgba(2, 59, 100, 0.89);
+}
+
+.reply-text:hover {
+	border-color: 2px solid rgba(2, 59, 100, 0.89);
+}
 
 
 /*event organizer*/

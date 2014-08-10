@@ -45,11 +45,120 @@
           } else {
             return 'other-user-reply';
           }
-        }
+        };
+
+        this.scrollDonw = function(){
+          console.log("happening :O??");
+          $(".chat-stream").scrollTop($(".chat-stream")[0].scrollHeight);
+        };
+
       }],
       controllerAs:'chat'
     };
  });
+
+ home.directive(
+            "repeatComplete",
+            function( $rootScope ) {
+
+                // Because we can have multiple ng-repeat directives in
+                // the same container, we need a way to differentiate
+                // the different sets of elements. We'll add a unique ID
+                // to each set.
+                var uuid = 0;
+
+
+                // I compile the DOM node before it is linked by the
+                // ng-repeat directive.
+                function compile( tElement, tAttributes ) {
+
+                    // Get the unique ID that we'll be using for this
+                    // particular instance of the directive.
+                    var id = ++uuid;
+
+                    // Add the unique ID so we know how to query for
+                    // DOM elements during the digests.
+                    tElement.attr( "repeat-complete-id", id );
+
+                    // Since this directive doesn't have a linking phase,
+                    // remove it from the DOM node.
+                    tElement.removeAttr( "repeat-complete" );
+
+                    // Keep track of the expression we're going to
+                    // invoke once the ng-repeat has finished
+                    // rendering.
+                    var completeExpression = tAttributes.repeatComplete;
+
+                    // Get the element that contains the list. We'll
+                    // use this element as the launch point for our
+                    // DOM search query.
+                    var parent = tElement.parent();
+
+                    // Get the scope associated with the parent - we
+                    // want to get as close to the ngRepeat so that our
+                    // watcher will automatically unbind as soon as the
+                    // parent scope is destroyed.
+                    var parentScope = ( parent.scope() || $rootScope );
+
+                    // Since we are outside of the ng-repeat directive,
+                    // we'll have to check the state of the DOM during
+                    // each $digest phase; BUT, we only need to do this
+                    // once, so save a referene to the un-watcher.
+                    var unbindWatcher = parentScope.$watch(
+                        function() {
+
+                            console.info("papa",parent);
+
+                            console.info( "Digest running." );
+
+                            // Now that we're in a digest, check to see
+                            // if there are any ngRepeat items being
+                            // rendered. Since we want to know when the
+                            // list has completed, we only need the last
+                            // one we can find.
+                            var lastItem = parent.children( "*[ repeat-complete-id = '" + id + "' ]:last" );
+
+                            // If no items have been rendered yet, stop.
+                            if ( ! lastItem.length ) {
+
+                                return;
+
+                            }
+
+                            // Get the local ng-repeat scope for the item.
+                            var itemScope = lastItem.scope();
+
+                            // If the item is the "last" item as defined
+                            // by the ng-repeat directive, then we know
+                            // that the ng-repeat directive has finished
+                            // rendering its list (for the first time).
+                            if ( itemScope.$last ) {
+
+                                // Stop watching for changes - we only
+                                // care about the first complete rendering.
+                                unbindWatcher();
+
+                                // Invoke the callback.
+                                itemScope.$eval( completeExpression );
+
+                            }
+
+                        }
+                    );
+
+                }
+
+                // Return the directive configuration. It's important
+                // that this compiles before the ngRepeat directive
+                // compiles the DOM node.
+                return({
+                    compile: compile,
+                    priority: 1001,
+                    restrict: "A"
+                });
+
+            }
+        );
 
 // PROFILE DIRECTIVE *************************************************************************************************
 
@@ -58,12 +167,12 @@ home.directive('profileDirective', function(){
       restrict: 'E',
       transclude: true,
       templateUrl:'partials/profile.html',
-      controller: ['$scope', '$rootScope', '$firebase', '$http', 'Facebook', 'FacebookPromises', 
+      controller: ['$scope', '$rootScope', '$firebase', '$http', 'Facebook', 'FacebookPromises',
         function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises) {
           console.log("is facebook ready?", Facebook.isReady());
           if ($scope.loggedInToFacebook) {
             getMyFacebookInfo();
-          } 
+          }
           else {
             $scope.$watch(function() {
               return $scope.loggedInToFacebook;
@@ -95,19 +204,19 @@ home.directive('profileDirective', function(){
                 };
                 // Save into firebase
                 var profileRef = new Firebase("https://amber-fire-4122.firebaseio.com/users/" + uniqueid);
-                
+
                 // angularfire!!!///////////////////////////////////////////////////////
                 var sync = $firebase(profileRef);
                 //download the data into a local object
                 var syncObject = sync.$asObject();
                 // sync the object with a three way binding, use asObject() to create a synchronized object, then call $bindTo() which binds
-                // it to a $scope variable 
+                // it to a $scope variable
                 syncObject.$bindTo($scope, 'profile');
 
                 var profile = { name: name, birthday: birthday, photos: photos, education: education };
                 profileRef.update(profile);
-                
-                
+
+
               }, function(response) {
                 console.log(response);
               })
@@ -123,7 +232,7 @@ home.directive('profileDirective', function(){
               var fbookid = FacebookPromises.userId;
               console.log(users);
               console.log("ihope this works", users[fbookid]);
-              $scope.$apply($scope.me = users[fbookid]); 
+              $scope.$apply($scope.me = users[fbookid]);
               console.log($scope.me);
 
 
@@ -162,13 +271,13 @@ home.directive('profileDirective', function(){
       restrict: 'E',
       transclude: true,
       templateUrl:'partials/post.html',
-      controller: ['$scope', '$rootScope', '$firebase', '$http', 'Facebook', 'FacebookPromises', 
+      controller: ['$scope', '$rootScope', '$firebase', '$http', 'Facebook', 'FacebookPromises',
         function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises) {
           console.log("Im in the post directive")
 
           this.submitPost = function () {
             console.log("in submit post");
-            console.log("posttext taken", $scope.posttext ) 
+            console.log("posttext taken", $scope.posttext )
           }
 
 
@@ -183,33 +292,3 @@ home.directive('profileDirective', function(){
       controllerAs:'post'
     };
  });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
