@@ -88,6 +88,7 @@
                     // invoke once the ng-repeat has finished
                     // rendering.
                     var completeExpression = tAttributes.repeatComplete;
+                    console.log('callback????:',completeExpression);
 
                     // Get the element that contains the list. We'll
                     // use this element as the launch point for our
@@ -107,7 +108,7 @@
                     var unbindWatcher = parentScope.$watch(
                         function() {
 
-                            console.info("papa",parent);
+                            console.info("papa",parent.children());
 
                             console.info( "Digest running." );
 
@@ -117,6 +118,9 @@
                             // list has completed, we only need the last
                             // one we can find.
                             var lastItem = parent.children( "*[ repeat-complete-id = '" + id + "' ]:last" );
+                            console.info("last item in list:",lastItem.scope());
+                            parent.scope().$eval("chat.scrollDonw()");
+                            // parent.$eval(completeExpression);
 
                             // If no items have been rendered yet, stop.
                             if ( ! lastItem.length ) {
