@@ -277,3 +277,54 @@ home.directive('profileDirective', function(){
       controllerAs:'postCtr'
     };
  });
+
+
+// Other Profile Directive ***************************************************************
+
+
+home.directive('otherprofileDirective', function(){
+  return {
+    restrict: 'E',
+    transclude: true,
+    templateUrl:'partials/otherprofile.html',
+    controller: ['$scope', '$rootScope', '$firebase', '$http', 'Facebook', 'FacebookPromises',
+      function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises) {
+
+
+
+    }],
+    controllerAs: 'OtherProfCtr'
+  };
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,4 +1,5 @@
 <div class="outercontainer" ng-controller="ProfileCtr as ctr">
+  
   <div class="middlecontainer">
 
 
@@ -35,4 +36,43 @@
   </div>
 </div>
 
+
+<!-- <div id="otherprofcont" ng-controller="OtherProfCtr as ctr">
+  
+  <div class="otherprofpiccont">
+    <img ng-src="{{me.photos.0}}" />
+  </div>
+
+  <div class="otherprofname">
+    <p> {{me.name}} </p>
+  </div>
+
+  <div class="otherprofinfocont"><br>
+    <div>
+      <button id="friendrequest"><i class="fa fa-users"></i> Add as Friend </button>
+    </div><br>
+    <strong><p>Education: </p></strong>{{me.education}}<br>
+    <strong><p>Birthday: </p></strong>{{me.birthday}}<br>
+    <strong><p>About me: </p></strong>
+    <div id="aboutmegoeshere">
+      {{me.aboutme}}
+    </div><br>
+
+    <button ng-click="aboutmeexists = !aboutmeexists" class="buttons" id="editabout">
+      Edit
+    </button> <br><br>
+    <div id="editaboutme" ng-hide="aboutmeexists">
+      <textarea  ng-model="aboutmetext" id="aboutme" placeholder="I like to..."></textarea> <br><br>
+      <input ng-click="ctr.submitAboutMe()" id="submitbutton" class="buttons" value="Submit" />
+    </div>
+
+    <strong><p>Photos: </p></strong>
+    <div ng-repeat="photo in me.photos" >
+      <img ng-src="{{photo}}">
+    </div>
+
+
+  </div>
+
+</div> -->
 

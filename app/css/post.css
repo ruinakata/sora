@@ -31,3 +31,7 @@
 	width: 100px;
 	border-radius: 50%;
 }
+
+h3 {
+	display: inline-block;
+}

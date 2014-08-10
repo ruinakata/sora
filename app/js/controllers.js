@@ -4,6 +4,8 @@
 
  var profileModule = angular.module('profile', ['firebase'])
 
+////////  PROFILE CONTROLLER  /////////////////////////////////////////////////////////////////
+
  profileModule.controller('ProfileCtr', ['$scope', '$rootScope', '$firebase', '$http', 'Facebook', 'FacebookPromises', function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises) {
 		console.log("is facebook ready?", Facebook.isReady());
  		if ($scope.loggedInToFacebook) {
@@ -92,11 +94,27 @@
 
 
   }]);
-
+////  POST CONTROLLER  /////////////////////////////////////////////////////////////////////////////////////////
 
 profileModule.controller('PostCtr', ['$scope', '$rootScope', '$firebase', '$http', 'Facebook', 'FacebookPromises', function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises) {
-
   }]);
+
+
+
+//////// OTHER PROFILE CONTROLLER ////////////////////////////////////////////////////////////
+
+profileModule.controller('OtherProfCtr', ['$scope', '$rootScope', '$firebase', '$http', 'Facebook', 'FacebookPromises', function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises) {
+		console.log("in otherprof controller")
+
+		var userref = new FIrebase ("https://amber-fire-4122.firebaseio.com/users/")
+
+
+	}]);
+
+
+
+/////////  LOGIN CONTROLLER  /////////////////////////////////////////////////////////////////
+
 
 
  angular.module('SoraLogin', [])

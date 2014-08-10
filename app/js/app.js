@@ -19,7 +19,9 @@ config(['$routeProvider', 'FacebookProvider', function($routeProvider, FacebookP
   $routeProvider.when('/login', {templateUrl: 'partials/login.html', controller: 'LoginCtr'});
   $routeProvider.when('/profile', {templateUrl: 'partials/profile.html', controller: 'ProfileCtr'});
   $routeProvider.when('/post', {templateUrl: 'partials/post.html', controller: 'postCtr'});
+    $routeProvider.when('/otherprofile', {templateUrl: 'partials/otherprofile.html', controller: 'OtherProfCtr'})
   $routeProvider.when('/home', {templateUrl: 'partials/home.html', controller: 'homeController'});
+
 
 
   $routeProvider.otherwise({redirectTo: '/login'});

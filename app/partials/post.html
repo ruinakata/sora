@@ -6,6 +6,7 @@
 	<input ng-click="postCtr.submitPost()" class="buttons" id="submitpostbutton" value="Submit" />
 </div>
 
+
 <div ng-repeat="post in allposts"  class="otherpostscontainer" ng-click="postCtr.goToEnventRoom(post)">
 	<div class="eachpost">
 		<img id="postprofpic" ng-src="{{post.userpicurl}}">
