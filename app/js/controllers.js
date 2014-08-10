@@ -4,6 +4,8 @@
 
  var profileModule = angular.module('profile', ['firebase'])
 
+////////  PROFILE CONTROLLER  /////////////////////////////////////////////////////////////////
+
  profileModule.controller('ProfileCtr', ['$scope', '$rootScope', '$firebase', '$http', 'Facebook', 'FacebookPromises', function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises) {
 		console.log("is facebook ready?", Facebook.isReady());
  		if ($scope.loggedInToFacebook) {
@@ -92,7 +94,7 @@
 
 
   }]);
-
+////  POST CONTROLLER  /////////////////////////////////////////////////////////////////////////////////////////
 
 profileModule.controller('PostCtr', ['$scope', '$rootScope', '$firebase', '$http', 'Facebook', 'FacebookPromises', function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises) {
 		console.log("in post controller")
@@ -109,7 +111,7 @@ profileModule.controller('PostCtr', ['$scope', '$rootScope', '$firebase', '$http
 				var userinfo = snapshot.val();
 				var username = userinfo.name;
 				var userpicurl = userinfo.photos[0];
-				var postObj = {username: username, userpicurl: userpicurl, area: $scope.area, description: $scope.posttext, date: $scope.date, postedon: Date.now()};
+				var postObj = {userid: FacebookPromises.userId, username: username, userpicurl: userpicurl, area: $scope.area, description: $scope.posttext, date: $scope.date, postedon: Date.now()};
 				var newPostRef = postref.push(postObj);
 				// var postID = newPostRef.name();
 			})
@@ -133,8 +135,19 @@ profileModule.controller('PostCtr', ['$scope', '$rootScope', '$firebase', '$http
   }]);
 
 
+//////// OTHER PROFILE CONTROLLER ////////////////////////////////////////////////////////////
+
+profileModule.controller('OtherProfCtr', ['$scope', '$rootScope', '$firebase', '$http', 'Facebook', 'FacebookPromises', function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises) {
+		console.log("in otherprof controller")
+
+		var userref = new FIrebase ("https://amber-fire-4122.firebaseio.com/users/")
 
 
+	}]);
+
+
+
+/////////  LOGIN CONTROLLER  /////////////////////////////////////////////////////////////////
 
 
  angular.module('SoraLogin', [])

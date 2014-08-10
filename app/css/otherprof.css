@@ -1,0 +1,54 @@
+
+#otherprofcont {
+	background-color: white;
+	width: 50%;
+	margin-left: 15%;
+	margin-top: 5%;
+	margin-bottom: 10%;
+	padding-top: 2%;
+	padding-left: 5%;
+	padding-bottom: 10%;
+
+}
+
+.otherprofpiccont img {
+	width: 100%;
+	border-radius: 50%;
+}
+
+.otherprofpiccont {
+	border: 1px red solid;
+	width: 30%;
+	display: inline-block;
+}
+
+.otherprofname {
+	border: 1px red solid;
+	width: 65%;
+	display: inline-block;
+}
+
+.otherprofname p {
+	font-size: 3em;
+}
+
+.otherprofinfocont {
+	border: 1px red solid;
+	width: 80%;
+	margin-left: 10%;
+	display: inline-block;
+}
+
+#friendrequest {
+	background-color: #99FFF1;
+	border: black 2px solid;
+	border-radius: 5px;
+	padding: 5px 10px 5px 10px;
+}
+
+#friendrequest:hover {
+	background-color: #00D9BC;
+	border: black 2px solid;
+	border-radius: 5px;
+	padding: 5px 10px 5px 10px;
+}
