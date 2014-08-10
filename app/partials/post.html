@@ -12,6 +12,8 @@
 
 	<div ng-repeat="post in allposts"  class="otherpostscontainer">
 		<div class="eachpost">
+			<img id="postprofpic" ng-src="{{post.userpicurl}}">
+			<h3>{{post.username}}</h3>
 			<strong>Area: </strong> {{post.area}} <br>
 			<strong>Date: </strong> {{post.date}} <br>
 			<strong>Description: </strong> {{post.description}} <br>
