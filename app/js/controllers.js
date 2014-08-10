@@ -107,22 +107,27 @@ profileModule.controller('PostCtr', ['$scope', '$rootScope', '$firebase', '$http
 			var finduserref = userref.child(FacebookPromises.userId)
 			finduserref.on('value', function(snapshot) {
 				var userinfo = snapshot.val();
-				console.log("The user info is ", userinfo)
+				var username = userinfo.name;
+				var userpicurl = userinfo.photos[0];
+				var postObj = {username: username, userpicurl: userpicurl, area: $scope.area, description: $scope.posttext, date: $scope.date, postedon: Date.now()};
+				var newPostRef = postref.push(postObj);
+				// var postID = newPostRef.name();
 			})
 
-			var postObj = {userid: FacebookPromises.userId, area: $scope.area, description: $scope.posttext, date: $scope.date, postedon: Date.now()};
-			var newPostRef = postref.push(postObj);
-			var postID = newPostRef.name();
-			console.log(postID)
 			
 		};
 
-	// when page loads show all posts
+	// when page loads show all posts with most recent at top
 		postref.on('value', function(snapshot) {
-			console.log("snapshot in post", snapshot.val());
-			$scope.$apply($scope.allposts = snapshot.val());
-
-			console.log("allthe posts:", $scope.allposts)
+			var allpostsobject = snapshot.val();
+			var array = []
+			var keyarray = [];
+			for (var k in allpostsobject) {keyarray.push(k)};
+			for (var i=0; i<keyarray.length; i++) {
+				array.push(allpostsobject[keyarray[i]]);
+			}
+			//$scope.$apply($scope.allposts = snapshot.val());
+			$scope.$apply($scope.allposts = array.reverse());
 		});
 
   }]);

@@ -26,3 +26,8 @@
 	padding-left: 10%;
 	padding-bottom: 2%;
 }
+
+#postprofpic {
+	width: 100px;
+	border-radius: 50%;
+}
