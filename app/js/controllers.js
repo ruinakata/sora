@@ -95,40 +95,6 @@
 
 
 profileModule.controller('PostCtr', ['$scope', '$rootScope', '$firebase', '$http', 'Facebook', 'FacebookPromises', function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises) {
-		console.log("in post controller")
-
-		var userref = new Firebase("https://amber-fire-4122.firebaseio.com/users/")
-		var postref = new Firebase("https://amber-fire-4122.firebaseio.com/posts/")
-		var mypostref = new Firebase("https://amber-fire-4122.firebaseio.com/posts/" + FacebookPromises.userId)
-
-		this.submitPost = function(){
-			console.log("in submit post method");
-			//find the user's picture and name and save with post
-			var finduserref = userref.child(FacebookPromises.userId)
-			finduserref.on('value', function(snapshot) {
-				var userinfo = snapshot.val();
-				var username = userinfo.name;
-				var userpicurl = userinfo.photos[0];
-				var postObj = {username: username, userpicurl: userpicurl, area: $scope.area, description: $scope.posttext, date: $scope.date, postedon: Date.now()};
-				var newPostRef = postref.push(postObj);
-				// var postID = newPostRef.name();
-			})
-
-
-		};
-
-	// when page loads show all posts with most recent at top
-		postref.on('value', function(snapshot) {
-			var allpostsobject = snapshot.val();
-			var array = []
-			var keyarray = [];
-			for (var k in allpostsobject) {keyarray.push(k)};
-			for (var i=0; i<keyarray.length; i++) {
-				array.push(allpostsobject[keyarray[i]]);
-			}
-			//$scope.$apply($scope.allposts = snapshot.val());
-			$scope.$apply($scope.allposts = array.reverse());
-		});
 
   }]);
 

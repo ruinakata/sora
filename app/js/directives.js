@@ -7,22 +7,9 @@
       restrict: 'E',
       transclude: true,
       templateUrl:'partials/meeting-chat.html',
-      controller: ['$scope','FireSrv','FacebookPromises',function($scope,FireSrv,FacebookPromises){
+      controller: ['$scope','FireSrv','FacebookPromises','viewCoSrv',function($scope,FireSrv,FacebookPromises,viewCoSrv){
 
-        // temporal organizer
-        $scope.organizer = {};
-        $scope.organizer.name = "lorem ipsum";
-        $scope.organizer.photo = "https://scontent-a-dfw.xx.fbcdn.net/hphotos-xpf1/t31.0-8/1529892_10152203030936394_3485758498983018165_o.jpg";
-        // temporal organizer
-
-        //temporal event info
-        $scope.meeting = {};
-        $scope.meeting.name = "Drinks and sausages";
-        $scope.meeting.location = "Lemon park bar";
-        $scope.meeting.spots = 15;
-        $scope.meeting.going = 10;
-        //temporal event info
-
+        $scope.eventDetails = viewCoSrv.viewInfo.postInfo;
 
         var syncArray = FireSrv.syncChtRm.$asArray();
         $scope.conversationRoom = syncArray;
@@ -242,24 +229,51 @@ home.directive('profileDirective', function(){
       restrict: 'E',
       transclude: true,
       templateUrl:'partials/post.html',
-      controller: ['$scope', '$rootScope', '$firebase', '$http', 'Facebook', 'FacebookPromises',
-        function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises) {
-          console.log("Im in the post directive")
+      controller: ['$scope', '$rootScope', '$firebase', '$http', 'Facebook', 'FacebookPromises','viewCoSrv',
+        function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises,viewCoSrv) {
+          console.log("Im in the post directive");
 
-          this.submitPost = function () {
-            console.log("in submit post");
-            console.log("posttext taken", $scope.posttext )
+          var userref = new Firebase("https://amber-fire-4122.firebaseio.com/users/")
+          var postref = new Firebase("https://amber-fire-4122.firebaseio.com/posts/")
+          var mypostref = new Firebase("https://amber-fire-4122.firebaseio.com/posts/" + FacebookPromises.userId)
+
+        // when page loads show all posts with most recent at top
+          postref.on('value', function(snapshot) {
+            var allpostsobject = snapshot.val();
+            var array = []
+            var keyarray = [];
+            for (var k in allpostsobject) {keyarray.push(k)};
+            for (var i=0; i<keyarray.length; i++) {
+              array.push(allpostsobject[keyarray[i]]);
+            }
+            //$scope.$apply($scope.allposts = snapshot.val());
+            $scope.$apply($scope.allposts = array.reverse());
+          });
+
+          this.submitPost = function(){
+            console.log("in submit post method");
+            //find the user's picture and name and save with post
+            var finduserref = userref.child(FacebookPromises.userId)
+            finduserref.on('value', function(snapshot) {
+              var userinfo = snapshot.val();
+              var username = userinfo.name;
+              var userpicurl = userinfo.photos[0];
+              var postObj = {username: username, userpicurl: userpicurl, area: $scope.area, description: $scope.posttext, date: $scope.date, postedon: Date.now()};
+              var newPostRef = postref.push(postObj);
+              // var postID = newPostRef.name();
+            })
+          };
+
+          this.goToEnventRoom = function(post){
+            viewCoSrv.viewInfo.postInfo.organizer = post.username;
+            viewCoSrv.viewInfo.postInfo.organizerPicture = post.userpicurl;
+            viewCoSrv.viewInfo.postInfo.area = post.area;
+            viewCoSrv.viewInfo.postInfo.date = post.date;
+            viewCoSrv.viewInfo.postInfo.description = post.description;
+            viewCoSrv.viewInfo.partialToShow = 'post-chat';
           }
 
-
-
-
-
-
-
-
-
-      }],
-      controllerAs:'post'
+        }],
+      controllerAs:'postCtr'
     };
  });

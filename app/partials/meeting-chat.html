@@ -1,12 +1,11 @@
 <div id="post-details" class="post-details">
 	<div class="event-organizer">
-		<h3>{{organizer.name}}</h3>
-		<div class="profpic-chat"><img class="picture-chat" ng-src="{{organizer.photo}}"></div>
+		<h3>{{eventDetails.organizer}}</h3>
+		<div class="profpic-chat"><img class="picture-chat" ng-src="{{eventDetails.organizerPicture}}"></div>
 	</div>
 	<div class="event-details">
-		<h1>{{meeting.name}}</h1>
-		<div><label>Location:</label> {{meeting.location}}</div>
-		<div><label>Spots left: </label> <span>{{meeting.spots - meeting.going}}/{{meeting.spots}}</span></div>
+		<h1>{{eventDetails.description}}</h1>
+		<div><label>Area:</label> {{eventDetails.area}}</div>
 	</div>
 </div>
 

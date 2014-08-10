@@ -73,9 +73,15 @@ var viewComunicationService = angular.module('viewComunicationService',[]).
   factory('viewCoSrv',function(){
     return {
       viewInfo : {
-        partialToShow : 'post'
+        partialToShow : 'post',
+        postInfo : {
+          organizer : '',
+          organizerPicture : '',
+          area : '',
+          date : '',
+          description : ''
+        }
       }
-
     }
   })
 
