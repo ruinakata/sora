@@ -21,7 +21,7 @@
           <button ng-click="aboutmeexists = !aboutmeexists" class="buttons" id="editabout">Edit</button> <br><br>
           <div id="editaboutme" ng-hide="aboutmeexists">
             <textarea  ng-model="aboutmetext" id="aboutme" placeholder="I like to..."></textarea> <br><br>
-            <input ng-click="ctr.submitAboutMe()" class="buttons" value="Submit" />
+            <input ng-click="ctr.submitAboutMe()" id="submitbutton" class="buttons" value="Submit" />
           </div>
 
           <strong><p>Photos: </p></strong>
@@ -35,19 +35,4 @@
   </div>
 </div>
 
-
-
-// <script>
-//   angular.module('submitExample', [])
-//     .controller('ExampleController', ['$scope', function($scope) {
-//       $scope.list = [];
-//       $scope.text = 'hello';
-//       $scope.submit = function() {
-//         if ($scope.text) {
-//           $scope.list.push(this.text);
-//           $scope.text = '';
-//         }
-//       };
-//     }]);
-// </script>
 

@@ -47,7 +47,6 @@
 
 .middlecontainer {
 	width: 60%;
-	margin-left: 20%;
 /*	background-color: blue;*/
 }
 
@@ -62,6 +61,7 @@
 	border-radius: 10px;
 	border: 1px solid white;
 	padding: 10px 20px 10px 20px;
+	width: 100px;
 	outline: none;
 }
 
@@ -72,8 +72,12 @@
 	border: 1px solid white;
 	padding: 10px 20px 10px 20px;
 	outline: none;
+	cursor: pointer;
 }
 
+#submitbutton {
+	width: 50px;
+}
 
 
 

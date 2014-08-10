@@ -22,8 +22,6 @@
  		}
 
 
-
-
  		function getMyFacebookInfo() {
  			console.log('kicking off get my facebook info');
 	 		FacebookPromises.query('me', 'get', { fields: 'id,name,about,birthday,education,photos,education' })
@@ -93,13 +91,41 @@
 		};
 
 
-
   }]);
 
 
+profileModule.controller('PostCtr', ['$scope', '$rootScope', '$firebase', '$http', 'Facebook', 'FacebookPromises', function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises) {
+		console.log("in post controller")
 
+		var userref = new Firebase("https://amber-fire-4122.firebaseio.com/users/")
+		var postref = new Firebase("https://amber-fire-4122.firebaseio.com/posts/")
+		var mypostref = new Firebase("https://amber-fire-4122.firebaseio.com/posts/" + FacebookPromises.userId)
 
+		this.submitPost = function(){
+			console.log("in submit post method");
+			//find the user's picture and name and save with post
+			var finduserref = userref.child(FacebookPromises.userId)
+			finduserref.on('value', function(snapshot) {
+				var userinfo = snapshot.val();
+				console.log("The user info is ", userinfo)
+			})
 
+			var postObj = {userid: FacebookPromises.userId, area: $scope.area, description: $scope.posttext, date: $scope.date, postedon: Date.now()};
+			var newPostRef = postref.push(postObj);
+			var postID = newPostRef.name();
+			console.log(postID)
+			
+		};
+
+	// when page loads show all posts
+		postref.on('value', function(snapshot) {
+			console.log("snapshot in post", snapshot.val());
+			$scope.$apply($scope.allposts = snapshot.val());
+
+			console.log("allthe posts:", $scope.allposts)
+		});
+
+  }]);
 
 
 

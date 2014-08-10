@@ -1,3 +1,5 @@
+
+
 'use strict';
 
 
@@ -15,7 +17,7 @@ config(['$routeProvider', 'FacebookProvider', function($routeProvider, FacebookP
   FacebookProvider.init('358277447659197');
   $routeProvider.when('/login', {templateUrl: 'partials/login.html', controller: 'LoginCtr'});
   $routeProvider.when('/profile', {templateUrl: 'partials/profile.html', controller: 'ProfileCtr'});
-  //$routeProvider.when('/profile', {templateUrl: 'partials/profile.html', controller: 'showProfileCtr'});
+  $routeProvider.when('/post', {templateUrl: 'partials/post.html', controller: 'postCtr'});
   $routeProvider.when('/home', {templateUrl: 'partials/home.html', controller: 'homeController'});
 
 
