@@ -1,33 +1,35 @@
-<div id="navbar">
-  <h1 id="logo">SORA</h1>
-  <div id="links">
-    <div class="menu"><span>HOME</span></div>
-    <div class="menu"><span>VIEW MY PROFILE</span></div>
-    <div class="menu"><span>SORA REQUESTS</span></div>
-    <div class="menu"><span>POST</span></div>
-    <div class="menu"><span>CHATS</span></div>
+<div ng-controller="homeController as home">
+  <div id="navbar">
+    <h1 id="logo">SORA</h1>
+    <div id="links">
+      <div class="menu" ng-click="home.setView('post')"><span>HOME</span></div>
+      <div class="menu" ng-click="home.setView('my_profile')"><span>VIEW MY PROFILE</span></div>
+      <div class="menu" ng-click="home.setView('sore_request')"><span>SORA REQUESTS</span></div>
+      <div class="menu" ng-click="home.setView('open_chat')"><span>OPEN CHATS</span></div>
+    </div>
   </div>
+
+
+
+  <div id="allposts" class="content" ng-show="view.partialToShow == 'post'">
+    <post-directive></post-directive>
+  </div>
+
+  <div id="myprofile" class="content" ng-show="view.partialToShow == 'my_profile'">
+    <profile-directive></profile-directive>
+  </div>
+
+  <div class="content" ng-show="view.partialToShow == 'post-chat'">
+    <chat-directive></chat-directive>
+  </div>
+
+  <div id="otherprofile" class="content">
+    <otherprofile-directive></otherprofile-directive>
+  </div>
+
 </div>
 
 
-<!-- <div class="content">
-  <chat-directive></chat-directive>
-</div> -->
-
-
-<!-- <div id="myprofile" class="content">
-  <profile-directive></profile-directive>
-</div> 
- -->
-
-<!-- <div id="allposts" class="content">
-  <post-directive></post-directive>
-</div>
- -->
-
-<div id="otherprofile" class="content">
-  <otherprofile-directive></otherprofile-directive>
-</div>
 
 
 

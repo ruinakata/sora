@@ -11,7 +11,8 @@ angular.module('Sora', [
   'FbService',
   'FireBaseService',
   'home',
-  'firebase'
+  'firebase',
+  'viewComunicationService'
 ]).
 config(['$routeProvider', 'FacebookProvider', function($routeProvider, FacebookProvider) {
   FacebookProvider.init('358277447659197');
@@ -30,6 +31,7 @@ controller('MainController',['$scope', '$route', 'Facebook','FacebookPromises',f
 
   $scope.showLogin = false;
   $scope.loggedInToFacebook = false;
+
   $scope.$on('$locationChangeSuccess',function() {
 
     Facebook.getLoginStatus(function(response) {
