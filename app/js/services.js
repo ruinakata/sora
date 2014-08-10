@@ -54,18 +54,28 @@ var FbService = angular.module('FbService', ['facebook']).
     }
   }]);
 
-  var FireBaseService = angular.module('FireBaseService',["firebase"]).
-    factory('FireSrv',[ "$firebase",function($firebase){
-      var that = this;
-      var ref = new Firebase("https://amber-fire-4122.firebaseio.com/");
-      var sync = $firebase(ref);
+var FireBaseService = angular.module('FireBaseService',["firebase"]).
+  factory('FireSrv',[ "$firebase",function($firebase){
+    var that = this;
+    var ref = new Firebase("https://amber-fire-4122.firebaseio.com/");
+    var sync = $firebase(ref);
 
-      var refCR = new Firebase("https://amber-fire-4122.firebaseio.com/chat_room");
-      var FirebaseSyncChatRoom = $firebase(refCR);
+    var refCR = new Firebase("https://amber-fire-4122.firebaseio.com/chat_room");
+    var FirebaseSyncChatRoom = $firebase(refCR);
 
-      return {
-        FirebaseSync : sync,
-        syncChtRm : FirebaseSyncChatRoom
+    return {
+      FirebaseSync : sync,
+      syncChtRm : FirebaseSyncChatRoom
+    }
+  }]);
+
+var viewComunicationService = angular.module('viewComunicationService',[]).
+  factory('viewCoSrv',function(){
+    return {
+      viewInfo : {
+        partialToShow : 'post'
       }
-    }]);
+
+    }
+  })
 

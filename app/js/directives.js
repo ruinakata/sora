@@ -23,13 +23,11 @@
         $scope.meeting.going = 10;
         //temporal event info
 
-        console.log('seeee:',FacebookPromises.userId);
 
         var syncArray = FireSrv.syncChtRm.$asArray();
         $scope.conversationRoom = syncArray;
 
         this.addReply = function(keyEvent){
-          console.log('seeee:',FacebookPromises.userId);
           if(keyEvent.keyIdentifier=='Enter'){
             var reply = {};
             reply.replyUsrId = FacebookPromises.userId;
@@ -88,7 +86,6 @@
                     // invoke once the ng-repeat has finished
                     // rendering.
                     var completeExpression = tAttributes.repeatComplete;
-                    console.log('callback????:',completeExpression);
 
                     // Get the element that contains the list. We'll
                     // use this element as the launch point for our
@@ -108,44 +105,14 @@
                     var unbindWatcher = parentScope.$watch(
                         function() {
 
-                            console.info("papa",parent.children());
-
-                            console.info( "Digest running." );
-
                             // Now that we're in a digest, check to see
                             // if there are any ngRepeat items being
                             // rendered. Since we want to know when the
                             // list has completed, we only need the last
                             // one we can find.
                             var lastItem = parent.children( "*[ repeat-complete-id = '" + id + "' ]:last" );
-                            console.info("last item in list:",lastItem.scope());
                             parent.scope().$eval("chat.scrollDonw()");
                             // parent.$eval(completeExpression);
-
-                            // If no items have been rendered yet, stop.
-                            if ( ! lastItem.length ) {
-
-                                return;
-
-                            }
-
-                            // Get the local ng-repeat scope for the item.
-                            var itemScope = lastItem.scope();
-
-                            // If the item is the "last" item as defined
-                            // by the ng-repeat directive, then we know
-                            // that the ng-repeat directive has finished
-                            // rendering its list (for the first time).
-                            if ( itemScope.$last ) {
-
-                                // Stop watching for changes - we only
-                                // care about the first complete rendering.
-                                unbindWatcher();
-
-                                // Invoke the callback.
-                                itemScope.$eval( completeExpression );
-
-                            }
 
                         }
                     );
@@ -242,7 +209,7 @@ home.directive('profileDirective', function(){
 
               // when aboutme exists, don't show exit form. when clicked show edit form.
               $scope.aboutmeexists = false
-              if ($scope.me.aboutme) {
+              if($scope.me.aboutme) {
                 $scope.aboutmeexists = true
               }
               console.log("about me exists", $scope.aboutmeexists)

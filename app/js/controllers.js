@@ -8,7 +8,7 @@
 		console.log("is facebook ready?", Facebook.isReady());
  		if ($scope.loggedInToFacebook) {
  			getMyFacebookInfo();
- 		} 
+ 		}
  		else {
 	 		$scope.$watch(function() {
 	 			return $scope.loggedInToFacebook;
@@ -40,19 +40,19 @@
 	 				};
 	 				// Save into firebase
 	 				var profileRef = new Firebase("https://amber-fire-4122.firebaseio.com/users/" + uniqueid);
-			 		
+
 			 		// angularfire!!!///////////////////////////////////////////////////////
 			 		var sync = $firebase(profileRef);
 			 		//download the data into a local object
 			 		var syncObject = sync.$asObject();
 			 		// sync the object with a three way binding, use asObject() to create a synchronized object, then call $bindTo() which binds
-			 		// it to a $scope variable 
+			 		// it to a $scope variable
 			 		syncObject.$bindTo($scope, 'profile');
 
 	 				var profile = { name: name, birthday: birthday, photos: photos, education: education };
 	 				profileRef.update(profile);
-			 		
-	 				
+
+
 	 			}, function(response) {
  					console.log(response);
 	 			})
@@ -68,7 +68,7 @@
 				var fbookid = FacebookPromises.userId;
 				console.log(users);
 				console.log("ihope this works", users[fbookid]);
-				$scope.$apply($scope.me = users[fbookid]); 
+				$scope.$apply($scope.me = users[fbookid]);
 				console.log($scope.me);
 
 
@@ -114,7 +114,7 @@ profileModule.controller('PostCtr', ['$scope', '$rootScope', '$firebase', '$http
 				// var postID = newPostRef.name();
 			})
 
-			
+
 		};
 
 	// when page loads show all posts with most recent at top
@@ -133,10 +133,6 @@ profileModule.controller('PostCtr', ['$scope', '$rootScope', '$firebase', '$http
   }]);
 
 
-
-
-
-
  angular.module('SoraLogin', [])
  .controller('LoginCtr', ['$location', '$scope', 'FacebookPromises', function($location, $scope, FacebookPromises) {
 
@@ -151,12 +147,14 @@ profileModule.controller('PostCtr', ['$scope', '$rootScope', '$firebase', '$http
  					console.log('error',response);
  				});
  		};
-
   }]);
 
  var home = angular.module('home',[]);
 
- home.controller('homeController',['$scope',function($scope){
-
+ home.controller('homeController',['$scope','viewCoSrv',function($scope,viewCoSrv){
+ 	$scope.view = viewCoSrv.viewInfo;
+ 	this.setView = function(view){
+    viewCoSrv.viewInfo.partialToShow = view;
+  };
  }]);
 
