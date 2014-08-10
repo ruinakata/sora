@@ -79,7 +79,8 @@ var viewComunicationService = angular.module('viewComunicationService',[]).
           organizerPicture : '',
           area : '',
           date : '',
-          description : ''
+          description : '',
+          organizerId : ''
         }
       }
     }

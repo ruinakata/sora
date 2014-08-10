@@ -37,6 +37,11 @@
           $(".chat-stream").scrollTop($(".chat-stream")[0].scrollHeight);
         };
 
+        this.goToOtherProfile = function(){
+          viewCoSrv.viewInfo.partialToShow = 'otherprofile';
+          console.log("in go to other profile in chat dir", viewCoSrv.viewInfo.partialToShow)
+        };
+
       }],
       controllerAs:'chat'
     };
@@ -258,7 +263,7 @@ home.directive('profileDirective', function(){
               var userinfo = snapshot.val();
               var username = userinfo.name;
               var userpicurl = userinfo.photos[0];
-              var postObj = {username: username, userpicurl: userpicurl, area: $scope.area, description: $scope.posttext, date: $scope.date, postedon: Date.now()};
+              var postObj = {userid: FacebookPromises.userId, username: username, userpicurl: userpicurl, area: $scope.area, description: $scope.posttext, date: $scope.date, postedon: Date.now()};
               var newPostRef = postref.push(postObj);
               // var postID = newPostRef.name();
             })
@@ -271,7 +276,9 @@ home.directive('profileDirective', function(){
             viewCoSrv.viewInfo.postInfo.date = post.date;
             viewCoSrv.viewInfo.postInfo.description = post.description;
             viewCoSrv.viewInfo.partialToShow = 'post-chat';
-          }
+            viewCoSrv.viewInfo.postInfo.organizerId = post.userid;
+
+           }
 
         }],
       controllerAs:'postCtr'

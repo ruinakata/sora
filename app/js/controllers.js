@@ -103,10 +103,12 @@ profileModule.controller('PostCtr', ['$scope', '$rootScope', '$firebase', '$http
 
 //////// OTHER PROFILE CONTROLLER ////////////////////////////////////////////////////////////
 
-profileModule.controller('OtherProfCtr', ['$scope', '$rootScope', '$firebase', '$http', 'Facebook', 'FacebookPromises', function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises) {
+profileModule.controller('OtherProfCtr', ['viewCoSrv', '$scope', '$rootScope', '$firebase', '$http', 'Facebook', 'FacebookPromises', function(viewCoSrv, $scope, $rootScope, $firebase, $http, Facebook, FacebookPromises) {
 		console.log("in otherprof controller")
 
-		var userref = new FIrebase ("https://amber-fire-4122.firebaseio.com/users/")
+		$scope.user = viewCoSrv.viewInfo.postInfo;
+		$scope.user.organizerId;
+		var userref = new Firebase ("https://amber-fire-4122.firebaseio.com/users/");
 
 
 	}]);

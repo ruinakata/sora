@@ -1,7 +1,7 @@
 <div id="post-details" class="post-details">
 	<div class="event-organizer">
 		<h3>{{eventDetails.organizer}}</h3>
-		<div class="profpic-chat"><img class="picture-chat" ng-src="{{eventDetails.organizerPicture}}"></div>
+		<div class="profpic-chat"><img class="picture-chat" ng-click="chat.goToOtherProfile()" ng-src="{{eventDetails.organizerPicture}}"></div>
 	</div>
 	<div class="event-details">
 		<h1>{{eventDetails.description}}</h1>
