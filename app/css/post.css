@@ -16,3 +16,13 @@
 #submitpostbutton {
 	text-align: center;
 }
+
+.otherpostscontainer {
+	margin-left: 10%;
+	margin-top: 2%;
+	background-color: white;
+	width: 40%;
+	padding-top: 3%;
+	padding-left: 10%;
+	padding-bottom: 2%;
+}
