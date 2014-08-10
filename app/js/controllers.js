@@ -108,7 +108,15 @@ profileModule.controller('OtherProfCtr', ['viewCoSrv', '$scope', '$rootScope', '
 
 		$scope.user = viewCoSrv.viewInfo.postInfo;
 		$scope.user.organizerId;
-		var userref = new Firebase ("https://amber-fire-4122.firebaseio.com/users/");
+		// var userref = new Firebase ("https://amber-fire-4122.firebaseio.com/users/");
+		// var profileRef = new Firebase("https://amber-fire-4122.firebaseio.com/users/" + $scope.user.organizerId);
+		// profileRef.on('value', function(snapshot) {
+		// 	console.log("getting that person's info")
+		// 	console.log("snapshot", snapshot.val());
+		// 	var otheruser = snapshot.val();
+		// });
+		$scope.otheruser = viewCoSrv.otherProfInfo;
+
 
 
 	}]);

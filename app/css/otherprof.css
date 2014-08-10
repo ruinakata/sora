@@ -17,13 +17,13 @@
 }
 
 .otherprofpiccont {
-	border: 1px red solid;
+/*	border: 1px red solid;*/
 	width: 30%;
 	display: inline-block;
 }
 
 .otherprofname {
-	border: 1px red solid;
+/*	border: 1px red solid;*/
 	width: 65%;
 	display: inline-block;
 }
@@ -33,7 +33,7 @@
 }
 
 .otherprofinfocont {
-	border: 1px red solid;
+	/*border: 1px red solid;*/
 	width: 80%;
 	margin-left: 10%;
 	display: inline-block;

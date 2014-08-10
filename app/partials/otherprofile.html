@@ -1,23 +1,24 @@
+
 <div id="otherprofcont" ng-controller="OtherProfCtr as ctr">
   
   <div class="otherprofpiccont">
-    <img  src="https://lh4.googleusercontent.com/-AMPSBpndbbo/AAAAAAAAAAI/AAAAAAAAADU/rzt5PAGoekI/photo.jpg"/>
+    <img  src="{{otheruser.photos.0}}"/>
   </div>
 
   <div class="otherprofname">
-    <p> {{me.name}} </p>
+    <p> {{otheruser.name}} </p>
   </div>
 
   <div class="otherprofinfocont"><br>
     <div>
       <button id="friendrequest"><i class="fa fa-users"></i> Add as Friend </button>
     </div><br>
-    <strong><p>Education: </p></strong>{{me.education}}<br>
-    <strong><p>Birthday: </p></strong>{{me.birthday}}<br>
+    <strong><p>Education: </p></strong>{{otheruser.education}}<br>
+    <strong><p>Birthday: </p></strong>{{otheruser.birthday}}<br>
     <strong><p>About me: </p></strong>
     <div id="aboutmegoeshere">
-      {{me.aboutme}}
-      {{user.organizerId}}
+      {{otheruser.aboutme}}
+ <!--      {{user.organizerId}} -->
     </div><br>
   </div>
 
