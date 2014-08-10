@@ -10,7 +10,7 @@
 		<input ng-click="ctr.submitPost()" class="buttons" id="submitpostbutton" value="Submit" />
 	</div>
 
-	<div ng-repeat="post in allposts" class="otherpostscontainer">
+	<div ng-repeat="post in allposts | orderBy:area"  class="otherpostscontainer">
 		<div class="eachpost">
 			<strong>Area: </strong> {{post.area}} <br>
 			<strong>Date: </strong> {{post.date}} <br>
