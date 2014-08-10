@@ -19,7 +19,7 @@
 <div id="chat-box" class="chat-box">
 	<div class="chat-stream">
 		<ul>
-			<li ng-repeat="conv in conversationRoom">
+			<li ng-repeat="conv in conversationRoom" repeat-complete="scrollDonw()">
 				<div ng-class='chat.feedClass(conv.replyUsrId)'>
 					{{conv.text}}
 				</div>
@@ -27,7 +27,7 @@
 		</ul>
 	</div>
 	<div class="reply-text">
-		<input type="text" ng-keypress="chat.addReply($event)" ng-model="reply">
+		<input type="text" ng-keypress="chat.addReply($event)" placeholder="Type something to your new friends ;) ..." ng-model="reply" >
 	</div>
 </div>
 
