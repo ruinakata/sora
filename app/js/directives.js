@@ -61,17 +61,54 @@
 
           var profileRef = new Firebase("https://amber-fire-4122.firebaseio.com/users/" + viewCoSrv.viewInfo.postInfo.organizerId);
           profileRef.on('value', function(snapshot) {
-          console.log("getting that person's info")
-          console.log("snapshot", snapshot.val());
-          var otheruser = snapshot.val();
+            console.log("getting that person's info")
+            console.log("snapshot", snapshot.val());
+            var otheruser = snapshot.val();
 
-          viewCoSrv.otherProfInfo.name = otheruser.name;
-          viewCoSrv.otherProfInfo.education = otheruser.education;
-          viewCoSrv.otherProfInfo.birthday = otheruser.birthday;
-          viewCoSrv.otherProfInfo.aboutme = otheruser.aboutme;
-          viewCoSrv.otherProfInfo.photos = otheruser.photos;
+            viewCoSrv.otherProfInfo.name = otheruser.name;
+            viewCoSrv.otherProfInfo.education = otheruser.education;
+            viewCoSrv.otherProfInfo.birthday = otheruser.birthday;
+            viewCoSrv.otherProfInfo.aboutme = otheruser.aboutme;
+            viewCoSrv.otherProfInfo.photos = otheruser.photos;
+            var reqsisent = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq/" + FacebookPromises.userId);
+            var reqsent;
+            console.log("Im here :D")
 
-    });
+            var dothisafter = function(){
+              console.log("reqsent is", reqsent)
+              // if I've already sent a friend request to this person show request sent button and hide add button
+              // make the alreadysent variable either "pending", "accepted", or "none"
+              if (reqsent) {
+                viewCoSrv.otherProfInfo.alreadysent = reqsent.status
+              }
+              else {
+                viewCoSrv.otherProfInfo.alreadysent = "notyet"
+              }  
+              console.log("viewCoSrv alreadysent:", viewCoSrv.otherProfInfo.alreadysent)
+            };
+
+            reqsisent.on('value', function(snapshot){
+              var allmyreqs = snapshot.val();
+              console.log("allmyreqs is", allmyreqs)
+              //console.log("thiswillexist if i sent a req", allmyreqs[viewCoSrv.viewInfo.postInfo.organizerId]);
+              if (allmyreqs) {
+                if(allmyreqs[viewCoSrv.viewInfo.postInfo.organizerId]){
+
+                }
+                reqsent = allmyreqs[viewCoSrv.viewInfo.postInfo.organizerId]
+              }
+              else {
+                reqsent = null
+              }
+              console.log("inside reqsent is ", reqsent)
+              dothisafter();
+            });
+              
+            
+
+         
+
+          });
 
 
 
@@ -331,11 +368,38 @@ home.directive('otherprofileDirective', function(){
     restrict: 'E',
     transclude: true,
     templateUrl:'partials/otherprofile.html',
-    controller: ['$scope', '$rootScope', '$firebase', '$http', 'Facebook', 'FacebookPromises',
-      function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises) {
+    controller: ['$scope', '$rootScope', 'viewCoSrv', '$firebase', '$http', 'Facebook', 'FacebookPromises',
+      function($scope, $rootScope, viewCoSrv, $firebase, $http, Facebook, FacebookPromises) {
+          console.log("in otherprof controller")
 
+          $scope.user = viewCoSrv.viewInfo.postInfo;
+          // $scope.user.organizerId;
+          // var userref = new Firebase ("https://amber-fire-4122.firebaseio.com/users/");
 
-        console.log("in otherprofiledirective")
+          $scope.otheruser = viewCoSrv.otherProfInfo;
+          $scope.alreadysent = false;
+          $scope.friendstatus = viewCoSrv.otherProfInfo;
+          console.log('que???????',$scope.friendstatus);
+
+          var myid = FacebookPromises.userId;
+          console.log("in otherprofctr")
+          console.log("in otherprofiledirective")
+  
+
+  // FRIEND REQUEST ///////////////////////////////////////////////
+    
+        this.addfriend = function(){
+          var myid = FacebookPromises.userId;
+          var otheruserid = viewCoSrv.viewInfo.postInfo.organizerId;
+          console.log("in add friend method in otherprofctr");
+          var friendreqref = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq")
+          var request = {}
+          request[myid] = {}
+          request[myid][otheruserid] = {"status": "pending"}
+          console.log("request hash", request);
+          friendreqref.set(request);
+
+        };
     }],
     controllerAs: 'OtherProfCtr'
   };
