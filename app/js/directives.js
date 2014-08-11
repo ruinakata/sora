@@ -22,6 +22,7 @@
           if(keyEvent.keyIdentifier=='Enter'){
             var reply = {};
             reply.replyUsrId = FacebookPromises.userId;
+            reply.userPotho = $scope.eventDetails.organizerPicture;
             reply.text = $scope.reply;
             $scope.conversationRoom.$add(reply);
             $scope.reply = "";
@@ -34,6 +35,10 @@
           } else {
             return 'other-user-reply';
           }
+        };
+
+        this.isIdleActualUser =function(id){
+          return (id == FacebookPromises.userId);
         };
 
         this.scrollDonw = function(){

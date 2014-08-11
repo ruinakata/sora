@@ -22,6 +22,7 @@
 		<ul>
 			<li ng-repeat="conv in conversationRoom" repeat-complete="scrollDonw()">
 				<div ng-class='chat.feedClass(conv.replyUsrId)'>
+					<span ng-show="chat.isIdleActualUser(conv.replyUsrId)"><img ng-src="{{conv.userPotho}}" class="chat-thumbnail"><br></span>
 					{{conv.text}}
 				</div>
 			</li>
