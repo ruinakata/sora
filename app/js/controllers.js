@@ -119,7 +119,12 @@ profileModule.controller('OtherProfCtr', ['viewCoSrv', '$scope', '$rootScope', '
 
 		this.addfriend = function(){
 			var myid = FacebookPromises.userId;
-			var otheruserid 
+			var otheruserid = viewCoSrv.viewInfo.postInfo.organizerId;
+			console.log("in add friend method in otherprofctr");
+			var friendreqref = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq")
+			//console.log("viewcosrv viewinfo is", viewCoSrv.viewInfo.postInfo.organizerId)
+			// friendreqref.
+
 		};
 
 	}]);
