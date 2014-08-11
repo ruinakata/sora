@@ -9,17 +9,21 @@
       templateUrl:'partials/meeting-chat.html',
       controller: ['$scope','FireSrv','FacebookPromises','viewCoSrv',function($scope,FireSrv,FacebookPromises,viewCoSrv){
 
+        // syncronizing view information
         $scope.eventDetails = viewCoSrv.viewInfo.postInfo;
 
-        var syncArray = FireSrv.syncChtRm.$asArray();
-        $scope.conversationRoom = syncArray;
+
+        // get chat room when necesary
+        $scope.$on('getChatThread',function(event,post_id){
+          $scope.conversationRoom = FireSrv.getRoomChat(post_id).$asArray();
+        });
 
         this.addReply = function(keyEvent){
           if(keyEvent.keyIdentifier=='Enter'){
             var reply = {};
             reply.replyUsrId = FacebookPromises.userId;
             reply.text = $scope.reply;
-            syncArray.$add(reply);
+            $scope.conversationRoom.$add(reply);
             $scope.reply = "";
           }
         };
@@ -292,8 +296,10 @@ home.directive('profileDirective', function(){
             viewCoSrv.viewInfo.postInfo.area = post.area;
             viewCoSrv.viewInfo.postInfo.date = post.date;
             viewCoSrv.viewInfo.postInfo.description = post.description;
-            viewCoSrv.viewInfo.partialToShow = 'post-chat';
             viewCoSrv.viewInfo.postInfo.organizerId = post.userid;
+            viewCoSrv.viewInfo.partialToShow = 'post-chat';
+            $scope.$broadcast('getChatThread',post.postedon);
+
 
            }
 

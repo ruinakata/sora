@@ -65,7 +65,11 @@ var FireBaseService = angular.module('FireBaseService',["firebase"]).
 
     return {
       FirebaseSync : sync,
-      syncChtRm : FirebaseSyncChatRoom
+      syncChtRm : FirebaseSyncChatRoom,
+      getRoomChat : function(event_id) {
+        var newChatRoomFireBase = new Firebase('https://amber-fire-4122.firebaseio.com/chat_rooms/'+event_id);
+        return $firebase(newChatRoomFireBase);
+      }
     }
   }]);
 
