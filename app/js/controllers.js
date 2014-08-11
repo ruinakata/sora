@@ -129,8 +129,7 @@ profileModule.controller('OtherProfCtr', ['viewCoSrv', '$scope', '$rootScope', '
 			var friendreqref = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq")
 			var request = {}
 			request[myid] = {}
-			request[myid]["receiver"] = otheruserid
-			request[myid]["status"] = "pending"
+			request[myid][otheruserid] = {"status": "pending"}
 			console.log("request hash", request);
 			friendreqref.set(request);
 
