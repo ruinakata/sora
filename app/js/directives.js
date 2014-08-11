@@ -326,7 +326,7 @@ home.directive('otherprofileDirective', function(){
       function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises) {
 
 
-
+        console.log("in otherprofiledirective")
     }],
     controllerAs: 'OtherProfCtr'
   };

@@ -116,14 +116,23 @@ profileModule.controller('OtherProfCtr', ['viewCoSrv', '$scope', '$rootScope', '
 		// 	var otheruser = snapshot.val();
 		// });
 		$scope.otheruser = viewCoSrv.otherProfInfo;
+		$scope.alreadysent = false;
+		var myid = FacebookPromises.userId;
+		console.log("in otherprofctr")
 
+		// FRIEND REQUEST ///////////////////////////////////////////////
+		
 		this.addfriend = function(){
 			var myid = FacebookPromises.userId;
 			var otheruserid = viewCoSrv.viewInfo.postInfo.organizerId;
 			console.log("in add friend method in otherprofctr");
 			var friendreqref = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq")
-			//console.log("viewcosrv viewinfo is", viewCoSrv.viewInfo.postInfo.organizerId)
-			// friendreqref.
+			var request = {}
+			request[myid] = {}
+			request[myid]["receiver"] = otheruserid
+			request[myid]["status"] = "pending"
+			console.log("request hash", request);
+			friendreqref.set(request);
 
 		};
 
