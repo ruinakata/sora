@@ -11,15 +11,20 @@
 
   <div class="otherprofinfocont"><br>
     <div>
-      <button id="friendrequest"><i class="fa fa-users"></i> Add as Friend </button>
+      <button ng-click="addfriend()" id="friendrequest"><i class="fa fa-users"></i> Add as Friend </button>
     </div><br>
     <strong><p>Education: </p></strong>{{otheruser.education}}<br>
     <strong><p>Birthday: </p></strong>{{otheruser.birthday}}<br>
     <strong><p>About me: </p></strong>
     <div id="aboutmegoeshere">
       {{otheruser.aboutme}}
- <!--      {{user.organizerId}} -->
     </div><br>
+
+    <strong><p>Photos: </p></strong>
+    <div ng-repeat="photo in otheruser.photos" >
+      <img class="otherphoto" ng-src="{{photo}}">
+    </div>        
+
   </div>
 
 </div>

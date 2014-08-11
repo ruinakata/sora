@@ -117,7 +117,10 @@ profileModule.controller('OtherProfCtr', ['viewCoSrv', '$scope', '$rootScope', '
 		// });
 		$scope.otheruser = viewCoSrv.otherProfInfo;
 
-
+		this.addfriend = function(){
+			var myid = FacebookPromises.userId;
+			var otheruserid 
+		};
 
 	}]);
 
