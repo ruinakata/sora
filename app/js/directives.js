@@ -26,6 +26,7 @@
             var userref = new Firebase("https://amber-fire-4122.firebaseio.com/users/"+FacebookPromises.userId);
             userref.on('value',function(snapshot){
               reply.userPotho = snapshot.val().photos[0];
+              reply.userName = snapshot.val().name;
             });
             reply.text = $scope.reply;
             $scope.conversationRoom.$add(reply);
@@ -42,7 +43,11 @@
         };
 
         this.isIdleActualUser =function(id){
-          return !(id == FacebookPromises.userId);
+          if(id == FacebookPromises.userId){
+            return true;
+          } else {
+            return false;
+          }
         };
 
         this.scrollDonw = function(){
