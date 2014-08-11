@@ -111,6 +111,17 @@
 	border-color: 2px solid rgba(2, 59, 100, 0.89);
 }
 
+/*.chat-thumbnail-box {
+	margin-top: 10%;
+	background-color: pink;
+	width: 40%;
+	float:left;
+}*/
+.chat-thumbnail {
+	border-radius: 50%;
+	width: 5rem;
+	/*float: right;*/
+}
 
 /*event organizer*/
 
