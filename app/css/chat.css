@@ -120,7 +120,7 @@
 .chat-thumbnail {
 	border-radius: 50%;
 	width: 5rem;
-	/*float: right;*/
+	float: left;
 }
 
 /*event organizer*/

@@ -22,7 +22,11 @@
           if(keyEvent.keyIdentifier=='Enter'){
             var reply = {};
             reply.replyUsrId = FacebookPromises.userId;
-            reply.userPotho = $scope.eventDetails.organizerPicture;
+
+            var userref = new Firebase("https://amber-fire-4122.firebaseio.com/users/"+FacebookPromises.userId);
+            userref.on('value',function(snapshot){
+              reply.userPotho = snapshot.val().photos[0];
+            });
             reply.text = $scope.reply;
             $scope.conversationRoom.$add(reply);
             $scope.reply = "";
@@ -38,7 +42,7 @@
         };
 
         this.isIdleActualUser =function(id){
-          return (id == FacebookPromises.userId);
+          return !(id == FacebookPromises.userId);
         };
 
         this.scrollDonw = function(){
