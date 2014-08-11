@@ -49,6 +49,23 @@
         this.goToOtherProfile = function(){
           viewCoSrv.viewInfo.partialToShow = 'otherprofile';
           console.log("in go to other profile in chat dir", viewCoSrv.viewInfo.partialToShow)
+
+          var profileRef = new Firebase("https://amber-fire-4122.firebaseio.com/users/" + viewCoSrv.viewInfo.postInfo.organizerId);
+          profileRef.on('value', function(snapshot) {
+          console.log("getting that person's info")
+          console.log("snapshot", snapshot.val());
+          var otheruser = snapshot.val();
+
+          viewCoSrv.otherProfInfo.name = otheruser.name;
+          viewCoSrv.otherProfInfo.education = otheruser.education;
+          viewCoSrv.otherProfInfo.birthday = otheruser.birthday;
+          viewCoSrv.otherProfInfo.aboutme = otheruser.aboutme;
+          viewCoSrv.otherProfInfo.photos = otheruser.photos;
+
+    });
+
+
+
         };
 
       }],

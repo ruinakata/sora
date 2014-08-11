@@ -1,4 +1,5 @@
 <div class="postcontainer">
+<h2>Find people to hang out with! </h2>
 	<textarea id="posttextarea" ng-model="posttext" placeholder="Write a description here"></textarea>
 	<br><br>
 	Area: <input type="text" ng-model="area"/> <br>
@@ -10,7 +11,7 @@
 <div ng-repeat="post in allposts"  class="otherpostscontainer" ng-click="postCtr.goToEnventRoom(post)">
 	<div class="eachpost">
 		<img id="postprofpic" ng-src="{{post.userpicurl}}">
-		<h3>{{post.username}}</h3>
+		<h3>{{post.username}}</h3> <br><br>
 		<strong>Area: </strong> {{post.area}} <br>
 		<strong>Date: </strong> {{post.date}} <br>
 		<strong>Description: </strong> {{post.description}} <br>

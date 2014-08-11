@@ -86,6 +86,13 @@ var viewComunicationService = angular.module('viewComunicationService',[]).
           description : '',
           organizerId : ''
         }
+      },
+      otherProfInfo : {
+        name : '',
+        birthday : '',
+        photos : '',
+        aboutme : '',
+        education : '',
       }
     }
   })
