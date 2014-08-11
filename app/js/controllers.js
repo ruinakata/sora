@@ -107,33 +107,28 @@ profileModule.controller('OtherProfCtr', ['viewCoSrv', '$scope', '$rootScope', '
 		console.log("in otherprof controller")
 
 		$scope.user = viewCoSrv.viewInfo.postInfo;
-		$scope.user.organizerId;
+		// $scope.user.organizerId;
 		// var userref = new Firebase ("https://amber-fire-4122.firebaseio.com/users/");
-		// var profileRef = new Firebase("https://amber-fire-4122.firebaseio.com/users/" + $scope.user.organizerId);
-		// profileRef.on('value', function(snapshot) {
-		// 	console.log("getting that person's info")
-		// 	console.log("snapshot", snapshot.val());
-		// 	var otheruser = snapshot.val();
-		// });
+
 		$scope.otheruser = viewCoSrv.otherProfInfo;
 		$scope.alreadysent = false;
+		$scope.$watch($scope.friendstatus = viewCoSrv.otherProfInfo);
+		console.log('que???????',$scope.friendstatus);
+
 		var myid = FacebookPromises.userId;
 		console.log("in otherprofctr")
 
-		// FRIEND REQUEST ///////////////////////////////////////////////
-		
-		this.addfriend = function(){
-			var myid = FacebookPromises.userId;
-			var otheruserid = viewCoSrv.viewInfo.postInfo.organizerId;
-			console.log("in add friend method in otherprofctr");
-			var friendreqref = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq")
-			var request = {}
-			request[myid] = {}
-			request[myid][otheruserid] = {"status": "pending"}
-			console.log("request hash", request);
-			friendreqref.set(request);
 
-		};
+
+		// this.ourfriendstatus = function(){
+		// 	console.log("in ourfriendstatus() in otherProfCtr!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+		// 	if (viewCoSrv.otherProfInfo.alreadysent == 'pending' || viewCoSrv.otherProfInfo.alreadysent == 'accepted'){
+		// 		return true;
+		// 	}
+		// 	else {
+		// 		return false;
+		// 	}
+		// };
 
 	}]);
 
