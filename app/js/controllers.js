@@ -42,7 +42,6 @@
 	 				};
 	 				// Save into firebase
 	 				var profileRef = new Firebase("https://amber-fire-4122.firebaseio.com/users/" + uniqueid);
-
 			 		// angularfire!!!///////////////////////////////////////////////////////
 			 		var sync = $firebase(profileRef);
 			 		//download the data into a local object
@@ -50,16 +49,13 @@
 			 		// sync the object with a three way binding, use asObject() to create a synchronized object, then call $bindTo() which binds
 			 		// it to a $scope variable
 			 		syncObject.$bindTo($scope, 'profile');
-
 	 				var profile = { name: name, birthday: birthday, photos: photos, education: education };
 	 				profileRef.update(profile);
-
 
 	 			}, function(response) {
  					console.log(response);
 	 			})
  		}
-
 
 
  		var showProfileRef = new Firebase("https://amber-fire-4122.firebaseio.com/users/")
@@ -72,8 +68,6 @@
 				console.log("ihope this works", users[fbookid]);
 				$scope.$apply($scope.me = users[fbookid]);
 				console.log($scope.me);
-
-
 				// when aboutme exists, don't show exit form. when clicked show edit form.
 				$scope.aboutmeexists = false
 				if ($scope.me.aboutme) {
@@ -100,52 +94,29 @@ profileModule.controller('PostCtr', ['$scope', '$rootScope', '$firebase', '$http
   }]);
 
 
-
 //////// OTHER PROFILE CONTROLLER ////////////////////////////////////////////////////////////
 
 profileModule.controller('OtherProfCtr', ['viewCoSrv', '$scope', '$rootScope', '$firebase', '$http', 'Facebook', 'FacebookPromises', function(viewCoSrv, $scope, $rootScope, $firebase, $http, Facebook, FacebookPromises) {
 		console.log("in otherprof controller")
-
 		$scope.user = viewCoSrv.viewInfo.postInfo;
-		// $scope.user.organizerId;
-		// var userref = new Firebase ("https://amber-fire-4122.firebaseio.com/users/");
-
 		$scope.otheruser = viewCoSrv.otherProfInfo;
 		$scope.alreadysent = false;
 		$scope.$watch($scope.friendstatus = viewCoSrv.otherProfInfo);
-		console.log('que???????',$scope.friendstatus);
-
+		console.log('friendstatus',$scope.friendstatus);
 		var myid = FacebookPromises.userId;
 		console.log("in otherprofctr")
-
-
-
-		// this.ourfriendstatus = function(){
-		// 	console.log("in ourfriendstatus() in otherProfCtr!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-		// 	if (viewCoSrv.otherProfInfo.alreadysent == 'pending' || viewCoSrv.otherProfInfo.alreadysent == 'accepted'){
-		// 		return true;
-		// 	}
-		// 	else {
-		// 		return false;
-		// 	}
-		// };
-
 	}]);
 
 
-
 /////////  LOGIN CONTROLLER  /////////////////////////////////////////////////////////////////
-
-
 
  angular.module('SoraLogin', [])
  .controller('LoginCtr', ['$location', '$scope', 'FacebookPromises', function($location, $scope, FacebookPromises) {
 
  		this.login = function(){
- 			console.log('happening!!!!');
+ 			console.log('In Login Ctr');
  			FacebookPromises.login()
  				.then(function(response){
-	 				// FacebookPromises.userId =  response.authResponse.userID;
 	 				$location.path('/home');
 	 				console.log('good',response);
 	 			},function(response){
