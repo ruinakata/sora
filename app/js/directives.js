@@ -401,6 +401,8 @@ home.directive('otherprofileDirective', function(){
           var request = {}
           request[myid] = {}
           request[myid][otheruserid] = {"status": "pending"}
+
+          // make each request have a unique key
           console.log("request hash", request);
           friendreqref.set(request);
 
