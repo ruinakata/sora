@@ -1,17 +1,19 @@
 'use strict';
 
-// CHAT DIRECTIVE *********************************************************************************************
  home.directive('chatDirective',function() {
     return {
       restrict: 'E',
       transclude: true,
       templateUrl:'partials/meeting-chat.html',
-      controller: ['$scope','FireSrv','FacebookPromises','viewCoSrv',function($scope,FireSrv,FacebookPromises,viewCoSrv){
+      controller: [
+        '$scope',
+        'FireSrv',
+        'FacebookPromises',
+        'viewCoSrv',
+        function($scope,FireSrv,FacebookPromises,viewCoSrv){
 
         // syncronizing view information
         $scope.eventDetails = viewCoSrv.viewInfo.postInfo;
-
-
         // get chat room when necesary
         $scope.$on('getChatThread',function(event,post_id){
           $scope.conversationRoom = FireSrv.getRoomChat(post_id).$asArray();
@@ -71,7 +73,6 @@
             viewCoSrv.otherProfInfo.photos = otheruser.photos;
             var reqsisent = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq/" + FacebookPromises.userId);
             var reqsent;
-            console.log("Im here :D")
 
             var dothisafter = function(){
               console.log("reqsent is", reqsent)
@@ -83,7 +84,6 @@
               else {
                 viewCoSrv.otherProfInfo.alreadysent = "notyet"
               }
-              console.log("viewCoSrv alreadysent:", viewCoSrv.otherProfInfo.alreadysent)
             };
 
             reqsisent.on('value', function(snapshot){
@@ -102,17 +102,8 @@
               console.log("inside reqsent is ", reqsent)
               dothisafter();
             });
-
-
-
-
-
           });
-
-
-
         };
-
       }],
       controllerAs:'chat'
     };
