@@ -370,6 +370,7 @@ home.directive('otherprofileDirective', function(){
     templateUrl:'partials/otherprofile.html',
     controller: ['$scope', '$rootScope', 'viewCoSrv', '$firebase', '$http', 'Facebook', 'FacebookPromises',
       function($scope, $rootScope, viewCoSrv, $firebase, $http, Facebook, FacebookPromises) {
+          var otheruserid = viewCoSrv.viewInfo.postInfo.organizerId;
           console.log("in otherprof controller")
 
           $scope.user = viewCoSrv.viewInfo.postInfo;
@@ -382,6 +383,11 @@ home.directive('otherprofileDirective', function(){
           console.log('que???????',$scope.friendstatus);
 
           var myid = FacebookPromises.userId;
+          console.log('my id:', myid);
+          console.log(otheruserid);
+          var isFriend = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq/" + myid + '/' + otheruserid + '/status');
+
+          console.log('isFriend:', isFriend)
           console.log("in otherprofctr")
           console.log("in otherprofiledirective")
   
@@ -390,7 +396,6 @@ home.directive('otherprofileDirective', function(){
     
         this.addfriend = function(){
           var myid = FacebookPromises.userId;
-          var otheruserid = viewCoSrv.viewInfo.postInfo.organizerId;
           console.log("in add friend method in otherprofctr");
           var friendreqref = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq")
           var request = {}
