@@ -12,11 +12,7 @@ home.directive('otherprofileDirective', function(){
       function($scope, $rootScope, viewCoSrv, $firebase, $http, Facebook, FacebookPromises) {
           var otheruserid = viewCoSrv.viewInfo.postInfo.organizerId;
           console.log("in otherprof controller")
-
           $scope.user = viewCoSrv.viewInfo.postInfo;
-          // $scope.user.organizerId;
-          // var userref = new Firebase ("https://amber-fire-4122.firebaseio.com/users/");
-
           $scope.otheruser = viewCoSrv.otherProfInfo;
           $scope.alreadysent = false;
           $scope.friendstatus = viewCoSrv.otherProfInfo;
@@ -39,8 +35,8 @@ home.directive('otherprofileDirective', function(){
           console.log("in add friend method in otherprofctr");
           var friendreqref = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq")
           var request = {}
-          request[myid] = {}
-          request[myid][otheruserid] = {"status": "pending"}
+          request[otheruserid] = {}
+          request[otheruserid][myid] = {"status": "pending"}
 
           // make each request have a unique key
           console.log("request hash", request);
