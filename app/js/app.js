@@ -17,13 +17,10 @@ var Sora = angular.module('Sora', [
 config(['$routeProvider', 'FacebookProvider', function($routeProvider, FacebookProvider) {
   FacebookProvider.init('358277447659197');
   $routeProvider.when('/login', {templateUrl: 'partials/login.html', controller: 'LoginCtr'});
-  $routeProvider.when('/profile', {templateUrl: 'partials/profile.html', controller: 'ProfileCtr'});
-  $routeProvider.when('/post', {templateUrl: 'partials/post.html', controller: 'postCtr'});
-  $routeProvider.when('/otherprofile', {templateUrl: 'partials/otherprofile.html', controller: 'OtherProfCtr'})
-  $routeProvider.when('/home', {templateUrl: 'partials/home.html', controller: 'homeController'});
-
-
-
+  $routeProvider.when('/profile/:userId', {templateUrl: 'partials/profile.html', controller: 'ProfileCtr'});
+  $routeProvider.when('/event/:eventId', {templateUrl: 'partials/event-room.html', controller: 'eventRoomController'});
+  $routeProvider.when('/otherprofile/:userId', {templateUrl: 'partials/otherprofile.html', controller: 'OtherProfCtr'});
+  $routeProvider.when('/home', {templateUrl: 'partials/post.html', controller: 'PostCtr'});
   $routeProvider.otherwise({redirectTo: '/login'});
 }]).
 
@@ -42,6 +39,7 @@ controller('MainController',['$scope', '$route', 'Facebook','FacebookPromises',f
       } else {
       }
     });
+    console.log(':S',$route);
     if($route.current.redirectTo){
       if($route.current.redirectTo == '/login'){
         $scope.videoClass = 'bgvid-show'

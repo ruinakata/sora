@@ -1,4 +1,4 @@
-<div ng-controller="postCtr">
+<div ng-controller="PostCtr">
 
 	<div class="postcontainer">
 	<h2>Find people to hang out with! </h2>
@@ -6,11 +6,11 @@
 		<br><br>
 		Area: <input type="text" ng-model="area"/> <br>
 		Date: <input type="text" ng-model="date"/> <br><br>
-		<input ng-click="postCtr.submitPost()" class="buttons" id="submitpostbutton" value="Submit" />
+		<input ng-click="PostCtr.submitPost()" class="buttons" id="submitpostbutton" value="Submit" />
 	</div>
 
 
-	<div ng-repeat="post in allposts"  class="otherpostscontainer" ng-click="postCtr.goToEnventRoom(post)">
+	<div ng-repeat="post in allposts"  class="otherpostscontainer" ng-click="PostCtr.goToEnventRoom(post)">
 		<div class="eachpost">
 			<img id="postprofpic" ng-src="{{post.userpicurl}}">
 			<h3>{{post.username}}</h3> <br><br>
@@ -20,5 +20,5 @@
 		
 		</div>
 	</div>
-	
+
 </div>
