@@ -4,7 +4,7 @@
 
  var profileModule = angular.module('profile', ['firebase'])
 
-////////  PROFILE CONTROLLER  /////////////////////////////////////////////////////////////////
+// ////////  PROFILE CONTROLLER  /////////////////////////////////////////////////////////////////
 
  profileModule.controller('ProfileCtr', ['$scope', '$rootScope', '$firebase', '$http', 'Facebook', 'FacebookPromises', function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises) {
 		console.log("is facebook ready?", Facebook.isReady());
