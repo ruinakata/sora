@@ -17,8 +17,19 @@ Sora.controller('OtherProfCtr',
 
           })
           // check the friend status is with this person
-          var friendreqref = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq")
+          var friendreqref = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq/" + $scope.otheruserid)
+          friendreqref.on('value', function(snapshot){
+            console.log("all friend reqs this person received", snapshot.val());
+            var freqs = snapshot.val();
+            if (freqs == null) {
+              console.log("they don't have any friend requests")
+            }
+            else {
+              console.log("they do have some friend requests")
+              // freqs[]
 
+            }
+          })
           // console.log("routeparams userID", $routeParams.userId)
           // $scope.user = viewCoSrv.viewInfo.postInfo;
           // $scope.otheruser = viewCoSrv.otherProfInfo;
@@ -34,9 +45,10 @@ Sora.controller('OtherProfCtr',
 
   // FRIEND REQUEST ///////////////////////////////////////////////
 
-        this.addfriend = function(){
-          var myid = FacebookPromises.userId;
+        $scope.addfriend = function(){
           console.log("in add friend method in otherprofctr");
+          var myid = FacebookPromises.userId;
+          var otheruserid = $routeParams.userId;
           var friendreqref = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq")
           var request = {}
           //receiver is the key
