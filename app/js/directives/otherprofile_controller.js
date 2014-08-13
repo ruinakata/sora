@@ -1,17 +1,13 @@
 'use strict';
 
+
 // Other Profile Directive ***************************************************************
 
-
-home.directive('otherprofileDirective', function(){
-  return {
-    restrict: 'E',
-    transclude: true,
-    templateUrl:'partials/otherprofile.html',
-    controller: ['$scope', '$rootScope', 'viewCoSrv', '$firebase', '$http', 'Facebook', 'FacebookPromises',
+Sora.controller('OtherProfCtr', 
+ ['$scope', '$rootScope', 'viewCoSrv', '$firebase', '$http', 'Facebook', 'FacebookPromises',
       function($scope, $rootScope, viewCoSrv, $firebase, $http, Facebook, FacebookPromises) {
           var otheruserid = viewCoSrv.viewInfo.postInfo.organizerId;
-          console.log("in otherprof controller")
+          console.log("in otherprofctr")
           $scope.user = viewCoSrv.viewInfo.postInfo;
           $scope.otheruser = viewCoSrv.otherProfInfo;
           $scope.alreadysent = false;
@@ -22,11 +18,7 @@ home.directive('otherprofileDirective', function(){
           console.log('my id:', myid);
           console.log(otheruserid);
           var isFriend = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq/" + myid + '/' + otheruserid + '/status');
-
           console.log('isFriend:', isFriend)
-          console.log("in otherprofctr")
-          console.log("in otherprofiledirective")
-
 
   // FRIEND REQUEST ///////////////////////////////////////////////
 
@@ -43,9 +35,7 @@ home.directive('otherprofileDirective', function(){
           friendreqref.set(request);
 
         };
-    }],
-    controllerAs: 'OtherProfCtr'
-  };
-});
+    }]
+  );
 
 
