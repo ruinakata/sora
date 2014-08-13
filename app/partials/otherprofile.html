@@ -12,10 +12,11 @@
       </div>
 
       <div class="otherprofinfocont"><br>
-        <div>
-          <button ng-click="OtherProfCtr.addfriend()" ng-hide="friendstatus.alreadysent =='pending' || friendstatus.alreadysent == 'accepted'" id="friendrequest"><i class="fa fa-users"></i> Add as Friend </button>
+        <div> 
+          <button ng-click="addfriend()" ng-show="!request" id="friendrequest">
+          <i class="fa fa-users"></i> Add as Friend </button>
         </div><br>
-        <strong><p>Education: </p></strong>{{otheruser.education}}<br>
+        <strong><p>Education: </p></strong>{{otheruser.education}} {{request}}<br>
         <strong><p>Birthday: </p></strong>{{otheruser.birthday}}<br>
         <strong><p>About me: </p></strong>
         <div id="aboutmegoeshere">

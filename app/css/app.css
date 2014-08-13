@@ -22,7 +22,7 @@
 
 #navbar {
   background-color: #FC5F3F;
-  display: none;
+  display: inline-block;
   float: left;
   height: 105%;
   margin-left: -8px;
