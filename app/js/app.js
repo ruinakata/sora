@@ -30,7 +30,7 @@ controller('MainController',['$scope', '$route', 'Facebook','FacebookPromises',f
   $scope.loggedInToFacebook = false;
 
   $scope.$on('$locationChangeSuccess',function() {
-
+ 
     Facebook.getLoginStatus(function(response) {
       FacebookPromises.userId = response.authResponse.userID;
       console.log(response);
