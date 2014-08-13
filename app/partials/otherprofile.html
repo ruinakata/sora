@@ -1,8 +1,7 @@
-
 <div ng-controller="OtherProfCtr as ctr">
-
+<nav-left></nav-left>
   <div id="otherprofcont">
-    
+
     <div class="otherprofpiccont">
       <img  src="{{otheruser.photos.0}}"/>
     </div>
@@ -25,7 +24,7 @@
       <strong><p>Photos: </p></strong>
       <div ng-repeat="photo in otheruser.photos" >
         <img class="otherphoto" ng-src="{{photo}}">
-      </div>        
+      </div>
 
     </div>
 
