@@ -71,4 +71,13 @@ home.directive(
   }]
 );
 
-home.directive('navLeft',[function(){}]);
+home.directive('navLeft',function(){
+  return {
+    restrict : 'E',
+    templateUrl : "partials/nav-bar.html",
+    controller : ['$location','$scope',function($location,$scope){
+
+    }],
+    controllerAs : 'nav'
+  };
+});
