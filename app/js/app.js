@@ -35,7 +35,7 @@ controller('MainController',['$location','$scope', '$route', 'Facebook','Faceboo
  
     Facebook.getLoginStatus(function(response) {
       FacebookPromises.userId = response.authResponse.userID;
-      console.log(response);
+      console.log('Login status response:', response);
       if (response.status === 'connected') {
         $scope.loggedInToFacebook = true;
         if ($route.current.redirectTo == '/login'){
