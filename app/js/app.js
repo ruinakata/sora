@@ -24,7 +24,7 @@ config(['$routeProvider', 'FacebookProvider', function($routeProvider, FacebookP
   $routeProvider.otherwise({redirectTo: '/login'});
 }]).
 
-controller('MainController',['$scope', '$route', 'Facebook','FacebookPromises',function($scope, $route, Facebook,FacebookPromises){
+controller('MainController',['$location','$scope', '$route', 'Facebook','FacebookPromises',function($location, $scope, $route, Facebook,FacebookPromises){
 
   $scope.showLogin = false;
   $scope.loggedInToFacebook = false;
@@ -36,7 +36,16 @@ controller('MainController',['$scope', '$route', 'Facebook','FacebookPromises',f
       console.log(response);
       if (response.status === 'connected') {
         $scope.loggedInToFacebook = true;
-      } else {
+        if ($route.current.redirectTo == '/login'){
+         $location.path('/home');
+        } 
+      }
+      else {
+        if ($route.current.redirectTo == '/login'){
+        }
+        else {
+          $location.path('/login');
+        }
       }
     });
     console.log(':S',$route);
