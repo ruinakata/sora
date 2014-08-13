@@ -1,14 +1,18 @@
-<div id="left-panel"></div>
-<div class="login-view">
-  <div class='logo-warper'>
-    <i class="fa fa-qq login-logo"></i>
-  </div>
-  <div id='login-buttons' ng-controller="LoginCtr as logCtr">
-    <div id='facebook-loggin'>
-      <button class='fb-login-buton' ng-click="logCtr.login()">
-        <i class="fa fa-facebook-square fb-logo"></i>  Login
-      </button>
+<div id='login-buttons' ng-controller="LoginCtr as logCtr">
+  <div class='loging-elements' ng-class='classView'>
+    <div id="left-panel"></div>
+    <div class="login-view">
+      <div class='logo-warper'>
+        <i class="fa fa-qq login-logo"></i>
+      </div>
+
+        <div id='facebook-loggin'>
+          <button class='fb-login-buton' ng-click="logCtr.login()">
+            <i class="fa fa-facebook-square fb-logo"></i>  Login
+          </button>
+        </div>
+
     </div>
+    <div id="rigth-panel"></div>
   </div>
 </div>
-<div id="rigth-panel"></div>

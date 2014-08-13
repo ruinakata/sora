@@ -54,6 +54,7 @@ controller('MainController',
         $scope.loading = false;
         $scope.videoClass = 'bgvid-show'
         $scope.bodyStyle = "login-body";
+        $scope.$broadcast('showLoginElements');
         $scope.showLogin = true;
         FacebookPromises.userId = undefined;
         $scope.loggedInToFacebook = true;

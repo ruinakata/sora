@@ -8,8 +8,14 @@
 /////////  LOGIN CONTROLLER  /////////////////////////////////////////////////////////////////
 
  angular.module('SoraLogin', [])
+
+
  .controller('LoginCtr', ['$location', '$scope', 'FacebookPromises', function($location, $scope, FacebookPromises) {
 
+ 		$scope.$on('showLoginElements',function(){
+ 			console.log('mussels!!');
+ 			$scope.classView = 'show-element-login';
+ 		});
  		this.login = function(){
  			console.log('In Login Ctr');
  			FacebookPromises.login()
