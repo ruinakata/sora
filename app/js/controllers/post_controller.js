@@ -2,16 +2,19 @@
 
 
 Sora.controller('PostCtr',
-  ['$scope', 
-   '$rootScope', 
-   '$firebase', 
-   '$http', 
-   'Facebook', 
+  ['$scope',
+   '$rootScope',
+   '$firebase',
+   '$http',
+   'Facebook',
    'FacebookPromises',
    'viewCoSrv',
     function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises,viewCoSrv) {
       console.log("Im in the post directive");
-
+      $scope.$on('showElements',function(){
+        console.log('mussels!!');
+        $scope.classView = 'show-elementsview';
+      });
       var userref = new Firebase("https://amber-fire-4122.firebaseio.com/users/")
       var postref = new Firebase("https://amber-fire-4122.firebaseio.com/posts/")
       var mypostref = new Firebase("https://amber-fire-4122.firebaseio.com/posts/" + FacebookPromises.userId)

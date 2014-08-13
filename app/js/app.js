@@ -26,55 +26,49 @@ config(['$routeProvider', 'FacebookProvider', function($routeProvider, FacebookP
 
 }]).
 
-controller('MainController',['$location','$scope', '$route', 'Facebook','FacebookPromises',function($location, $scope, $route, Facebook,FacebookPromises){
+controller('MainController',
+  ['$location',
+  '$scope',
+  '$route',
+  'Facebook',
+  'FacebookPromises',
+  function($location, $scope, $route, Facebook,FacebookPromises){
 
+  $scope.loading = true;
   $scope.showLogin = false;
   $scope.loggedInToFacebook = false;
 
   $scope.$on('$locationChangeSuccess',function() {
- 
+
     Facebook.getLoginStatus(function(response) {
       FacebookPromises.userId = response.authResponse.userID;
       console.log('Login status response:', response);
+
       if (response.status === 'connected') {
+        FacebookPromises.userId = response.authResponse.userID;
+        $scope.showLogin = false;
+        $scope.$broadcast('showElements');
         $scope.loggedInToFacebook = true;
-        if ($route.current.redirectTo == '/login'){
-         $location.path('/home');
-        } 
-      }
-      else {
-        if ($route.current.redirectTo == '/login'){
+        $scope.bodyStyle = "app-body";
+        $scope.loading = false;
+        $scope.videoClass = 'bgvid-hide'
+        $scope.showLogin = false;
+        if ($route.current.$$route.originalPath == '/login') {
+          $location.path('/home');
         }
-        else {
+      } else {
+        $scope.loading = false;
+        $scope.videoClass = 'bgvid-show'
+        $scope.bodyStyle = "login-body";
+        $scope.$broadcast('showLoginElements');
+        $scope.showLogin = true;
+        FacebookPromises.userId = undefined;
+        $scope.loggedInToFacebook = true;
+        if ($route.current.$$route.originalPath != '/login') {
           $location.path('/login');
-        }
+        };
       }
     });
-    console.log(':S',$route);
-    if($route.current.redirectTo){
-      if($route.current.redirectTo == '/login'){
-        $scope.videoClass = 'bgvid-show'
-        $scope.bodyStyle = "login-body";
-        $scope.showLogin = true;
-        console.log('showLogin:',$scope.showLogin);
-      }else{
-        $scope.videoClass = 'bgvid-hide'
-        $scope.showLogin = false;
-        $scope.bodyStyle = "app-body";
-        console.log('showLogin:',$scope.showLogin);
-      }
-    }else if($route.current.$$route.originalPath){
-      if($route.current.$$route.originalPath == '/login'){
-        $scope.videoClass = 'bgvid-show'
-        $scope.bodyStyle = "login-body";
-        $scope.showLogin = true;
-        console.log('showLogin:',$scope.showLogin);
-      } else{
-        $scope.videoClass = 'bgvid-hide'
-        $scope.showLogin = false;
-        $scope.bodyStyle = "app-body";
-        console.log('showLogin:',$scope.showLogin);
-      }
-    }
   });
 }]);
+

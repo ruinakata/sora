@@ -1,34 +1,34 @@
 <div class="outercontainer" ng-controller="ProfileCtr as ctr">
-<nav-left></nav-left>
-<div id="otherprofcont">
-  <div class="otherprofpiccont">
-    <img class="picture" ng-src="{{me.photos.0}}" />
+  <div class='hide-elementsview' ng-class='classView'>
+    <nav-left></nav-left>
+    <div id="otherprofcont">
+      <div class="otherprofpiccont">
+        <img class="picture" ng-src="{{me.photos.0}}" />
+      </div>
+
+      <div class="otherprofname">
+        <p> {{me.name}} </p>
+      </div>
+
+      <div class="otherprofinfocont">
+        <strong><p>Education: </p></strong>{{me.education}}<br>
+        <strong><p>Birthday: </p></strong>{{me.birthday}}<br>
+        <strong><p>About me: </p></strong>
+        <div id="aboutmegoeshere">{{me.aboutme}}</div>
+        <br>
+        <button ng-click="aboutmeexists = !aboutmeexists" class="buttons" id="editabout">Edit</button> <br><br>
+              <div id="editaboutme" ng-hide="aboutmeexists">
+                <textarea  ng-model="aboutmetext" id="aboutme" placeholder="I like to..."></textarea> <br><br>
+                <input ng-click="ctr.submitAboutMe()" id="submitbutton" class="buttons" value="Submit" />
+              </div>
+
+              <strong><p>Photos: </p></strong>
+              <div ng-repeat="photo in me.photos" >
+                <img class="otherphoto" ng-src="{{photo}}">
+              </div>
+      </div>
+    </div>
   </div>
-
-  <div class="otherprofname">
-    <p> {{me.name}} </p>
-  </div>
-
-  <div class="otherprofinfocont">
-    <strong><p>Education: </p></strong>{{me.education}}<br>
-    <strong><p>Birthday: </p></strong>{{me.birthday}}<br>
-    <strong><p>About me: </p></strong>
-    <div id="aboutmegoeshere">{{me.aboutme}}</div>
-    <br>
-    <button ng-click="aboutmeexists = !aboutmeexists" class="buttons" id="editabout">Edit</button> <br><br>
-          <div id="editaboutme" ng-hide="aboutmeexists">
-            <textarea  ng-model="aboutmetext" id="aboutme" placeholder="I like to..."></textarea> <br><br>
-            <input ng-click="ctr.submitAboutMe()" id="submitbutton" class="buttons" value="Submit" />
-          </div>
-
-          <strong><p>Photos: </p></strong>
-          <div ng-repeat="photo in me.photos" >
-            <img class="otherphoto" ng-src="{{photo}}">
-          </div>
-  </div>
-
-</div>
-
 </div>
 
 

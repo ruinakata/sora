@@ -1,9 +1,11 @@
 'use strict';
 
+
 Sora.controller('OtherProfCtr', 
  ['$scope', '$rootScope', 'viewCoSrv', '$firebase', '$http', 'Facebook', 'FacebookPromises', '$routeParams',
       function($scope, $rootScope, viewCoSrv, $firebase, $http, Facebook, FacebookPromises, $routeParams) {
           //var otheruserid = viewCoSrv.viewInfo.postInfo.organizerId;
+
           console.log("in otherprofctr")
           $scope.otheruserid = $routeParams.userId;
           $scope.myuserid = FacebookPromises.userId;
@@ -16,12 +18,6 @@ Sora.controller('OtherProfCtr',
           })
           // check the friend status is with this person
           var friendreqref = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq")
-          friendreqref
-          friendreqref
-          friendreqref
-          friendreqref
-          friendreqref
-          friendreqref
 
           // console.log("routeparams userID", $routeParams.userId)
           // $scope.user = viewCoSrv.viewInfo.postInfo;
