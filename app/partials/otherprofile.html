@@ -1,34 +1,36 @@
 
-<div id="otherprofcont">
-  
-  <div class="otherprofpiccont">
-    <img  src="{{otheruser.photos.0}}"/>
-  </div>
+<div ng-controller="OtherProfCtr as ctr">
 
-  <div class="otherprofname">
-    <p> {{otheruser.name}} </p>
-  </div>
+  <div id="otherprofcont">
+    
+    <div class="otherprofpiccont">
+      <img  src="{{otheruser.photos.0}}"/>
+    </div>
 
-  <div class="otherprofinfocont"><br>
-    <div>
-      <button ng-click="OtherProfCtr.addfriend()" ng-hide="friendstatus.alreadysent =='pending' || friendstatus.alreadysent == 'accepted'" id="friendrequest"><i class="fa fa-users"></i> Add as Friend </button>
-    </div><br>
-    <strong><p>Education: </p></strong>{{otheruser.education}}<br>
-    <strong><p>Birthday: </p></strong>{{otheruser.birthday}}<br>
-    <strong><p>About me: </p></strong>
-    <div id="aboutmegoeshere">
-      {{otheruser.aboutme}}
-    </div><br>
+    <div class="otherprofname">
+      <p> {{otheruser.name}} </p>
+    </div>
 
-    <strong><p>Photos: </p></strong>
-    <div ng-repeat="photo in otheruser.photos" >
-      <img class="otherphoto" ng-src="{{photo}}">
-    </div>        
+    <div class="otherprofinfocont"><br>
+      <div>
+        <button ng-click="OtherProfCtr.addfriend()" ng-hide="friendstatus.alreadysent =='pending' || friendstatus.alreadysent == 'accepted'" id="friendrequest"><i class="fa fa-users"></i> Add as Friend </button>
+      </div><br>
+      <strong><p>Education: </p></strong>{{otheruser.education}}<br>
+      <strong><p>Birthday: </p></strong>{{otheruser.birthday}}<br>
+      <strong><p>About me: </p></strong>
+      <div id="aboutmegoeshere">
+        {{otheruser.aboutme}}
+      </div><br>
+
+      <strong><p>Photos: </p></strong>
+      <div ng-repeat="photo in otheruser.photos" >
+        <img class="otherphoto" ng-src="{{photo}}">
+      </div>        
+
+    </div>
 
   </div>
 
 </div>
-
-
 
 

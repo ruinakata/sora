@@ -1,22 +1,14 @@
 'use strict';
 
+
 // Other Profile Directive ***************************************************************
 
-
-home.directive('otherprofileDirective', function(){
-  return {
-    restrict: 'E',
-    transclude: true,
-    templateUrl:'partials/otherprofile.html',
-    controller: ['$scope', '$rootScope', 'viewCoSrv', '$firebase', '$http', 'Facebook', 'FacebookPromises',
+Sora.controller('OtherProfCtr', 
+ ['$scope', '$rootScope', 'viewCoSrv', '$firebase', '$http', 'Facebook', 'FacebookPromises',
       function($scope, $rootScope, viewCoSrv, $firebase, $http, Facebook, FacebookPromises) {
           var otheruserid = viewCoSrv.viewInfo.postInfo.organizerId;
-          console.log("in otherprof controller")
-
+          console.log("in otherprofctr")
           $scope.user = viewCoSrv.viewInfo.postInfo;
-          // $scope.user.organizerId;
-          // var userref = new Firebase ("https://amber-fire-4122.firebaseio.com/users/");
-
           $scope.otheruser = viewCoSrv.otherProfInfo;
           $scope.alreadysent = false;
           $scope.friendstatus = viewCoSrv.otherProfInfo;
@@ -26,11 +18,7 @@ home.directive('otherprofileDirective', function(){
           console.log('my id:', myid);
           console.log(otheruserid);
           var isFriend = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq/" + myid + '/' + otheruserid + '/status');
-
           console.log('isFriend:', isFriend)
-          console.log("in otherprofctr")
-          console.log("in otherprofiledirective")
-
 
   // FRIEND REQUEST ///////////////////////////////////////////////
 
@@ -39,17 +27,15 @@ home.directive('otherprofileDirective', function(){
           console.log("in add friend method in otherprofctr");
           var friendreqref = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq")
           var request = {}
-          request[myid] = {}
-          request[myid][otheruserid] = {"status": "pending"}
+          request[otheruserid] = {}
+          request[otheruserid][myid] = {"status": "pending"}
 
           // make each request have a unique key
           console.log("request hash", request);
           friendreqref.set(request);
 
         };
-    }],
-    controllerAs: 'OtherProfCtr'
-  };
-});
+    }]
+  );
 
 
