@@ -11,11 +11,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
+  <link rel="stylesheet" href="css/loading.css"/>
   <link rel="stylesheet" href="css/app.css"/>
   <link rel="stylesheet" href="css/profile.css"/>
   <link rel="stylesheet" href="css/login.css"/>
   <link rel="stylesheet" href="css/chat.css"/>
-  <link rel="stylesheet" href="css/general.css"/>
   <link rel="stylesheet" href="css/post.css"/>
   <link rel="stylesheet" href="css/otherprof.css">
 
@@ -47,7 +47,17 @@
   <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body ng-controller='MainController' , ng-class='bodyStyle'>
+
+  <div class="spinner-wave" ng-show='loading'>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+  </div>
+
 <div id='fb-root'></div>
+
 
 
   <video autoplay loop poster="" id="bgvid" ng-class='videoClass' ng-show'showLogin'>
@@ -74,7 +84,6 @@
   <script src="js/facebook.js"></script>
   <script src="js/app.js"></script>
   <script src="js/services.js"></script>
-  <script src="js/controllers.js"></script>
   <script src="js/filters.js"></script>
   <script src="js/controllers/eventroom_controller.js"></script>
   <script src="js/controllers/otherprofile_controller.js"></script>
