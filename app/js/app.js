@@ -1,5 +1,3 @@
-
-
 'use strict';
 
 
@@ -41,7 +39,7 @@ controller('MainController',
   $scope.$on('$locationChangeSuccess',function() {
 
     Facebook.getLoginStatus(function(response) {
-      FacebookPromises.userId = response.authResponse.userID;
+      // FacebookPromises.userId = response.authResponse.userID;
       console.log('Login status response:', response);
 
       if (response.status === 'connected') {
@@ -71,4 +69,3 @@ controller('MainController',
     });
   });
 }]);
-
