@@ -77,6 +77,8 @@ home.directive('navLeft',function(){
     templateUrl : "partials/nav-bar.html",
     controller : ['$location','$scope',function($location,$scope){
 
+// nav bar methods
+
     }],
     controllerAs : 'nav'
   };

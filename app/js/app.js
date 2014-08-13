@@ -21,7 +21,9 @@ config(['$routeProvider', 'FacebookProvider', function($routeProvider, FacebookP
   $routeProvider.when('/event/:eventId', {templateUrl: 'partials/event-room.html', controller: 'eventRoomController'});
   $routeProvider.when('/otherprofile/:userId', {templateUrl: 'partials/otherprofile.html', controller: 'OtherProfCtr'});
   $routeProvider.when('/home', {templateUrl: 'partials/post.html', controller: 'PostCtr'});
+  $routeProvider.when('/myfriends', {templateUrl: 'partials/friends.html', controller: 'FriendCtr'});
   $routeProvider.otherwise({redirectTo: '/login'});
+
 }]).
 
 controller('MainController',['$location','$scope', '$route', 'Facebook','FacebookPromises',function($location, $scope, $route, Facebook,FacebookPromises){
