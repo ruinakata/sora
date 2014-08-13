@@ -41,7 +41,7 @@ Sora.controller('OtherProfCtr',
           // console.log('my id:', myid);
           // console.log(otheruserid);
           // var isFriend = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq/" + myid + '/' + otheruserid + '/status');
-          // console.log('isFriend:', isFriend)
+          // console.log('isFriend:', isFriend) 
 
   // FRIEND REQUEST ///////////////////////////////////////////////
 
@@ -56,7 +56,6 @@ Sora.controller('OtherProfCtr',
           request[otheruserid][myid] = {"status": "pending"}
           console.log("request hash", request);
           friendreqref.set(request);
-
         };
     }]
   );
