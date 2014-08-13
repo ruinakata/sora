@@ -26,7 +26,13 @@ Sora.controller('OtherProfCtr',
             }
             else {
               console.log("they do have some friend requests")
-              // freqs[]
+              // if I have sent this person a friend request and they have not approved
+              console.log($scope.myuserid)
+              console.log("should be pending", freqs)
+              console.log()
+              // if (freqs[FacebookPromises.userId][status] == "pending") {
+              // console.log("hola")
+              // }
 
             }
           })
@@ -54,9 +60,14 @@ Sora.controller('OtherProfCtr',
           //receiver is the key
           request[otheruserid] = {}
           request[otheruserid][myid] = {"status": "pending"}
+          // if (request[otheruserid][myid]) {
+          //   console.log("some thing exists")
+          // }
+          //  $scope.$apply($scope.request = request)
+          // }
           console.log("request hash", request);
           friendreqref.set(request);
-        };
+        }
     }]
   );
 
