@@ -1,24 +1,25 @@
 <div ng-controller="PostCtr">
-	<nav-left></nav-left>
-	<div class="postcontainer">
-	<h2>Find people to hang out with! </h2>
-		<textarea id="posttextarea" ng-model="posttext" placeholder="Write a description here"></textarea>
-		<br><br>
-		Area: <input type="text" ng-model="area"/> <br>
-		Date: <input type="text" ng-model="date"/> <br><br>
-		<input ng-click="PostCtr.submitPost()" class="buttons" id="submitpostbutton" value="Submit" />
-	</div>
+	<div class='hide-elementsview' ng-class='classView'>
+		<nav-left></nav-left>
+		<div class="postcontainer">
+		<h2>Find people to hang out with! </h2>
+			<textarea id="posttextarea" ng-model="posttext" placeholder="Write a description here"></textarea>
+			<br><br>
+			Area: <input type="text" ng-model="area"/> <br>
+			Date: <input type="text" ng-model="date"/> <br><br>
+			<input ng-click="PostCtr.submitPost()" class="buttons" id="submitpostbutton" value="Submit" />
+		</div>
 
 
-	<div ng-repeat="post in allposts"  class="otherpostscontainer" ng-click="PostCtr.goToEnventRoom(post)">
-		<div class="eachpost">
-			<img id="postprofpic" ng-src="{{post.userpicurl}}">
-			<h3>{{post.username}}</h3> <br><br>
-			<strong>Area: </strong> {{post.area}} <br>
-			<strong>Date: </strong> {{post.date}} <br>
-			<strong>Description: </strong> {{post.description}} <br>
+		<div ng-repeat="post in allposts"  class="otherpostscontainer" ng-click="PostCtr.goToEnventRoom(post)">
+			<div class="eachpost">
+				<img id="postprofpic" ng-src="{{post.userpicurl}}">
+				<h3>{{post.username}}</h3> <br><br>
+				<strong>Area: </strong> {{post.area}} <br>
+				<strong>Date: </strong> {{post.date}} <br>
+				<strong>Description: </strong> {{post.description}} <br>
 
+			</div>
 		</div>
 	</div>
-
 </div>

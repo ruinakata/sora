@@ -1,3 +1,11 @@
+.hide-elementsview {
+  display: none;
+}
+
+.show-elementsview {
+  display: block !important;
+}
+
 .app-body{
   /*background-color: #fff0ed;*/
   background-color: #fff0ed;

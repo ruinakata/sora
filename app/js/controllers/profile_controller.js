@@ -1,14 +1,18 @@
 'use strict';
 
 
-Sora.controller('ProfileCtr', 
-  ['$scope', 
-  '$rootScope', 
-  '$firebase', 
-  '$http', 
-  'Facebook', 
+Sora.controller('ProfileCtr',
+  ['$scope',
+  '$rootScope',
+  '$firebase',
+  '$http',
+  'Facebook',
   'FacebookPromises',
   function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises) {
+    $scope.$on('showElements',function(){
+      console.log('mussels!!');
+      $scope.classView = 'show-elementsview';
+    });
     console.log("is facebook ready?", Facebook.isReady());
     if ($scope.loggedInToFacebook) {
       getMyFacebookInfo();

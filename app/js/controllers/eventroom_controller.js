@@ -7,6 +7,10 @@ Sora.controller('eventRoomController',[
   'FacebookPromises',
   'viewCoSrv',
   function($routeParams,$scope,FireSrv,FacebookPromises,viewCoSrv){
+    $scope.$on('showElements',function(){
+      console.log('mussels!!');
+      $scope.classView = 'show-elementsview';
+    });
     // syncronizing view information
     $scope.eventDetails = viewCoSrv.viewInfo.postInfo;
     // get chat room when necesary

@@ -3,9 +3,13 @@
 
 // Other Profile Directive ***************************************************************
 
-Sora.controller('OtherProfCtr', 
+Sora.controller('OtherProfCtr',
  ['$scope', '$rootScope', 'viewCoSrv', '$firebase', '$http', 'Facebook', 'FacebookPromises',
       function($scope, $rootScope, viewCoSrv, $firebase, $http, Facebook, FacebookPromises) {
+          $scope.$on('showElements',function(){
+            console.log('mussels!!');
+            $scope.classView = 'show-elementsview';
+          });
           var otheruserid = viewCoSrv.viewInfo.postInfo.organizerId;
           console.log("in otherprofctr")
           $scope.user = viewCoSrv.viewInfo.postInfo;

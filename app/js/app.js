@@ -42,6 +42,7 @@ controller('MainController',
       if (response.status === 'connected') {
         FacebookPromises.userId = response.authResponse.userID;
         $scope.showLogin = false;
+        $scope.$broadcast('showElements');
         $scope.loggedInToFacebook = true;
         $scope.bodyStyle = "app-body";
         $scope.loading = false;
