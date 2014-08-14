@@ -1,5 +1,5 @@
 .hide-elementsview {
-  display: none;
+  display: block;
 }
 
 .show-elementsview {
@@ -20,7 +20,13 @@
 }
 
 
-#navbar {
+.content-conteiner {
+  width: 80%;
+  float: left;
+  margin-left:20%;
+}
+
+.navbar {
   background-color: #FC5F3F;
   display: inline-block;
   float: left;

@@ -1,6 +1,8 @@
 <div ng-controller="eventRoomController as chat">
 	<div class='hide-elementsview' ng-class='classView'>
-		<nav-left></nav-left>
+		<nav-left class='navbar'></nav-left>
+
+		<div class='content-conteiner'>
 			<div id="post-details" class="post-details">
 				<div class="event-organizer">
 					<h3>{{eventDetails.organizer}}</h3>
@@ -37,6 +39,7 @@
 			</div>
 
 			<div id="rigth-panel"></div>
+		</div>
 	</div>
 </div>
 

@@ -60,11 +60,11 @@ Sora.controller('OtherProfCtr',
           //receiver is the key
           request[otheruserid] = {}
           request[otheruserid][myid] = {"status": "pending"}
-          // if (request[otheruserid][myid]) {
-          //   console.log("some thing exists")
-          // }
-          //  $scope.$apply($scope.request = request)
-          // }
+          if (request[otheruserid][myid]) {
+            console.log("some thing exists")
+          }
+           $scope.$apply($scope.request = request)
+          }
           console.log("request hash", request);
           friendreqref.set(request);
         }

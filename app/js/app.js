@@ -30,7 +30,8 @@ controller('MainController',
   '$route',
   'Facebook',
   'FacebookPromises',
-  function($location, $scope, $route, Facebook,FacebookPromises){
+  'FireSrv',
+  function($location, $scope, $route, Facebook,FacebookPromises,FireSrv){
 
   $scope.loading = true;
   $scope.showLogin = false;
@@ -39,9 +40,7 @@ controller('MainController',
   $scope.$on('$locationChangeSuccess',function() {
 
     Facebook.getLoginStatus(function(response) {
-      // FacebookPromises.userId = response.authResponse.userID;
       console.log('Login status response:', response);
-
       if (response.status === 'connected') {
         FacebookPromises.userId = response.authResponse.userID;
         $scope.showLogin = false;
@@ -51,6 +50,10 @@ controller('MainController',
         $scope.loading = false;
         $scope.videoClass = 'bgvid-hide'
         $scope.showLogin = false;
+        if(!FireSrv.sessionEstablished){
+          FireSrv.storeUserSession(response.authResponse.userID);
+          FireSrv.sessionEstablished = true;
+        }
         if ($route.current.$$route.originalPath == '/login') {
           $location.path('/home');
         }

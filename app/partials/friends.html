@@ -1,14 +1,15 @@
 <div ng-controller="FriendCtr">
-	<nav-left></nav-left>
-	<div class="postcontainer">
-		<h2>My Friend Requests </h2>
-		<div ng-repeat="reqsender in reqsenders" ng-click="FriendCtr.goToOtherProfile()">
-			{{reqsender.name}}{{reqsender.pic}}
+	<nav-left class='navbar'></nav-left>
+	<div class='content-conteiner'>
+		<div class="postcontainer">
+			<h2>My Friend Requests </h2>
+			<div ng-repeat="reqsender in reqsenders" ng-click="FriendCtr.goToOtherProfile()">
+				{{reqsender.name}}{{reqsender.pic}}
+			</div>
 		</div>
-	</div>
-
-	<h2>My Friends</h2>
-	<div ng-repeat="friend in myfriends"  class="otherpostscontainer" ng-click="FriendCtr.goToOtherProfile()">
-		{{friend.name}}{{friend.pic}}
+		<h2>My Friends</h2>
+		<div ng-repeat="friend in myfriends"  class="otherpostscontainer" ng-click="FriendCtr.goToOtherProfile()">
+			{{friend.name}}{{friend.pic}}
+		</div>
 	</div>
 </div>
