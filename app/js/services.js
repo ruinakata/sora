@@ -50,40 +50,7 @@ var FbService = angular.module('FbService', ['facebook']).
           }
         });
         return deferred.promise;
-      },
-
-
-      createUser : function() {
-        FacebookPromises.query('me', 'get', { fields: 'id,name,about,birthday,education,photos,education' })
-          .then(function(response) {
-            console.log(response)
-            var uniqueid = response.id;
-            $rootScope.facebookId = uniqueid;
-            var name = response.name;
-            var birthday = response.birthday;
-            var education = response.education[response.education.length-1].school.name
-            var photos = [];
-            console.log("hi")
-            for (var i=0; i<response.photos.data.length; i++) {
-              photos.push(response.photos.data[i].source);
-            };
-            // Save into firebase
-            var profileRef = new Firebase("https://amber-fire-4122.firebaseio.com/users/" + uniqueid);
-            // angularfire!!!///////////////////////////////////////////////////////
-            var sync = $firebase(profileRef);
-            //download the data into a local object
-            var syncObject = sync.$asObject();
-            // sync the object with a three way binding, use asObject() to create a synchronized object, then call $bindTo() which binds
-            // it to a $scope variable
-            syncObject.$bindTo($scope, 'profile');
-            var profile = { name: name, birthday: birthday, photos: photos, education: education };
-            profileRef.update(profile);
-
-          }, function(response) {
-            console.log(response);
-          })
       }
-
     }
   }]);
 
@@ -98,11 +65,32 @@ var FireBaseService = angular.module('FireBaseService',["firebase"]).
 
     return {
       FirebaseSync : sync,
+
       syncChtRm : FirebaseSyncChatRoom,
+
       getRoomChat : function(event_id) {
         var newChatRoomFireBase = new Firebase('https://amber-fire-4122.firebaseio.com/chat_rooms/'+event_id);
         return $firebase(newChatRoomFireBase);
       },
+
+      verifySoraUser : function(user_id,createUserCallBack) {
+        var userReference = new Firebase('https://amber-fire-4122.firebaseio.com/users');
+        userReference.child(user_id).once('value', function(snapshot) {
+          var exists = (snapshot.val() !== null);
+          if(exists){
+            console.log('User already exists >.< ');
+          } else {
+            console.log('Creating user .-.');
+            createUserCallBack();
+          }
+        });
+      },
+
+      createSoraUser : function(user_id,newUser){
+        var userReference = new Firebase('https://amber-fire-4122.firebaseio.com/users/' + user_id);
+        userReference.set(newUser);
+      },
+
       storeUserSession : function(user_id) {
 
         // since I can connect from multiple devices or browser tabs, we store each connection instance separately
