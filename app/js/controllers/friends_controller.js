@@ -4,7 +4,13 @@ Sora.controller('FriendCtr',
  ['$scope', '$rootScope', 'viewCoSrv', '$firebase', '$http', 'Facebook', 'FacebookPromises', '$routeParams', 
       function($scope, $rootScope, viewCoSrv, $firebase, $http, Facebook, FacebookPromises, $routeParams) {
         console.log("in Friend controller")
-        console.log("routeparams", $routeParams)
+        // check if I have any friend requests that I need to respond to
+        var friendreqs;
+        var ref = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq/" + FacebookPromises.userId)
+        ref.on('value', function(snapshot){
+            console.log("snapshot is ", snapshot.val());
+            friendreqs = snapshot.val();
+        })
         // $scope.friendstatus = viewCoSrv.otherProfInfo;
        
         // var isFriend = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq/" + myid + '/' + otheruserid + '/status');

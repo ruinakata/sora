@@ -81,7 +81,7 @@ Sora.controller('OtherProfCtr',
           }
            $scope.$apply($scope.request = request)
           console.log("request hash", request);
-          friendreqref.set(request);
+          friendreqref.update(request);
 
         }
     }]
