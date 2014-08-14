@@ -71,16 +71,15 @@ Sora.controller('OtherProfCtr',
           console.log("in add friend method in otherprofctr");
           var myid = FacebookPromises.userId;
           var otheruserid = $routeParams.userId;
-          var friendreqref = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq")
-          var request = {}
+          var friendreqref = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq/" + otheruserid);
+          var request = {};
           //receiver is the key
-          request[otheruserid] = {}
-          request[otheruserid][myid] = {"status": "pending"}
-          if (request[otheruserid][myid]) {
+          //request[otheruserid] = {};
+          request[myid] = {"status": "pending"};
+          if (request[myid]) {
             console.log("some thing exists")
           }
            $scope.$apply($scope.request = request)
-        
           console.log("request hash", request);
           friendreqref.set(request);
 
