@@ -9,7 +9,8 @@ Sora.controller('PostCtr',
    'Facebook',
    'FacebookPromises',
    'viewCoSrv',
-    function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises,viewCoSrv) {
+   '$location',
+    function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises,viewCoSrv, $location) {
       console.log("Im in the post directive");
       $scope.$on('showElements',function(){
         console.log('mussels!!');
@@ -31,7 +32,7 @@ Sora.controller('PostCtr',
         $scope.$apply($scope.allposts = array.reverse());
       });
 
-      this.submitPost = function(){
+      $scope.submitPost = function(){
         console.log("in submit post method");
         //find the user's picture and name and save with post
         var finduserref = userref.child(FacebookPromises.userId)
@@ -41,11 +42,19 @@ Sora.controller('PostCtr',
           var userpicurl = userinfo.photos[0];
           var postObj = {userid: FacebookPromises.userId, username: username, userpicurl: userpicurl, area: $scope.area, description: $scope.posttext, date: $scope.date, postedon: Date.now()};
           var newPostRef = postref.push(postObj);
+          // immediately edit the post we made to include the randomly generated post ID
+          var postId = newPostRef.name();
+          var theRefWeJustMade = new Firebase("https://amber-fire-4122.firebaseio.com/posts/" + postId);
+          theRefWeJustMade.on('value', function(snapshot) {
+            var thePostWeWantToEdit = snapshot.val()
+            thePostWeWantToEdit["postid"] = postId;
+            theRefWeJustMade.set(thePostWeWantToEdit);
+          })
         })
       };
 
       $scope.goToEnventRoom = function(post){
-        console.log("in goToEventRoom")
+        console.log("in goToEventRoom");
         viewCoSrv.viewInfo.postInfo.organizer = post.username;
         viewCoSrv.viewInfo.postInfo.organizerPicture = post.userpicurl;
         viewCoSrv.viewInfo.postInfo.area = post.area;
@@ -54,7 +63,8 @@ Sora.controller('PostCtr',
         viewCoSrv.viewInfo.postInfo.organizerId = post.userid;
         viewCoSrv.viewInfo.partialToShow = 'post-chat';
         $scope.$broadcast('getChatThread',post.postedon);
-
+      
+        $location.path("/event/" + post.postid);
        }
     }
   ]);
