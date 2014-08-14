@@ -61,9 +61,9 @@ Sora.controller('PostCtr',
         viewCoSrv.viewInfo.postInfo.date = post.date;
         viewCoSrv.viewInfo.postInfo.description = post.description;
         viewCoSrv.viewInfo.postInfo.organizerId = post.userid;
+        viewCoSrv.viewInfo.postInfo.eventId = post.postid;
         viewCoSrv.viewInfo.partialToShow = 'post-chat';
         $scope.$broadcast('getChatThread',post.postedon);
-      
         $location.path("/event/" + post.postid);
        }
     }

@@ -1,12 +1,13 @@
 'use strict';
 
 Sora.controller('eventRoomController',[
+  '$location',
   '$routeParams',
   '$scope',
   'FireSrv',
   'FacebookPromises',
   'viewCoSrv',
-  function($routeParams,$scope,FireSrv,FacebookPromises,viewCoSrv){
+  function($location, $routeParams,$scope,FireSrv,FacebookPromises,viewCoSrv){
     $scope.$on('showElements',function(){
       console.log('mussels!!');
       $scope.classView = 'show-elementsview';
@@ -56,51 +57,51 @@ Sora.controller('eventRoomController',[
     };
 
   this.goToOtherProfile = function(){
-    viewCoSrv.viewInfo.partialToShow = 'otherprofile';
-    console.log("in go to other profile in chat dir", viewCoSrv.viewInfo.partialToShow)
+    $location.path("/otherprofile/" + viewCoSrv.viewInfo.postInfo.organizerId);
+  //   viewCoSrv.viewInfo.partialToShow = 'otherprofile';
+  //   console.log("in go to other profile in chat dir", viewCoSrv.viewInfo.partialToShow)
 
-    var profileRef = new Firebase("https://amber-fire-4122.firebaseio.com/users/" + viewCoSrv.viewInfo.postInfo.organizerId);
-    profileRef.on('value', function(snapshot) {
-      console.log("getting that person's info")
-      console.log("snapshot", snapshot.val());
-      var otheruser = snapshot.val();
+    // var profileRef = new Firebase("https://amber-fire-4122.firebaseio.com/users/" + viewCoSrv.viewInfo.postInfo.organizerId);
+  //   profileRef.on('value', function(snapshot) {
+  //     console.log("getting that person's info")
+  //     console.log("snapshot", snapshot.val());
+  //     var otheruser = snapshot.val();
+  //     viewCoSrv.otherProfInfo.name = otheruser.name;
+  //     viewCoSrv.otherProfInfo.education = otheruser.education;
+  //     viewCoSrv.otherProfInfo.birthday = otheruser.birthday;
+  //     viewCoSrv.otherProfInfo.aboutme = otheruser.aboutme;
+  //     viewCoSrv.otherProfInfo.photos = otheruser.photos;
+  //     var reqsisent = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq/" + FacebookPromises.userId);
+  //     var reqsent;
 
-      viewCoSrv.otherProfInfo.name = otheruser.name;
-      viewCoSrv.otherProfInfo.education = otheruser.education;
-      viewCoSrv.otherProfInfo.birthday = otheruser.birthday;
-      viewCoSrv.otherProfInfo.aboutme = otheruser.aboutme;
-      viewCoSrv.otherProfInfo.photos = otheruser.photos;
-      var reqsisent = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq/" + FacebookPromises.userId);
-      var reqsent;
+  //     var dothisafter = function(){
+  //       console.log("reqsent is", reqsent)
+  //       // if I've already sent a friend request to this person show request sent button and hide add button
+  //       // make the alreadysent variable either "pending", "accepted", or "none"
+  //       if (reqsent) {
+  //         viewCoSrv.otherProfInfo.alreadysent = reqsent.status
+  //       }
+  //       else {
+  //         viewCoSrv.otherProfInfo.alreadysent = "notyet"
+  //       }
+  //     };
 
-      var dothisafter = function(){
-        console.log("reqsent is", reqsent)
-        // if I've already sent a friend request to this person show request sent button and hide add button
-        // make the alreadysent variable either "pending", "accepted", or "none"
-        if (reqsent) {
-          viewCoSrv.otherProfInfo.alreadysent = reqsent.status
-        }
-        else {
-          viewCoSrv.otherProfInfo.alreadysent = "notyet"
-        }
-      };
+  //     reqsisent.on('value', function(snapshot){
+  //       var allmyreqs = snapshot.val();
+  //       console.log("allmyreqs is", allmyreqs)
+  //       //console.log("thiswillexist if i sent a req", allmyreqs[viewCoSrv.viewInfo.postInfo.organizerId]);
+  //       if (allmyreqs) {
+  //         if(allmyreqs[viewCoSrv.viewInfo.postInfo.organizerId]){
 
-      reqsisent.on('value', function(snapshot){
-        var allmyreqs = snapshot.val();
-        console.log("allmyreqs is", allmyreqs)
-        //console.log("thiswillexist if i sent a req", allmyreqs[viewCoSrv.viewInfo.postInfo.organizerId]);
-        if (allmyreqs) {
-          if(allmyreqs[viewCoSrv.viewInfo.postInfo.organizerId]){
-
-          }
-          reqsent = allmyreqs[viewCoSrv.viewInfo.postInfo.organizerId]
-        }
-        else {
-          reqsent = null
-        }
-        console.log("inside reqsent is ", reqsent)
-        dothisafter();
-      });
-    });
-  };
+  //         }
+  //         reqsent = allmyreqs[viewCoSrv.viewInfo.postInfo.organizerId]
+  //       }
+  //       else {
+  //         reqsent = null
+  //       }
+  //       console.log("inside reqsent is ", reqsent)
+  //       dothisafter();
+  //     });
+  //   });
+   };
 }]);
