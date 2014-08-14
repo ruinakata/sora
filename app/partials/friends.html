@@ -1,14 +1,16 @@
 <div class='hide-elementsview' ng-class='classView'>	
 	<nav-left class='navbar'></nav-left>
 	<div class='content-container'>
-		<div class="postcontainer">
+		<div class="friendcontainer">
 			<h2>My Friend Requests </h2>
 			<div ng-repeat="reqsender in reqsenders" ng-click="goToOtherProfile()">
-				{{reqsender.name}}{{reqsender.pic}}
+				{{reqsender.pic}}{{reqsender.name}}
 			</div>
 		</div>
-		<h2>My Friends</h2>
-		<div ng-repeat="friend in myfriends"  class="otherpostscontainer" ng-click="goToOtherProfile()">
-			{{friend.name}}{{friend.pic}}
+		<div class="friendcontainer">
+			<h2>My Friends</h2>
+			<div ng-repeat="friend in myfriends"  class="otherpostscontainer" ng-click="goToOtherProfile()">
+				{{friend.pic}}{{friend.name}}
+			</div>
 		</div>
 	</div>

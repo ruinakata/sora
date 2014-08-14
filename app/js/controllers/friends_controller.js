@@ -3,7 +3,7 @@
 Sora.controller('FriendCtr', 
  ['$scope', '$rootScope', 'viewCoSrv', '$firebase', '$http', 'Facebook', 'FacebookPromises', '$routeParams', 
       function($scope, $rootScope, viewCoSrv, $firebase, $http, Facebook, FacebookPromises, $routeParams) {
-        console.log("in FriendCtr haha")
+        console.log("in Friend controller")
         console.log("routeparams", $routeParams)
         // $scope.friendstatus = viewCoSrv.otherProfInfo;
        
