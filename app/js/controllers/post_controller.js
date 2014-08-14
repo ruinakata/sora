@@ -45,6 +45,7 @@ Sora.controller('PostCtr',
       };
 
       $scope.goToEnventRoom = function(post){
+        console.log("in goToEventRoom")
         viewCoSrv.viewInfo.postInfo.organizer = post.username;
         viewCoSrv.viewInfo.postInfo.organizerPicture = post.userpicurl;
         viewCoSrv.viewInfo.postInfo.area = post.area;
