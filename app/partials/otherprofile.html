@@ -14,10 +14,10 @@
 
       <div class="otherprofinfocont"><br>
         <div>
-          <button ng-click="addfriend()" ng-show="!request" id="friendrequest">
+          <button ng-click="addfriend()" ng-show="showfriendbutton" id="friendrequest">
           <i class="fa fa-users"></i> Add as Friend </button>
         </div><br>
-        <strong><p>Education: </p></strong>{{otheruser.education}} {{request}}<br>
+        <strong><p>Education: </p></strong>{{otheruser.education}} {{request.otheruserid}}<br>
         <strong><p>Birthday: </p></strong>{{otheruser.birthday}}<br>
         <strong><p>About me: </p></strong>
         <div id="aboutmegoeshere">
