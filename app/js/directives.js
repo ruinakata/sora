@@ -76,9 +76,19 @@ home.directive('navLeft',function(){
     restrict : 'E',
     templateUrl : "partials/nav-bar.html",
     controller : ['$location','$scope',function($location,$scope){
-
-// nav bar methods
-
+      this.setView = function(view){
+        console.log(' happening .-.');
+        // viewCoSrv.viewInfo.partialToShow = view;
+        if(view == 'home'){
+          $location.path("/home");
+        };
+        if(view == 'my_profile'){
+          $location.path("/profile");
+        };
+        if(view == 'friends'){
+          $location.path("/myfriends");
+        };
+      };
     }],
     controllerAs : 'nav'
   };

@@ -1,18 +1,18 @@
 'use strict';
 
 Sora.controller('FriendCtr', 
- ['$scope', '$rootScope', 'viewCoSrv', '$firebase', '$http', 'Facebook', 'FacebookPromises', 
-      function($scope, $rootScope, viewCoSrv, $firebase, $http, Facebook, FacebookPromises) {
+ ['$scope', '$rootScope', 'viewCoSrv', '$firebase', '$http', 'Facebook', 'FacebookPromises', '$routeParams', 
+      function($scope, $rootScope, viewCoSrv, $firebase, $http, Facebook, FacebookPromises, $routeParams) {
         console.log("in FriendCtr")
-        console.log($routeParams)
+         // console.log($routeParams)
         // $scope.friendstatus = viewCoSrv.otherProfInfo;
        
         // var isFriend = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq/" + myid + '/' + otheruserid + '/status');
 
-        this.FriendCtr.goToOtherProfile = function(){
-          console.log("in goToOtherProfile method in FriendCtr")
+        // .goToOtherProfile = function(){
+        //   console.log("in goToOtherProfile method in FriendCtr")
 
-        };
+        // };
 
         // this.addfriend = function(){
         //   var myid = FacebookPromises.userId;

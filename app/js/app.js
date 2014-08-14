@@ -15,7 +15,7 @@ var Sora = angular.module('Sora', [
 config(['$routeProvider', 'FacebookProvider', function($routeProvider, FacebookProvider) {
   FacebookProvider.init('358277447659197');
   $routeProvider.when('/login', {templateUrl: 'partials/login.html', controller: 'LoginCtr'});
-  $routeProvider.when('/profile/:id', {templateUrl: 'partials/profile.html', controller: 'ProfileCtr'});
+  $routeProvider.when('/profile', {templateUrl: 'partials/profile.html', controller: 'ProfileCtr'});
   $routeProvider.when('/event/:eventId', {templateUrl: 'partials/event-room.html', controller: 'eventRoomController'});
   $routeProvider.when('/otherprofile/:userId', {templateUrl: 'partials/otherprofile.html', controller: 'OtherProfCtr'});
   $routeProvider.when('/home', {templateUrl: 'partials/post.html', controller: 'PostCtr'});
@@ -72,3 +72,16 @@ controller('MainController',
     });
   });
 }]);
+
+
+var home = angular.module('home',[]);
+
+home.controller('homeController',['$scope','viewCoSrv',function($scope,viewCoSrv){
+  $scope.view = viewCoSrv.viewInfo;
+  $scope.setView = function(view){
+    console.log(' happening .-.');
+    // viewCoSrv.viewInfo.partialToShow = view;
+  };
+}]);
+
+

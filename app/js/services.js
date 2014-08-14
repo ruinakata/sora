@@ -50,7 +50,40 @@ var FbService = angular.module('FbService', ['facebook']).
           }
         });
         return deferred.promise;
+      },
+
+
+      createUser : function() {
+        FacebookPromises.query('me', 'get', { fields: 'id,name,about,birthday,education,photos,education' })
+          .then(function(response) {
+            console.log(response)
+            var uniqueid = response.id;
+            $rootScope.facebookId = uniqueid;
+            var name = response.name;
+            var birthday = response.birthday;
+            var education = response.education[response.education.length-1].school.name
+            var photos = [];
+            console.log("hi")
+            for (var i=0; i<response.photos.data.length; i++) {
+              photos.push(response.photos.data[i].source);
+            };
+            // Save into firebase
+            var profileRef = new Firebase("https://amber-fire-4122.firebaseio.com/users/" + uniqueid);
+            // angularfire!!!///////////////////////////////////////////////////////
+            var sync = $firebase(profileRef);
+            //download the data into a local object
+            var syncObject = sync.$asObject();
+            // sync the object with a three way binding, use asObject() to create a synchronized object, then call $bindTo() which binds
+            // it to a $scope variable
+            syncObject.$bindTo($scope, 'profile');
+            var profile = { name: name, birthday: birthday, photos: photos, education: education };
+            profileRef.update(profile);
+
+          }, function(response) {
+            console.log(response);
+          })
       }
+
     }
   }]);
 
@@ -74,28 +107,28 @@ var FireBaseService = angular.module('FireBaseService',["firebase"]).
 
         // since I can connect from multiple devices or browser tabs, we store each connection instance separately
         // any time that connectionsRef's value is null (i.e. has no children) I am offline
-        var myConnectionsRef = new Firebase('https://amber-fire-4122.firebaseio.com/users/'+user_id);
+        // var myConnectionsRef = new Firebase('https://amber-fire-4122.firebaseio.com/users/'+user_id);
 
         // stores the timestamp of my last disconnect (the last time I was seen online)
-        var lastOnlineRef = new Firebase('https://amber-fire-4122.firebaseio.com/users/'+user_id);
+        // var lastOnlineRef = new Firebase('https://amber-fire-4122.firebaseio.com/users/'+user_id);
 
-        var connectedRef = new Firebase('https://amber-fire-4122.firebaseio.com/.info/connected');
-        connectedRef.on('value', function(snap) {
-          if (snap.val() === true) {
+        // var connectedRef = new Firebase('https://amber-fire-4122.firebaseio.com/.info/connected');
+        // connectedRef.on('value', function(snap) {
+          // if (snap.val() === true) {
             // We're connected (or reconnected)! Do anything here that should happen only if online (or on reconnect)
 
             // add this device to my connections list
             // this value could contain info about the device or a timestamp too
-            var con = myConnectionsRef.update({connected : true});
+            // var con = myConnectionsRef.update({connected : true});
 
             // when I disconnect, remove this device
             // console.log('ETF is con',con);
-            myConnectionsRef.onDisconnect().update({connected : false});
+            // myConnectionsRef.onDisconnect().update({connected : false});
 
             // when I disconnect, update the last time I was seen online
-            lastOnlineRef.onDisconnect().set(Firebase.ServerValue.TIMESTAMP);
-          }
-        });
+            // lastOnlineRef.onDisconnect().set(Firebase.ServerValue.TIMESTAMP);
+          // }
+        // });
       },
       sessionEstablished : false
     }

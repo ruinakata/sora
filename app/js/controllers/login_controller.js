@@ -16,7 +16,7 @@
       console.log('mussels!!');
       $scope.classView = 'show-element-login';
     });
-    this.login = function(){
+    $scope.login = function(){
       console.log('In Login Ctr');
       FacebookPromises.login()
         .then(function(response){
@@ -27,13 +27,4 @@
         });
     };
   }]);
-
- var home = angular.module('home',[]);
-
- home.controller('homeController',['$scope','viewCoSrv',function($scope,viewCoSrv){
-  $scope.view = viewCoSrv.viewInfo;
-  this.setView = function(view){
-    viewCoSrv.viewInfo.partialToShow = view;
-  };
- }]);
 
