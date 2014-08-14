@@ -15,11 +15,12 @@ Sora.controller('eventRoomController',[
     // syncronizing view information
     $scope.eventDetails = viewCoSrv.viewInfo.postInfo;
     // get chat room when necesary
-    $scope.$on('getChatThread',function(event,post_id){
-      $scope.conversationRoom = FireSrv.getRoomChat(post_id).$asArray();
-    });
-
-    this.addReply = function(keyEvent){
+    // $scope.$on('getChatThread',function(event,post_id){
+    //   $scope.conversationRoom = FireSrv.getRoomChat(post_id).$asArray();
+    // });
+    console.log('see parmas:',$routeParams.eventId);
+    $scope.conversationRoom = FireSrv.getRoomChat($routeParams.eventId).$asArray();
+    $scope.addReply = function(keyEvent){
       if(keyEvent.keyIdentifier=='Enter'){
         var reply = {};
         reply.replyUsrId = FacebookPromises.userId;
@@ -28,14 +29,14 @@ Sora.controller('eventRoomController',[
         userref.on('value',function(snapshot){
           reply.userPotho = snapshot.val().photos[0];
           reply.userName = snapshot.val().name;
+          reply.text = $scope.reply;
+          $scope.conversationRoom.$add(reply);
+          $scope.reply = "";
         });
-        reply.text = $scope.reply;
-        $scope.conversationRoom.$add(reply);
-        $scope.reply = "";
       }
     };
 
-    this.feedClass = function(id){
+    $scope.feedClass = function(id){
       if(id == FacebookPromises.userId){
         return 'actual-user-reply';
       } else {
@@ -43,7 +44,7 @@ Sora.controller('eventRoomController',[
       }
     };
 
-    this.isIdleActualUser =function(id){
+    $scope.isIdleActualUser =function(id){
       if(id == FacebookPromises.userId){
         return true;
       } else {
@@ -51,12 +52,12 @@ Sora.controller('eventRoomController',[
       }
     };
 
-    this.scrollDonw = function(){
+    $scope.scrollDonw = function(){
       console.log("happening :O??");
       $(".chat-stream").scrollTop($(".chat-stream")[0].scrollHeight);
     };
 
-  this.goToOtherProfile = function(){
+  $scope.goToOtherProfile = function(){
     $location.path("/otherprofile/" + viewCoSrv.viewInfo.postInfo.organizerId);
   //   viewCoSrv.viewInfo.partialToShow = 'otherprofile';
   //   console.log("in go to other profile in chat dir", viewCoSrv.viewInfo.partialToShow)

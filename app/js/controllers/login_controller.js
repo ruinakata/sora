@@ -20,7 +20,6 @@
       console.log('In Login Ctr');
       FacebookPromises.login()
         .then(function(response){
-          console.log('happening?????????????');
           var userId = response.authResponse.userID;
           FireSrv.verifySoraUser(userId,function(){
             FacebookPromises.query('me', 'get', { fields: 'id,name,about,birthday,education,photos,education' })
