@@ -23,17 +23,33 @@ Sora.controller('OtherProfCtr',
             var freqs = snapshot.val();
             if (freqs == null) {
               console.log("they don't have any friend requests")
+              $scope.$apply($scope.showfriendbutton = true);
+              console.log($scope.showfriendbutton)
             }
             else {
               console.log("they do have some friend requests")
               // if I have sent this person a friend request and they have not approved
               console.log($scope.myuserid)
-              console.log("should be pending", freqs)
-              console.log()
-              // if (freqs[FacebookPromises.userId][status] == "pending") {
-              // console.log("hola")
-              // }
-
+              console.log("freqs:", freqs)
+              if (freqs[$scope.myuserid]) {
+                var status = freqs[$scope.myuserid]["status"]
+                console.log("status:", status)
+                // if (freqs[FacebookPromises.userId][status] == "pending") {
+                // console.log("hola")
+                // }
+                // if pending or declined, you can't send another request
+                if (status == "pending" || status == "declined") {
+                  console.log("don't show add friend button!")
+                  $scope.showfriendbutton = false;
+                }
+                else {
+                  console.log("show add friend button!")
+                  $scope.showfriendbutton = true;
+                }
+              }
+              else {
+                $scope.$apply($scope.showfriendbutton = true);
+              }
             }
           })
           // console.log("routeparams userID", $routeParams.userId)
@@ -67,6 +83,7 @@ Sora.controller('OtherProfCtr',
         
           console.log("request hash", request);
           friendreqref.set(request);
+
         }
     }]
   );

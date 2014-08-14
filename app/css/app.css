@@ -12,7 +12,7 @@
   background-image:
   -webkit-linear-gradient(bottom left, #fff0ed 25%, transparent 25%, transparent 75%, #94d1f4 75%, #94d1f4),
   -webkit-linear-gradient(bottom left, #fff0ed 25%, transparent 25%, transparent 75%, #94d1f4 75%, #94d1f4);
-  background-size:300px 300px;
+  background-size:100px 100px;
 }
 
 * {
