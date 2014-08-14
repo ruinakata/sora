@@ -1,15 +1,14 @@
-<div ng-controller="FriendCtr">
+<div class='hide-elementsview' ng-class='classView'>	
 	<nav-left class='navbar'></nav-left>
-	<div class='content-conteiner'>
+	<div class='content-container'>
 		<div class="postcontainer">
 			<h2>My Friend Requests </h2>
-			<div ng-repeat="reqsender in reqsenders" ng-click="FriendCtr.goToOtherProfile()">
+			<div ng-repeat="reqsender in reqsenders" ng-click="goToOtherProfile()">
 				{{reqsender.name}}{{reqsender.pic}}
 			</div>
 		</div>
 		<h2>My Friends</h2>
-		<div ng-repeat="friend in myfriends"  class="otherpostscontainer" ng-click="FriendCtr.goToOtherProfile()">
+		<div ng-repeat="friend in myfriends"  class="otherpostscontainer" ng-click="goToOtherProfile()">
 			{{friend.name}}{{friend.pic}}
 		</div>
 	</div>
-</div>

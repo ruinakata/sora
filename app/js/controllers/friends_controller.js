@@ -3,8 +3,8 @@
 Sora.controller('FriendCtr', 
  ['$scope', '$rootScope', 'viewCoSrv', '$firebase', '$http', 'Facebook', 'FacebookPromises', '$routeParams', 
       function($scope, $rootScope, viewCoSrv, $firebase, $http, Facebook, FacebookPromises, $routeParams) {
-        console.log("in FriendCtr")
-         // console.log($routeParams)
+        console.log("in FriendCtr haha")
+        console.log("routeparams", $routeParams)
         // $scope.friendstatus = viewCoSrv.otherProfInfo;
        
         // var isFriend = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq/" + myid + '/' + otheruserid + '/status');
