@@ -4,6 +4,71 @@
 	background-color: white;
 	width: 60%;
 	padding-top: 2%;
-	padding-left: 10%;
+	padding-left: 5%;
+	padding-right: 5%;
 	padding-bottom: 2%;
 }
+
+.eachfriendreq {
+	/*border: red 1px solid;*/
+	border-bottom: #D3DBD6 1px solid;
+	border-top: #D3DBD6 1px solid;
+	padding-top: 10px;
+	padding-bottom: 10px;
+
+}
+
+.reqprofpic {
+	/*border: red 1px solid;*/
+	display: inline-block;
+	width: 100px;
+	border-radius: 50%;
+}
+
+.reqname {
+/*	border: red 1px solid;*/
+	display: inline-block;
+}
+
+.buttoncontainer {
+/*	border: red 1px solid;*/
+	display: inline-block;
+	float: right;
+	padding-top: 22px;
+}
+
+.acceptreq {
+	width: 50px;
+	background-color: white;
+	border: 1px solid #1C79FC;
+	color: #1C79FC;
+	border-radius: 5px;
+}
+
+.acceptreq:hover{
+	width: 50px;
+	background-color: #1C79FC;
+	color: white;
+	border-radius: 5px;
+}
+
+.declinereq {
+	width: 50px;
+	background-color: white;
+	border: 1px solid #1C79FC;
+	color: #1C79FC;
+	border-radius: 5px;
+}
+
+.declinereq:hover{
+	width: 50px;
+	background-color: #1C79FC;
+	color: white;
+	border-radius: 5px;
+}
+
+
+
+
+
+

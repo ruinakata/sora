@@ -1,16 +1,28 @@
 <div class='hide-elementsview' ng-class='classView'>	
 	<nav-left class='navbar'></nav-left>
 	<div class='content-container'>
+		
 		<div class="friendcontainer">
-			<h2>My Friend Requests </h2>
+			<h2>My Friend Requests </h2><br>
 			<div ng-repeat="reqsender in reqsenders" ng-click="goToOtherProfile()">
-				{{reqsender.pic}}{{reqsender.name}}
+				<div class="eachfriendreq">
+					<img class="reqprofpic" ng-src="{{reqsender.profpic}}">
+					<div class="reqname">
+						<h3> {{reqsender.name}} </h3>
+					</div>
+					<div class="buttoncontainer">
+						<button ng-click="acceptrequest(reqsender)" class="acceptreq"><i class="fa fa-check-square"></i></button>
+						<button ng-click="declinerequest(reqsender)" class="declinereq"><i class="fa fa-times"></i></button>
+					</div>
+				</div>
 			</div>
 		</div>
+
 		<div class="friendcontainer">
 			<h2>My Friends</h2>
 			<div ng-repeat="friend in myfriends"  class="otherpostscontainer" ng-click="goToOtherProfile()">
 				{{friend.pic}}{{friend.name}}
 			</div>
 		</div>
+
 	</div>

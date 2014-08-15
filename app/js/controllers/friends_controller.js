@@ -36,27 +36,20 @@ Sora.controller('FriendCtr',
 
         })
 
-        // $scope.friendstatus = viewCoSrv.otherProfInfo;
-       
-        // var isFriend = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq/" + myid + '/' + otheruserid + '/status');
+    $scope.acceptrequest = function(reqsender){
+        console.log("in acceptrequest fxn")
+        var ref = new Firebase("https://amber-fire-4122.firebaseio.com/friends/" + FacebookPromises.userId + "/" + reqsender.fbid)
+        ref.set("accepted")
+        var ref = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq/" + FacebookPromises.userId + "/" + reqsender.fbid)
+        ref.set(null);
 
-        // .goToOtherProfile = function(){
-        //   console.log("in goToOtherProfile method in FriendCtr")
+    };
 
-        // };
+    $scope.declinerequest = function(reqsender){
+        console.log("in declinerequest fxn")
+        var ref = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq/" + FacebookPromises.userId + "/" + reqsender.fbid)
+    };
 
-        // this.addfriend = function(){
-        //   var myid = FacebookPromises.userId;
-        //   console.log("in add friend method in otherprofctr");
-        //   var friendreqref = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq");
-        //   var request = {}
-        //   request[otheruserid] = {}
-        //   request[otheruserid][myid] = {"status": "pending"}
 
-        //   // make each request have a unique key
-        //   console.log("request hash", request);
-        //   friendreqref.set(request);
-
-        // };
     }]
   );
