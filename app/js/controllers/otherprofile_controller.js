@@ -4,19 +4,26 @@
 Sora.controller('OtherProfCtr', 
  ['$scope', '$rootScope', 'viewCoSrv', '$firebase', '$http', 'Facebook', 'FacebookPromises', '$routeParams',
       function($scope, $rootScope, viewCoSrv, $firebase, $http, Facebook, FacebookPromises, $routeParams) {
-          //var otheruserid = viewCoSrv.viewInfo.postInfo.organizerId;
-
           console.log("in otherprofctr")
           $scope.otheruserid = $routeParams.userId;
           $scope.myuserid = FacebookPromises.userId;
-          console.log("myuserid", $scope.myuserid)
+          // check if we are already friends
+          var friendsref = new Firebase("https://amber-fire-4122.firebaseio.com/friends/" + $scope.myuserid + '/' + $scope.otheruserid)
+          friendsref.on('value', function(snapshot){
+            var answer = snapshot.val();
+            // $scope.notfriends = true;
+            if (answer.fbid){
+              $scope.notfriends = false;
+              $scope.alreadyfriends = true;
+            };
+            console.log("are we not friends?", $scope.notfriends)
+          });
           var ref = new Firebase("https://amber-fire-4122.firebaseio.com/users/" + $scope.otheruserid)
           ref.on('value', function(snapshot) {
             console.log('snapshot:', snapshot.val())
             $scope.$apply($scope.otheruser = snapshot.val());
-
           })
-          // check the friend status is with this person
+          // check the friend request status is with this person
           var friendreqref = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq/" + $scope.otheruserid)
           friendreqref.on('value', function(snapshot){
             console.log("all friend reqs this person received", snapshot.val());
@@ -52,18 +59,7 @@ Sora.controller('OtherProfCtr',
               }
             }
           })
-          // console.log("routeparams userID", $routeParams.userId)
-          // $scope.user = viewCoSrv.viewInfo.postInfo;
-          // $scope.otheruser = viewCoSrv.otherProfInfo;
-          // $scope.alreadysent = false;
-          // $scope.friendstatus = viewCoSrv.otherProfInfo;
-          // console.log('que???????',$scope.friendstatus);
 
-          // var myid = FacebookPromises.userId;
-          // console.log('my id:', myid);
-          // console.log(otheruserid);
-          // var isFriend = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq/" + myid + '/' + otheruserid + '/status');
-          // console.log('isFriend:', isFriend) 
 
   // FRIEND REQUEST ///////////////////////////////////////////////
 

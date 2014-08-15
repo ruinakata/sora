@@ -14,7 +14,7 @@
 
       <div class="otherprofinfocont"><br>
         <div>
-          <button ng-click="addfriend()" ng-show="showfriendbutton" id="friendrequest">
+          <button ng-click="addfriend()" ng-show="showfriendbutton && notfriends" id="friendrequest">
           <i class="fa fa-users"></i> Add as Friend </button>
         </div><br>
         <strong><p>Education: </p></strong>{{otheruser.education}} {{request.otheruserid}}<br>
@@ -26,7 +26,7 @@
 
         <strong><p>Photos: </p></strong>
         <div ng-repeat="photo in otheruser.photos" >
-          <img class="otherphoto" ng-src="{{photo}}">
+          <img ng-show="alreadyfriends" class="otherphoto" ng-src="{{photo}}">
         </div>
 
       </div>
