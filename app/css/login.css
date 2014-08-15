@@ -38,7 +38,6 @@
 
 .login-view{
   border: white 2px solid;
-  opacity: 0.7;
   margin-top: 5em;
   border-radius: 10px;
   display: inline-block;
@@ -47,12 +46,13 @@
   text-align: center;
   width: 20%;
   height: 100%;
-  background-color:#FC5F3F;
+  background-color:rgba(252, 95, 64, 0.7);
 }
 
 .logo-warper {
   padding-top: 1em;
   padding-bottom: 2em;
+
 
 }
 
@@ -78,6 +78,10 @@
   border: white 2px solid;
 }
 
-
+.logo-warper h1{
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 5rem;
+    color: white;
+}
 
 
