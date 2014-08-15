@@ -16,7 +16,7 @@ var FbService = angular.module('FbService', ['facebook']).
         Facebook.getLoginStatus(function(response) {
           if(response.status){
             if(response.status == "connected"){
-              this.userId = response.authResponse.userID;
+              // userId = response.authResponse.userID;
             }
             deferred.resolve(response);
           } else {
@@ -69,8 +69,13 @@ var FireBaseService = angular.module('FireBaseService',["firebase"]).
       syncChtRm : FirebaseSyncChatRoom,
 
       getRoomChat : function(event_id) {
-        var newChatRoomFireBase = new Firebase('https://amber-fire-4122.firebaseio.com/chat_rooms/'+event_id);
+        var newChatRoomFireBase = new Firebase('https://amber-fire-4122.firebaseio.com/chat_rooms/' + event_id +'/talk');
         return $firebase(newChatRoomFireBase);
+      },
+
+      getLogedUsersChat :function(event_id) {
+        var newRefUsersRoom = new Firebase('https://amber-fire-4122.firebaseio.com/chat_rooms/' + event_id + '/users_in_room');
+        return $firebase(newRefUsersRoom);
       },
 
       verifySoraUser : function(user_id,createUserCallBack) {
@@ -86,37 +91,52 @@ var FireBaseService = angular.module('FireBaseService',["firebase"]).
         });
       },
 
+      addUSerEventRoom : function(user_id,event_id,event_room_data){
+        var userReference = new Firebase('https://amber-fire-4122.firebaseio.com/chat_rooms/' + event_id + '/users_in_room/'+user_id);
+        userReference.set({
+          userPhoto : event_room_data.organizerPicture,
+          userName : event_room_data.organizer
+        });
+        userReference.onDisconnect().remove();
+      },
+
       createSoraUser : function(user_id,newUser){
         var userReference = new Firebase('https://amber-fire-4122.firebaseio.com/users/' + user_id);
         userReference.set(newUser);
+      },
+
+      retireUserFromChatRoom : function(user_id,event_id){
+        var userReference = new Firebase('https://amber-fire-4122.firebaseio.com/chat_rooms/' + event_id + '/users_in_room/'+user_id);
+        userReference.remove();
       },
 
       storeUserSession : function(user_id) {
 
         // since I can connect from multiple devices or browser tabs, we store each connection instance separately
         // any time that connectionsRef's value is null (i.e. has no children) I am offline
-        // var myConnectionsRef = new Firebase('https://amber-fire-4122.firebaseio.com/users/'+user_id);
-
+        var myConnectionsRef = new Firebase('https://amber-fire-4122.firebaseio.com/connected_users/'+user_id);
+        var eventRoomreference = new Firebase('https://amber-fire-4122.firebaseio.com/users/' + user_id + '/event');
         // stores the timestamp of my last disconnect (the last time I was seen online)
-        // var lastOnlineRef = new Firebase('https://amber-fire-4122.firebaseio.com/users/'+user_id);
+        // var lastOnlineRef = new Firebase('https://amber-fire-4122.firebaseio.com/connected_users/'+user_id);
 
-        // var connectedRef = new Firebase('https://amber-fire-4122.firebaseio.com/.info/connected');
-        // connectedRef.on('value', function(snap) {
-          // if (snap.val() === true) {
+        var connectedRef = new Firebase('https://amber-fire-4122.firebaseio.com/.info/connected');
+        connectedRef.on('value', function(snap) {
+          if (snap.val() === true) {
             // We're connected (or reconnected)! Do anything here that should happen only if online (or on reconnect)
 
             // add this device to my connections list
             // this value could contain info about the device or a timestamp too
-            // var con = myConnectionsRef.update({connected : true});
+            var con = myConnectionsRef.update({connected : true});
 
             // when I disconnect, remove this device
             // console.log('ETF is con',con);
-            // myConnectionsRef.onDisconnect().update({connected : false});
+            myConnectionsRef.onDisconnect().update({connected : false});
+            eventRoomreference.onDisconnect().remove();
 
             // when I disconnect, update the last time I was seen online
             // lastOnlineRef.onDisconnect().set(Firebase.ServerValue.TIMESTAMP);
-          // }
-        // });
+          }
+        });
       },
       sessionEstablished : false
     }

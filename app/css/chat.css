@@ -112,6 +112,7 @@
 }
 
 .chat-thumbnail-box {
+	margin-top: 4px;
 	float: left;
 	display: inline-block;
 	margin-left:5px;
@@ -165,6 +166,23 @@
 	margin-left: 5%;
 	margin-right: 5%;
 }
+
+.logged-users ul{
+	width: 100%;
+	list-style-type: none;
+	margin: 0 0;
+	-webkit-padding-start: 0px;
+	padding-start: 0px;
+	font-family: 'Quicksand', sans-serif;
+	text-align: center;
+	font-size: 120%;
+}
+
+.logged-users li {
+	width: 100%;
+	color: white;
+}
+
 
 .logged-users-box {
 	margin-top: 4rem;

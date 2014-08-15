@@ -1,47 +1,47 @@
-<div ng-controller="eventRoomController as chat">
-	<div class='hide-elementsview' ng-class='classView'>
-		<nav-left class='navbar'></nav-left>
-
-		<div class='content-container'>
-			<div id="post-details" class="post-details">
-				<div class="event-organizer">
-					<h3>{{eventDetails.organizer}}</h3>
-					<div class="profpic-chat"><img class="picture-chat" ng-click="chat.goToOtherProfile()" ng-src="{{eventDetails.organizerPicture}}"></div>
-				</div>
-				<div class="event-details">
-					<h1>{{eventDetails.description}}</h1>
-					<div><label>Area:</label> {{eventDetails.area}}</div>
-				</div>
+<div class='hide-elementsview' ng-class='classView'>
+	<nav-left class='navbar'></nav-left>
+	<div class='content-container'>
+		<div id="post-details" class="post-details">
+			<div class="event-organizer">
+				<h3>{{eventDetails.organizer}}</h3>
+				<div class="profpic-chat"><img class="picture-chat" ng-click="goToOtherProfile()" ng-src="{{eventDetails.organizerPicture}}"></div>
 			</div>
-
-			<div id="logged-users" class="logged-users">
-				<div class="logged-users-box">
-					<ul ="list-logged-users">
-						<li class="logged-user" ng-repeat="user in users"></li>
-					</ul>
-				</div>
+			<div class="event-details">
+				<h1>{{eventDetails.description}}</h1>
+				<div><label>Area:</label> {{eventDetails.area}}</div>
 			</div>
-
-			<div id="chat-box" class="chat-box">
-				<div class="chat-stream">
-					<ul>
-						<li ng-repeat="conv in conversationRoom" repeat-complete="scrollDonw()">
-							<div ng-hide="chat.isIdleActualUser(conv.replyUsrId)" class="chat-thumbnail-box"><img ng-src="{{conv.userPotho}}" class="chat-thumbnail"> {{conv.userName.split(" ")[0]}}:</div><br>
-							<div ng-class='chat.feedClass(conv.replyUsrId)'>
-								{{conv.text}}
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="reply-text">
-					<input type="text" ng-keypress="chat.addReply($event)" placeholder="Type something to your new friends ;) ..." ng-model="reply" >
-				</div>
-			</div>
-
-			<div id="rigth-panel"></div>
 		</div>
+		<div id="logged-users" class="logged-users">
+			<div class="logged-users-box">
+				<ul ="list-logged-users">
+					<li class="logged-user" ng-repeat="user in usersInTheRoom">
+						<div class="chat-thumbnail-box">
+							<span><img ng-src="{{user.userPhoto}}" class="chat-thumbnail"></span>
+							<span>{{user.userName}}</span>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="chat-box" class="chat-box">
+			<div class="chat-stream">
+				<ul>
+					<li ng-repeat="conv in conversationRoom" repeat-complete="scrollDonw()">
+						<div ng-hide="isIdleActualUser(conv.replyUsrId)" class="chat-thumbnail-box"><img ng-src="{{conv.userPotho}}" class="chat-thumbnail"> {{conv.userName.split(" ")[0]}}:</div><br>
+						<div ng-class='feedClass(conv.replyUsrId)'>
+							{{conv.text}}
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="reply-text">
+				<input type="text" ng-keypress="addReply($event)" placeholder="Type something to your new friends ;) ..." ng-model="reply" >
+			</div>
+		</div>
+		<div id="rigth-panel"></div>
 	</div>
 </div>
+
 
 
 
