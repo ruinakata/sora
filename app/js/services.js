@@ -91,11 +91,12 @@ var FireBaseService = angular.module('FireBaseService',["firebase"]).
         });
       },
 
-      addUSerEventRoom : function(user_id,event_id,event_room_data){
+      addUSerEventRoom : function(user_id,event_id,user_data){
         var userReference = new Firebase('https://amber-fire-4122.firebaseio.com/chat_rooms/' + event_id + '/users_in_room/'+user_id);
         userReference.set({
-          userPhoto : event_room_data.organizerPicture,
-          userName : event_room_data.organizer
+          userId : user_id,
+          userPhoto : user_data.userPhoto,
+          userName : user_data.userName
         });
         userReference.onDisconnect().remove();
       },

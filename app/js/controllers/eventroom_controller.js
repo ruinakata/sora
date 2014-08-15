@@ -22,11 +22,22 @@ Sora.controller('eventRoomController',[
         viewCoSrv.viewInfo.postInfo.description = snapshot.val().description;
         viewCoSrv.viewInfo.postInfo.organizerId = snapshot.val().userid;
         viewCoSrv.viewInfo.postInfo.eventId = snapshot.val().postid;
-        FireSrv.addUSerEventRoom(snapshot.val().userid,$routeParams.eventId,viewCoSrv.viewInfo.postInfo);
     });
 
+    // add user to the list of people on the room
+    FacebookPromises.checkLoginState()
+      .then(function(response){
+        var usr = new Firebase("https://amber-fire-4122.firebaseio.com/users/"+response.authResponse.userID);
+        usr.on('value',function(snapshot){
+          var obj = {};
+          obj.userPhoto = snapshot.val().photos[0];
+          obj.userName = snapshot.val().name;
+          FireSrv.addUSerEventRoom(response.authResponse.userID,$routeParams.eventId,obj);
+        });
+      });
+
+    //leaving the chat room
     $scope.$on('$routeChangeStart',function(){
-      console.log('bye room :(');
       FireSrv.retireUserFromChatRoom(FacebookPromises.userId,$routeParams.eventId);
     });
     //relate user on the event room
@@ -49,6 +60,14 @@ Sora.controller('eventRoomController',[
           $scope.conversationRoom.$add(reply);
           $scope.reply = "";
         });
+      }
+    };
+
+    $scope.goToProfile = function(user){
+      if(user.userId == FacebookPromises.userId){
+        $location.path("profile");
+      } else {
+        $location.path("/otherprofile/" + user.userId);
       }
     };
 
