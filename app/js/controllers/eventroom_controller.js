@@ -13,13 +13,29 @@ Sora.controller('eventRoomController',[
       $scope.classView = 'show-elementsview';
     });
     // syncronizing view information
+    var eventReference = new Firebase("https://amber-fire-4122.firebaseio.com/posts/" + $routeParams.eventId);
+    eventReference.on('value',function(snapshot){
+        viewCoSrv.viewInfo.postInfo.organizer = snapshot.val().username;
+        viewCoSrv.viewInfo.postInfo.organizerPicture = snapshot.val().userpicurl;
+        viewCoSrv.viewInfo.postInfo.area = snapshot.val().area;
+        viewCoSrv.viewInfo.postInfo.date = snapshot.val().date;
+        viewCoSrv.viewInfo.postInfo.description = snapshot.val().description;
+        viewCoSrv.viewInfo.postInfo.organizerId = snapshot.val().userid;
+        viewCoSrv.viewInfo.postInfo.eventId = snapshot.val().postid;
+        FireSrv.addUSerEventRoom(snapshot.val().userid,$routeParams.eventId,viewCoSrv.viewInfo.postInfo);
+    });
+
+    $scope.$on('$routeChangeStart',function(){
+      console.log('bye room :(');
+      FireSrv.retireUserFromChatRoom(FacebookPromises.userId,$routeParams.eventId);
+    });
+    //relate user on the event room
     $scope.eventDetails = viewCoSrv.viewInfo.postInfo;
-    // get chat room when necesary
-    // $scope.$on('getChatThread',function(event,post_id){
-    //   $scope.conversationRoom = FireSrv.getRoomChat(post_id).$asArray();
-    // });
+
     console.log('see parmas:',$routeParams.eventId);
     $scope.conversationRoom = FireSrv.getRoomChat($routeParams.eventId).$asArray();
+    $scope.usersInTheRoom = FireSrv.getLogedUsersChat($routeParams.eventId).$asArray();
+
     $scope.addReply = function(keyEvent){
       if(keyEvent.keyIdentifier=='Enter'){
         var reply = {};
