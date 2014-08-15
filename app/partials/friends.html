@@ -20,8 +20,8 @@
 
 		<div class="friendcontainer">
 			<h2>My Friends</h2>
-			<div ng-repeat="friend in allmyfriends" ng-click="goToOtherProfile(friend)">
-				<div class="eachfriendreq">
+			<div ng-repeat="friend in allmyfriends" >
+				<div class="eachfriendreq" ng-click="goToOtherProfile(friend)">
 					<img class="reqprofpic" ng-src="{{friend.profpic}}">
 					<div class="reqname">
 						<h3> {{friend.name}}</h3>

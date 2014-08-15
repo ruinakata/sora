@@ -1,8 +1,8 @@
 'use strict';
 
 Sora.controller('FriendCtr', 
- ['$scope', '$rootScope', 'viewCoSrv', '$firebase', '$http', 'Facebook', 'FacebookPromises', '$routeParams', 
-      function($scope, $rootScope, viewCoSrv, $firebase, $http, Facebook, FacebookPromises, $routeParams) {
+ ['$location', '$scope', '$rootScope', 'viewCoSrv', '$firebase', '$http', 'Facebook', 'FacebookPromises', '$routeParams', 
+      function($location, $scope, $rootScope, viewCoSrv, $firebase, $http, Facebook, FacebookPromises, $routeParams) {
         console.log("in Friend controller")
 
         // friend request list *****************************************************
@@ -62,22 +62,49 @@ Sora.controller('FriendCtr',
             var allmyfriends = snapshot.val(); 
             console.log("allmyfriends", allmyfriends);
             if (allmyfriends) {
-            var myfriendsidarray = Object.keys(allmyfriends);
-            console.log(myfriendsidarray)
-            var allfriendsinfo = []
-            for (var i=0; i<myfriendsidarray.length; i++) {
-                var ref = new Firebase("https://amber-fire-4122.firebaseio.com/users/" + myfriendsidarray[i])
-                ref.on('value', function(snapshot){
-                    var friend = snapshot.val();
-                    var obj = {name: friend.name, profpic: friend.photos[0], fbid: myfriendsidarray[i]}
-                    console.log("friend", obj);
-                    allfriendsinfo.push(obj)
-                    console.log("allfriendsinfo", allfriendsinfo)
-                    $scope.$apply($scope.allmyfriends = allfriendsinfo);
-                });    
-            }
-
+                var myfriendsidarray = Object.keys(allmyfriends);
+                console.log("allmyfriends ids", myfriendsidarray[0])
+                var allfriendsinfo = [];
+                for (var i=0; i<myfriendsidarray.length; i++) {
+                    var ref = new Firebase("https://amber-fire-4122.firebaseio.com/users/" + myfriendsidarray[i]);
+                    (function(i) {
+                        ref.on('value', function(snapshot){
+                            var friend = snapshot.val();
+                            console.log("friend!!!!", friend)
+                            console.log("oi", myfriendsidarray[i])
+                            var obj = {name: friend.name, profpic: friend.photos[0], fbid: myfriendsidarray[i]}
+                            console.log("friend", obj);
+                            allfriendsinfo.push(obj)
+                            console.log("allfriendsinfo hahahhahaha", allfriendsinfo)
+                            $scope.$apply($scope.allmyfriends = allfriendsinfo);
+                        });    
+                    })(i);
+                }
             }
         });
+
+        $scope.goToOtherProfile = function(friend){
+            console.log("in goToOtherProfile", friend)
+            console.log(friend.fbid)
+            $location.path('/otherprofile/' + friend.fbid)
+        }; 
+
     }]
   );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
