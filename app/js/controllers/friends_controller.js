@@ -61,6 +61,7 @@ Sora.controller('FriendCtr',
         ref.on('value', function(snapshot){
             var allmyfriends = snapshot.val(); 
             console.log("allmyfriends", allmyfriends);
+            if (allmyfriends) {
             var myfriendsidarray = Object.keys(allmyfriends);
             console.log(myfriendsidarray)
             var allfriendsinfo = []
@@ -73,8 +74,9 @@ Sora.controller('FriendCtr',
                     allfriendsinfo.push(obj)
                     console.log("allfriendsinfo", allfriendsinfo)
                     $scope.$apply($scope.allmyfriends = allfriendsinfo);
-                });
-                
+                });    
+            }
+
             }
         });
     }]
