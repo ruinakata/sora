@@ -15,7 +15,7 @@
 			<div class="logged-users-box">
 				<ul ="list-logged-users">
 					<li class="logged-user" ng-repeat="user in usersInTheRoom">
-						<div class="chat-thumbnail-box">
+						<div class="chat-thumbnail-box " ng-click='goToProfile(user)'>
 							<span><img ng-src="{{user.userPhoto}}" class="chat-thumbnail"></span>
 							<span>{{user.userName}}</span>
 						</div>

@@ -112,10 +112,11 @@
 }
 
 .chat-thumbnail-box {
-	margin-top: 4px;
+	padding-top: 4px;
 	float: left;
 	display: inline-block;
-	margin-left:5px;
+	padding-left:5px;
+	padding-bottom: 4px;
 }
 
 .chat-thumbnail {
@@ -183,7 +184,6 @@
 	color: white;
 }
 
-
 .logged-users-box {
 	margin-top: 4rem;
 	margin-bottom: 4rem;
@@ -193,6 +193,17 @@
 	margin-right: 4%;
 	background-color: rgba(2, 59, 100, 0.89);
 }
+
+.logged-user div{
+	cursor: pointer;
+}
+
+.logged-user div:hover{
+	color: rgba(2, 59, 100, 0.89);
+	background-color: white;
+}
+
+
 
 
 
