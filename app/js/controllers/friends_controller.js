@@ -4,6 +4,7 @@ Sora.controller('FriendCtr',
  ['$scope', '$rootScope', 'viewCoSrv', '$firebase', '$http', 'Facebook', 'FacebookPromises', '$routeParams', 
       function($scope, $rootScope, viewCoSrv, $firebase, $http, Facebook, FacebookPromises, $routeParams) {
         console.log("in Friend controller")
+
         // check if I have any friend requests that I need to respond to
         var ref = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq/" + FacebookPromises.userId)
         ref.on('value', function(snapshot){
@@ -36,19 +37,22 @@ Sora.controller('FriendCtr',
 
         })
 
-    $scope.acceptrequest = function(reqsender){
-        console.log("in acceptrequest fxn")
-        var ref = new Firebase("https://amber-fire-4122.firebaseio.com/friends/" + FacebookPromises.userId + "/" + reqsender.fbid)
-        ref.set("accepted")
-        var ref = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq/" + FacebookPromises.userId + "/" + reqsender.fbid)
-        ref.set(null);
+        $scope.acceptrequest = function(reqsender){
+            console.log("in acceptrequest fxn")
+            // add to friend list on both ends
+            var ref = new Firebase("https://amber-fire-4122.firebaseio.com/friends/" + FacebookPromises.userId + "/" + reqsender.fbid)
+            ref.set("accepted")
+            var ref = new Firebase("https://amber-fire-4122.firebaseio.com/friends/" + reqsender.fbid + "/" + FacebookPromises.userId)
+            ref.set("accepted")
+            var ref = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq/" + FacebookPromises.userId + "/" + reqsender.fbid)
+            ref.set(null);
+        };
 
-    };
-
-    $scope.declinerequest = function(reqsender){
-        console.log("in declinerequest fxn")
-        var ref = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq/" + FacebookPromises.userId + "/" + reqsender.fbid)
-    };
+        $scope.declinerequest = function(reqsender){
+            console.log("in declinerequest fxn")
+            var ref = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq/" + FacebookPromises.userId + "/" + reqsender.fbid)
+            ref.update({status: "declined"})
+        };
 
 
     }]
