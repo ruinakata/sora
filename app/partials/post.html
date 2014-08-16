@@ -6,7 +6,7 @@
 		<textarea id="posttextarea" ng-model="posttext" placeholder="Write a description here"></textarea>
 		<br><br>
 		Area: <input type="text" ng-model="area"/> <br>
-		Date: <input type="text" ng-model="date"/> <br><br>
+		Date: <input type="date" ng-model="date"/> <br><br>
 		<input ng-click="submitPost()" class="buttons" id="submitpostbutton" value="Submit" />
 	</div>
 		<div ng-repeat="post in allposts"  class="otherpostscontainer" ng-click="goToEnventRoom(post)">
