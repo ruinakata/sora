@@ -40,7 +40,7 @@ Sora.controller('PostCtr',
           var userinfo = snapshot.val();
           var username = userinfo.name;
           var userpicurl = userinfo.photos[0];
-          var postObj = {userid: FacebookPromises.userId, username: username, userpicurl: userpicurl, area: $scope.area, description: $scope.posttext, date: $scope.date, postedon: Date.now()};
+          var postObj = {userid: FacebookPromises.userId, username: username, userpicurl: userpicurl, city: $scope.city, area: $scope.area, description: $scope.posttext, date: $scope.date, postedon: Date.now()};
           var newPostRef = postref.push(postObj);
           // immediately edit the post we made to include the randomly generated post ID
           var postId = newPostRef.name();
