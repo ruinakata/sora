@@ -131,6 +131,17 @@ var FireBaseService = angular.module('FireBaseService',["firebase"]).
         userReference.remove();
       },
 
+      getChatThread : function(user_id,friend_id) {
+        var key = '';
+        if(user_id > friend_id){
+          key = user_id +'-'+friend_id;
+        } else {
+          key = friend_id +'-'+ user_id;
+        };
+        var reference = new Firebase('https://amber-fire-4122.firebaseio.com/chat_thread/' + key);
+        return $firebase(reference);
+      },
+
       storeUserSession : function(user_id) {
 
         // since I can connect from multiple devices or browser tabs, we store each connection instance separately

@@ -105,13 +105,45 @@ home.directive('chatBar',function(){
     restrict : 'E',
     templateUrl : "partials/chat-bar.html",
     controller : ['$scope','FireSrv','FacebookPromises',function($scope,FireSrv,FacebookPromises){
+
+      // initialazing chat feature
       FacebookPromises.checkLoginState()
         .then(function(response){
           $scope.friendList = FireSrv.getFriendList(response.authResponse.userID).$asArray();
         },function(response){
           console.log('error happened :S : ',response);
-        })
+        });
 
+      // initialazing variables
+      $scope.chatThreads = [];
+      $scope.friendListShow = true;
+
+      // functions
+      this.titleClick = function(){
+        $scope.friendListShow = !$scope.friendListShow;
+      };
+
+      this.startChat = function(friend) {
+        var newThread = {};
+        newThread.friendName = friend.name;
+        newThread.reply = '';
+        newThread.lines = FireSrv.getChatThread(FacebookPromises.userId,friend.fbid).$asArray();
+        $scope.chatThreads.push(newThread);
+      };
+
+      this.addReply =function($event,chat){
+        if($event.keyIdentifier=='Enter'){
+          var replyDetail = {};
+          replyDetail.replyUsrId = FacebookPromises.userId;
+          replyDetail.text = chat.reply;
+          chat.lines.$add(replyDetail);
+          chat.reply = "";
+        }
+      };
+
+      this.defineLineStyle = function(line) {
+
+      };
     }],
     controllerAs : 'chatBar'
   }
