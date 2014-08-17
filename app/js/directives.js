@@ -53,9 +53,8 @@ home.directive(
               // list has completed, we only need the last
               // one we can find.
               var lastItem = parent.children( "*[ repeat-complete-id = '" + id + "' ]:last" );
-              parent.scope().$eval("chat.scrollDonw()");
+              parent.scope().$eval("scrollDonw()");
               // parent.$eval(completeExpression);
-
           }
       );
     }

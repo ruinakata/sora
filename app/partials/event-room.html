@@ -34,8 +34,13 @@
 					</li>
 				</ul>
 			</div>
-			<div class="reply-text">
-				<input type="text" ng-keypress="addReply($event)" placeholder="Type something to your new friends ;) ..." ng-model="reply" >
+			<div class="button-container">
+				<div class="reply-text">
+					<input type='text' ng-keypress="addReply($event)" placeholder="Type something to your new friends ;) ..." ng-model="reply" >
+				</div>
+				<div class='send-button-container' ng-click="addReply()">
+					<i class="fa fa-paper-plane-o"></i>
+				</div>
 			</div>
 		</div>
 		<div id="rigth-panel"></div>

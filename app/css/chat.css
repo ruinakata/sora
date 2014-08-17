@@ -85,22 +85,36 @@
 
 /*Reply box*/
 
-.reply-text {
-	margin-top: 2px;
-	border: 0.5px solid #FC5F3F;
-	width: 100%;
+.button-container{
 	height: 12%;
+	width: 100%;
+	float: left;
+	border-top: 1px solid #FC5F3F;
+	border-bottom-left-radius:4px;
+	border-bottom-right-radius:4px;
+	overflow: hidden;
+}
+
+.reply-text {
+	/*margin-top: 2px;*/
+	/*border: 0.5px solid #FC5F3F;*/
+	width: 80%;
+	padding-bottom: 300px;
+	margin-bottom: -300px;
 	float: left;
 	background-color: rgba(254, 196, 185, 0.82);
 }
 
 .reply-text input {
+	color: #4fb3ed;
+	font-size: 120%;
+	overflow : scroll;
+	border : none;
 	width: 100%;
 	height: 100%;
-	padding: 0px 0px;
-	border-width: 0px;
-	border-bottom-right-radius:4px;
-	border-bottom-left-radius:4px;
+	padding-bottom: 300px;
+	margin-bottom: -300px;
+
 }
 
 .reply-text input:focus  {
@@ -123,6 +137,38 @@
 	border-radius: 50%;
 	width: 5rem;
 	float: left;
+}
+
+/*.reply-text::after {
+	content: <i class='fa fa-paper-plane-o'></i>;
+	float: left;
+	width: 20%;
+	font-size: 200%;
+	background-color: white;
+	color: #4fb3ed;
+	border-bottom-right-radius:4px;
+}*/
+
+.send-button-container {
+	float: left;
+	width: 20%;
+	text-align: center;
+	vertical-align: center;
+	font-size: 300%;
+	background-color: white;
+	color: #4fb3ed;
+	cursor: pointer;
+	padding-bottom: 300px;
+	margin-bottom: -300px;
+}
+
+.send-button-container:hover {
+	color: #FC5F3F;
+}
+
+.send-button-container:active {
+	background-color: #4fb3ed;
+	color: white;
 }
 
 /*event organizer*/
