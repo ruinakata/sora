@@ -47,20 +47,39 @@ Sora.controller('eventRoomController',[
     $scope.conversationRoom = FireSrv.getRoomChat($routeParams.eventId).$asArray();
     $scope.usersInTheRoom = FireSrv.getLogedUsersChat($routeParams.eventId).$asArray();
 
-    $scope.addReply = function(keyEvent){
-      if(keyEvent.keyIdentifier=='Enter'){
-        var reply = {};
-        reply.replyUsrId = FacebookPromises.userId;
 
-        var userref = new Firebase("https://amber-fire-4122.firebaseio.com/users/"+FacebookPromises.userId);
-        userref.on('value',function(snapshot){
-          reply.userPotho = snapshot.val().photos[0];
-          reply.userName = snapshot.val().name;
-          reply.text = $scope.reply;
-          $scope.conversationRoom.$add(reply);
-          $scope.reply = "";
-        });
-      }
+    $scope.addReply = function(keyEvent){
+      if ($scope.reply) {
+        if(keyEvent){
+          if((keyEvent.keyIdentifier=='Enter') && ($scope.reply.length > 0)){
+            var reply = {};
+            reply.replyUsrId = FacebookPromises.userId;
+
+            var userref = new Firebase("https://amber-fire-4122.firebaseio.com/users/"+FacebookPromises.userId);
+            userref.on('value',function(snapshot){
+              reply.userPotho = snapshot.val().photos[0];
+              reply.userName = snapshot.val().name;
+              reply.text = $scope.reply;
+              $scope.conversationRoom.$add(reply);
+              $scope.reply = "";
+            });
+          }
+        } else {
+          if($scope.reply.length > 0){
+            var reply = {};
+            reply.replyUsrId = FacebookPromises.userId;
+
+            var userref = new Firebase("https://amber-fire-4122.firebaseio.com/users/"+FacebookPromises.userId);
+            userref.on('value',function(snapshot){
+              reply.userPotho = snapshot.val().photos[0];
+              reply.userName = snapshot.val().name;
+              reply.text = $scope.reply;
+              $scope.conversationRoom.$add(reply);
+              $scope.reply = "";
+            });
+          }
+        }
+      };
     };
 
     $scope.goToProfile = function(user){
