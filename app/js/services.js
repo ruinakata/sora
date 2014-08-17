@@ -50,6 +50,19 @@ var FbService = angular.module('FbService', ['facebook']).
           }
         });
         return deferred.promise;
+      },
+
+      logout : function () {
+        var deferred = $q.defer();
+        Facebook.logout(function(response){
+          if(response){
+            deferred.resolve();
+          } else {
+            deferred.reject();
+          }
+
+        });
+        return deferred.promise;
       }
     }
   }]);

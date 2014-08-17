@@ -59,6 +59,28 @@
   color: white;
 }
 
+.logtuout {
+  cursor: pointer;
+  margin-top: 50%;
+}
+
+.logtuout span{
+  text-decoration: none;
+  font-family: 'Quicksand', sans-serif;
+  color: white;
+  margin-left: 3rem;
+  font-size: 70%
+}
+
+.logtuout:hover{
+  background-color: white;
+  color: #FC5F3F;
+}
+
+.logtuout:hover span{
+  color:#FC5F3F;
+}
+
 
 .menu span{
   text-decoration: none;
