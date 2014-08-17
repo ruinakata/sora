@@ -60,19 +60,15 @@
 .buttons {
 	background-color: #5D90FC;
 	color: white;
-	border-radius: 10px;
+	border-radius: 5px;
 	border: 1px solid white;
-	padding: 10px 20px 10px 20px;
-	width: 100px;
+	padding: 5px 30px 5px 30px;
 	outline: none;
 }
 
 .buttons:hover {
 	background-color: #5DFCE7;
 	color: white;
-	border-radius: 10px;
-	border: 1px solid white;
-	padding: 10px 20px 10px 20px;
 	outline: none;
 	cursor: pointer;
 }
