@@ -32,7 +32,7 @@ Sora.controller('ProfileCtr',
 
     function getMyFacebookInfo() {
       console.log('kicking off get my facebook info');
-      FacebookPromises.query('me', 'get', { fields: 'id,name,about,birthday,education,photos,education' })
+      FacebookPromises.query('me', 'get', { fields: 'id,name,about,birthday,education,photos,education,picture' })
         .then(function(response) {
           console.log(response)
           var uniqueid = response.id;
@@ -41,10 +41,14 @@ Sora.controller('ProfileCtr',
           var birthday = response.birthday;
           var education = response.education[response.education.length-1].school.name
           var photos = [];
+          console.log("profpic", response.picture)
+          photos.push(response.picture.data.url)
           console.log("hi")
           for (var i=0; i<response.photos.data.length; i++) {
             photos.push(response.photos.data[i].source);
           };
+          // show all pictures and not the prof pic
+          $scope.pictures = photos.slice(1,25);
           // Save into firebase
           var profileRef = new Firebase("https://amber-fire-4122.firebaseio.com/users/" + uniqueid);
           // angularfire!!!///////////////////////////////////////////////////////

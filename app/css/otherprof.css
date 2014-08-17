@@ -12,8 +12,8 @@
 }
 
 .otherprofpiccont img {
-	width: 100%;
-	border-radius: 12px;
+	width: 65px;
+	border-radius: 50%;
 	margin-top: 15%;
 }
 
@@ -21,7 +21,7 @@
 /*	border: 1px red solid;*/
 	width: 20%;
 	float: left;
-	margin-left: 10%;
+	margin-left: 2%;
 }
 
 .otherprofname {
