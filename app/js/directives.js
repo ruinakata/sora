@@ -99,3 +99,13 @@ home.directive('navLeft',function(){
     controllerAs : 'nav'
   };
 });
+
+home.directive('chatBar',function(){
+  return {
+    restrict : 'E',
+    templateUrl : "prtials/chat-bar.html",
+    controller : [
+    ],
+    controllerAs : 'chatBar'
+  }
+})
