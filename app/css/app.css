@@ -8,10 +8,10 @@
 
 .app-body{
   /*background-color: #fff0ed;*/
-  background-color: #fff0ed;
-  background-image:
+  background-color: rgba(173, 207, 250, 0.67);
+  /*background-image:
   -webkit-linear-gradient(bottom left, #fff0ed 25%, transparent 25%, transparent 90%, #94d1f4 75%, #94d1f4),
-  -webkit-linear-gradient(bottom left, #fff0ed 25%, transparent 25%, transparent 90%, #94d1f4 75%, #94d1f4);
+  -webkit-linear-gradient(bottom left, #fff0ed 25%, transparent 25%, transparent 90%, #94d1f4 75%, #94d1f4);*/
   background-size:20px 20px;
 }
 

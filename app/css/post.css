@@ -15,7 +15,6 @@
 
 #submitpostbutton {
 	text-align: center;
-	width: 100px;
 }
 
 .otherpostscontainer {
@@ -46,3 +45,47 @@ h3 {
 .area {
 	width: 163px;
 }
+
+.filter {
+	background-color: white;
+	width: 50%;
+	height: 200px;
+	margin-left: 10%;
+	margin-top: 5%;
+	padding-left: 10%;
+	padding-top: 10px;
+}
+
+.choose {
+	border: 1px solid #3883FC;
+	background-color: white;
+	color: #3883FC;
+	width: 29%;
+	padding-top: 4px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	outline: none;
+}
+
+.choose:hover{
+	background-color: #5DFCE7;
+	color: white;
+	border: 0px;
+	cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

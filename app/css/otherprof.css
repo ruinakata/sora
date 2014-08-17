@@ -1,7 +1,7 @@
 
 #otherprofcont {
 	background-color: white;
-	width: 70%;
+	width: 60%;
 	margin-left: 10%;
 	margin-top: 5%;
 	margin-bottom: 10%;
@@ -44,15 +44,17 @@
 }
 
 #friendrequest {
-	background-color: #99FFF1;
-	border: black 2px solid;
-	border-radius: 5px;
-	padding: 5px 10px 5px 10px;
+	border: 1px solid #3883FC;
+	background-color: white;
+	color: #3883FC;
+	width: 29%;
+	padding-top: 4px;
+	margin-top: 2px;
+	margin-bottom: 2px;
 }
 
 #friendrequest:hover {
-	background-color: #00D9BC;
-	border: black 2px solid;
-	border-radius: 5px;
-	padding: 5px 10px 5px 10px;
+	background-color: #5DFCE7;
+	color: white;
+	border: 0px;
 }

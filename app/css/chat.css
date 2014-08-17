@@ -13,6 +13,10 @@
 	padding-left: 2em;
 }
 
+.event-details h1 {
+	font-size: 1.5rem;
+}
+
 /*chat box styles*/
 
 .chat-box {
@@ -174,11 +178,11 @@
 /*event organizer*/
 
 .event-organizer {
-	width: 15%;
+	width: 21%;
 	float: left;
 	text-align: center;
-	margin-left:10%;
-	margin-right:10%;
+	margin-left:8%;
+	margin-right:8%;
 	margin-top:12px;
 	margin-bottom: 12px;
 	padding-bottom:7px;
