@@ -1,7 +1,17 @@
-<div ng-repeat="chat in chatLines">
-	<ul>
-		<li ng-repeat="line in conversation">
+<div class="friend-chat">
+	<div ng-repeat="chat in chatLines">
+		<ul>
+			<li ng-repeat="line in conversation">
 
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="friend-list-container">
+	<div class="chat-list-tittle" ng-click='chatBar.titleClick()'><strong> <i class="fa fa-qq"></i>  Friend list</strong></div>
+	<ul class='friend-list'>
+		<li ng-repeat="friend in friendList">
+			<div class="friend-container">{{friend.name}}</div>
 		</li>
 	</ul>
 </div>

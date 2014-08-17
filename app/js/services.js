@@ -91,6 +91,13 @@ var FireBaseService = angular.module('FireBaseService',["firebase"]).
         return $firebase(newRefUsersRoom);
       },
 
+      getFriendList :function(user_id) {
+        var url = 'https://amber-fire-4122.firebaseio.com/friends/' + user_id;
+        // console.log('url:',url);
+        var friendList = new Firebase(url);
+        return $firebase(friendList);
+      },
+
       verifySoraUser : function(user_id,createUserCallBack) {
         var userReference = new Firebase('https://amber-fire-4122.firebaseio.com/users');
         userReference.child(user_id).once('value', function(snapshot) {

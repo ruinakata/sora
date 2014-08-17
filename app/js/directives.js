@@ -103,9 +103,16 @@ home.directive('navLeft',function(){
 home.directive('chatBar',function(){
   return {
     restrict : 'E',
-    templateUrl : "prtials/chat-bar.html",
-    controller : [
-    ],
+    templateUrl : "partials/chat-bar.html",
+    controller : ['$scope','FireSrv','FacebookPromises',function($scope,FireSrv,FacebookPromises){
+      FacebookPromises.checkLoginState()
+        .then(function(response){
+          $scope.friendList = FireSrv.getFriendList(response.authResponse.userID).$asArray();
+        },function(response){
+          console.log('error happened :S : ',response);
+        })
+
+    }],
     controllerAs : 'chatBar'
   }
 })
