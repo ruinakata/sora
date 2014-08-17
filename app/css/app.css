@@ -10,22 +10,23 @@
   /*background-color: #fff0ed;*/
   background-color: #fff0ed;
   background-image:
-  -webkit-linear-gradient(bottom left, #fff0ed 25%, transparent 25%, transparent 75%, #94d1f4 75%, #94d1f4),
-  -webkit-linear-gradient(bottom left, #fff0ed 25%, transparent 25%, transparent 75%, #94d1f4 75%, #94d1f4);
+  -webkit-linear-gradient(bottom left, #fff0ed 25%, transparent 25%, transparent 90%, #94d1f4 75%, #94d1f4),
+  -webkit-linear-gradient(bottom left, #fff0ed 25%, transparent 25%, transparent 90%, #94d1f4 75%, #94d1f4);
   background-size:20px 20px;
 }
 
 * {
-  font-family: 'Quicksand', sans-serif;
-/*  font-family: 'Josefin Sans', sans-serif;*/
-/*font-family: 'Istok Web', sans-serif;*/
+/*  font-family: 'Quicksand', sans-serif;*/
+  /*  font-family: 'Josefin Sans', sans-serif;*/
+  /*font-family: 'Istok Web', sans-serif;*/
+  font-family: 'Open Sans', sans-serif;
 }
 
 
 .content-container {
   width: 80%;
   float: left;
-  margin-left:20%;
+  margin-left:250px;
 }
 
 .navbar {
@@ -36,16 +37,15 @@
   margin-left: -8px;
   margin-top: -8px;
   position: fixed;
-  width: 20%;
+  width: 250px;
 }
 
 .content {
   width: 78%;
   height: 100%;
-/*  background-color: pink;*/
   display: inline-block;
   float:left;
-  margin-left: 290px;
+  margin-left: 390px;
 }
 
 #links {
@@ -88,6 +88,10 @@
 
 #content-container {
   margin-left: 50px;
+}
+
+.bold {
+  font-weight: 600;
 }
 
 
