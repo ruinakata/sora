@@ -75,7 +75,7 @@ home.directive('navLeft',function(){
   return {
     restrict : 'E',
     templateUrl : "partials/nav-bar.html",
-    controller : ['$location','$scope',function($location,$scope){
+    controller : ['$location','$scope','FacebookPromises',function($location,$scope,FacebookPromises){
       this.setView = function(view){
         console.log(' happening .-.');
         // viewCoSrv.viewInfo.partialToShow = view;
@@ -88,6 +88,13 @@ home.directive('navLeft',function(){
         if(view == 'friends'){
           $location.path("/myfriends");
         };
+      };
+      this.logout =function () {
+        FacebookPromises.logout().
+          then(function(){
+            $location.path("/login");
+          }
+        );
       };
     }],
     controllerAs : 'nav'
