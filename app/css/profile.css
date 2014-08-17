@@ -58,23 +58,28 @@
 }
 
 .buttons {
-	background-color: #5D90FC;
-	color: white;
-	border-radius: 5px;
-	border: 1px solid white;
-	padding: 5px 30px 5px 30px;
+	border: 1px solid #3883FC;
+	background-color: white;
+	color: #3883FC;
+	width: 29%;
+	padding-top: 4px;
+	margin-top: 2px;
+	margin-bottom: 2px;
 	outline: none;
+	text-align: center;
 }
 
 .buttons:hover {
 	background-color: #5DFCE7;
 	color: white;
+	border: 0px;
 	outline: none;
 	cursor: pointer;
 }
 
 #submitbutton {
-	width: 50px;
+	width: 29%;
+	text-align: center;
 }
 
 

@@ -1,23 +1,33 @@
 <div class='hide-elementsview' ng-class='classView'>
 	<nav-left class='navbar'></nav-left>
 	<div class='content-container'>
-		<div class="postcontainer">
-		<h2>Find people to hang out with! </h2>
-		<textarea id="posttextarea" ng-model="posttext" placeholder="Write a description here"></textarea>
-		<br><br>
-		City: 
-		<form class="dropdown" >
-	    <select ng-model="city">
-	        <option value="Austin">Austin</option>
-	        <option value="Boston">Boston</option>
-	        <option value="NYC">NYC</option>
-	    </select>
-		</form>
-		<br>
-		Area: <input class="area" type="text" ng-model="area"/> <br>
-		Date: <input type="date" ng-model="date"/> <br><br>
-		<input ng-click="submitPost()" class="buttons" id="submitpostbutton" value="Submit" />
-	</div>
+		<div class="filter">
+			<p> Filter posts by city </p>
+			<button class="choose" id="bos" ng-click="showBoston()">BOSTON</button>
+			<button class="choose" id="aus" ng-click="showAustin()">AUSTIN</button>
+			<button class="choose" id="nyc" ng-click="showNyc()">NYC</button>
+			<p> Post an event! </p>
+			<button class="choose" ng-click="showEventForm()">
+				<i class="fa fa-calendar"></i>
+			</button>
+		</div>
+		<div class="postcontainer" ng-show="posteventclicked">
+			<p>Find people to hang out with! </p>
+			<textarea id="posttextarea" ng-model="posttext" placeholder="Write a description here"></textarea>
+			<br><br>
+			City: 
+			<form class="dropdown" >
+		    <select ng-model="city">
+		        <option value="Austin">Austin</option>
+		        <option value="Boston">Boston</option>
+		        <option value="NYC">NYC</option>
+		    </select>
+			</form>
+			<br>
+			Area: <input class="area" type="text" ng-model="area"/> <br>
+			Date: <input type="date" ng-model="date"/> <br><br>
+			<input ng-click="submitPost()" class="buttons" id="submitpostbutton" value="Submit" />
+		</div>
 		<div ng-repeat="post in allposts"  class="otherpostscontainer" ng-click="goToEnventRoom(post)">
 			<div class="eachpost">
 				<img id="postprofpic" ng-src="{{post.userpicurl}}">

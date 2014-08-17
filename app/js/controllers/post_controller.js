@@ -65,6 +65,79 @@ Sora.controller('PostCtr',
         viewCoSrv.viewInfo.partialToShow = 'post-chat';
         $scope.$broadcast('getChatThread',post.postedon);
         $location.path("/event/" + post.postid);
-       }
+       };
+
+      $scope.showBoston = function(){
+        console.log("in showBoston")
+        postref.on('value', function(snapshot) {
+          var allpostsobject = snapshot.val();
+          var array = []
+          var keyarray = [];
+          for (var k in allpostsobject) {keyarray.push(k)};
+          for (var i=0; i<keyarray.length; i++) {
+            var thepost = allpostsobject[keyarray[i]];
+            console.log("thepost: ", thepost)
+            if (thepost.city == "Boston") {
+              array.push(allpostsobject[keyarray[i]]);
+              console.log("it was in Boston!")
+            }
+          }
+           $scope.$apply($scope.allposts = array.reverse());
+        });
+      };
+
+      $scope.showAustin = function(){
+        console.log("in showAustin")
+        postref.on('value', function(snapshot) {
+          var allpostsobject = snapshot.val();
+          var array = []
+          var keyarray = [];
+          for (var k in allpostsobject) {keyarray.push(k)};
+          for (var i=0; i<keyarray.length; i++) {
+            var thepost = allpostsobject[keyarray[i]];
+            console.log("thepost: ", thepost)
+            if (thepost.city == "Austin") {
+              array.push(allpostsobject[keyarray[i]]);
+              console.log("it was in Austin!")
+            }
+          }
+           $scope.$apply($scope.allposts = array.reverse());
+        });
+      };
+
+      $scope.showNyc = function(){
+        console.log("in showNyc")
+        postref.on('value', function(snapshot) {
+          var allpostsobject = snapshot.val();
+          var array = []
+          var keyarray = [];
+          for (var k in allpostsobject) {keyarray.push(k)};
+          for (var i=0; i<keyarray.length; i++) {
+            var thepost = allpostsobject[keyarray[i]];
+            console.log("thepost: ", thepost)
+            if (thepost.city == "NYC") {
+              array.push(allpostsobject[keyarray[i]]);
+              console.log("it was in NYC!")
+            }
+          }
+           $scope.$apply($scope.allposts = array.reverse());
+        });
+      };
+
+      $scope.showEventForm = function(){
+        console.log("in showEventForm")
+        $scope.posteventclicked = true;
+      };
     }
   ]);
+
+
+
+
+
+
+
+
+
+
+
