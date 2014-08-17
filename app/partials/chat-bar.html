@@ -1,12 +1,17 @@
 <div class="friend-chat">
 	<div class="chat-line-container" ng-repeat="chat in chatThreads">
-		<div class="chat-list-tittle">{{chat.friendName}} <div ng-click="chatBar.closeLine()"><i class="fa fa-times"></i></div></div>
-		<ul class="chat-lines">
+		<div class="chat-line-tittle">
+			<div class='friend-name-line' ng-click='chatBar.minimizeLine(chat)'>{{chat.friendName}}</div>
+			<div class='close-line' ng-click="chatBar.closeLine()">
+				<i class="fa fa-times"></i>
+			</div>
+		</div>
+		<ul class="chat-lines" ng-show="chat.show">
 			<li ng-repeat="line in chat.lines">
 				<div class="line-container"><div ng-class="chatBar.defineLineStyle(line)">{{line.text}}</div></div>
 			</li>
 		</ul>
-		<div><input type="text" ng-model="chat.reply" ng-keypress="chatBar.addReply($event,chat)"></div>
+		<div ng-show="chat.show"><input type="text" ng-model="chat.reply" ng-keypress="chatBar.addReply($event,chat)"></div>
 	</div>
 </div>
 <div class="friend-list-container">

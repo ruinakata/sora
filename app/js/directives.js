@@ -127,6 +127,7 @@ home.directive('chatBar',function(){
         var newThread = {};
         newThread.friendName = friend.name;
         newThread.reply = '';
+        newThread.show = true;
         newThread.lines = FireSrv.getChatThread(FacebookPromises.userId,friend.fbid).$asArray();
         $scope.chatThreads.push(newThread);
       };
@@ -139,6 +140,10 @@ home.directive('chatBar',function(){
           chat.lines.$add(replyDetail);
           chat.reply = "";
         }
+      };
+
+      this.minimizeLine = function(chat){
+        chat.show = !chat.show;
       };
 
       this.defineLineStyle = function(line) {
