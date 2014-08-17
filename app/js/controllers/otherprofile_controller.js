@@ -21,6 +21,8 @@ Sora.controller('OtherProfCtr',
           var ref = new Firebase("https://amber-fire-4122.firebaseio.com/users/" + $scope.otheruserid)
           ref.on('value', function(snapshot) {
             console.log('snapshot:', snapshot.val())
+            $scope.$apply($scope.pictures = snapshot.val().photos.slice(1,25))
+            console.log("pictures", $scope.pictures)
             $scope.$apply($scope.otheruser = snapshot.val());
           })
           // check the friend request status is with this person
