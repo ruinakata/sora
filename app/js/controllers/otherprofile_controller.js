@@ -8,10 +8,10 @@ Sora.controller('OtherProfCtr',
           $scope.otheruserid = $routeParams.userId;
           $scope.myuserid = FacebookPromises.userId;
           // check if we are already friends
+          $scope.notfriends = true;
           var friendsref = new Firebase("https://amber-fire-4122.firebaseio.com/friends/" + $scope.myuserid + '/' + $scope.otheruserid)
           friendsref.on('value', function(snapshot){
             var answer = snapshot.val();
-            // $scope.notfriends = true;
             if (answer.fbid){
               $scope.notfriends = false;
               $scope.alreadyfriends = true;
@@ -60,6 +60,11 @@ Sora.controller('OtherProfCtr',
                 $scope.$apply($scope.showfriendbutton = true);
               }
             }
+
+
+            console.log("showfriendbutton:", $scope.showfriendbutton)
+            console.log("notfriends:", $scope.notfriends)
+
           })
 
 
