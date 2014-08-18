@@ -51,7 +51,7 @@
 
   <div ng-view></div>
 
-  <chat-bar class="chat-area"></chat-bar>
+  <chat-bar ng-show="bodyStyle == 'app-body'"class="chat-area"></chat-bar>
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>

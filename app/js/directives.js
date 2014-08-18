@@ -190,7 +190,7 @@ home.directive('chatBar',function(){
 
       // initialazing variables
       $scope.chatThreads = [];
-      $scope.friendListShow = true;
+      $scope.friendListShow = false;
 
       // functions
       this.titleClick = function(){
