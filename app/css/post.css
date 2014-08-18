@@ -26,7 +26,9 @@
 	padding-left: 10%;
 	padding-right: 5%;
 	padding-bottom: 2%;
+	cursor: pointer;
 }
+
 
 #postprofpic {
 	width: 60px;
@@ -74,7 +76,11 @@ h3 {
 	cursor: pointer;
 }
 
-
+.otherpostscontainer:hover{
+	cursor: pointer;
+	border: 2px #FC4D94 solid;
+	border-radius: 3px;
+}
 
 
 
