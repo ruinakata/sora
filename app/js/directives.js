@@ -126,7 +126,6 @@ home.directive(
               // one we can find.
               parentScope.$broadcast('write-donw');
               var lastItem = parent.children( "*[ chatbox-complete-id = '" + id + "' ]:last" );
-              console.log('parent!!!',parentScope);
               // parent.scope().$eval("scrollDonw()");
               // parent.$eval(completeExpression);
           }
@@ -179,7 +178,7 @@ home.directive('chatBar',function(){
     restrict : 'E',
     templateUrl : "partials/chat-bar.html",
     controller : ['$scope','FireSrv','FacebookPromises',function($scope,FireSrv,FacebookPromises){
-
+      that = this;
       // initialazing chat feature
       $scope.$on('showElements',function(){
         FacebookPromises.checkLoginState()
@@ -194,19 +193,40 @@ home.directive('chatBar',function(){
       // initialazing variables
       $scope.chatThreads = [];
       $scope.friendListShow = false;
-
+      $scope.currentChatPost = 0;
       // functions
       this.titleClick = function(){
         $scope.friendListShow = !$scope.friendListShow;
       };
 
+      this.validateFriend = function(newId) {
+        for(var i in $scope.chatThreads){
+          if($scope.chatThreads[i].friendUserId == newId){
+            return false;
+          }
+        };
+        return true;
+      };
+
+      this.addChatThread = function(obj) {
+        $scope.chatThreads[$scope.currentChatPost] = obj;
+        $scope.currentChatPost = $scope.currentChatPost + 1;
+        if($scope.currentChatPost > 4 ){
+          $scope.currentChatPost = 0;
+        }
+      };
+
       this.startChat = function(friend) {
-        var newThread = {};
-        newThread.friendName = friend.name;
-        newThread.reply = '';
-        newThread.show = true;
-        newThread.lines = FireSrv.getChatThread(FacebookPromises.userId,friend.fbid).$asArray();
-        $scope.chatThreads.push(newThread);
+
+        if(that.validateFriend(friend.fbid)){
+          var newThread = {};
+          newThread.friendUserId = friend.fbid;
+          newThread.friendName = friend.name;
+          newThread.reply = '';
+          newThread.show = true;
+          newThread.lines = FireSrv.getChatThread(FacebookPromises.userId,friend.fbid).$asArray();
+          that.addChatThread(newThread);
+        }
       };
 
       this.addReply =function($event,chat){
@@ -257,7 +277,7 @@ home.directive('chatBar',function(){
         }
       };
 
-      that = this;
+
 
       $scope.$on('write-donw',function(){
         for(var i in [0,1,2,3]){
