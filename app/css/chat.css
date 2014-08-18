@@ -139,7 +139,7 @@
 
 .chat-thumbnail {
 	border-radius: 50%;
-	width: 5rem;
+	width: 2rem;
 	float: left;
 }
 
@@ -199,7 +199,7 @@
 
 .picture-chat {
 	border-radius: 50%;
-	width: 10rem;
+	width: 4rem;
 	/*padding-bottom: 12px*/
 }
 
