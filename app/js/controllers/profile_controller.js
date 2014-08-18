@@ -48,7 +48,7 @@ Sora.controller('ProfileCtr',
             photos.push(response.photos.data[i].source);
           };
           // show all pictures and not the prof pic
-          $scope.pictures = photos.slice(1,25);
+          $scope.$apply($scope.pictures = photos.slice(1,25));
           // Save into firebase
           var profileRef = new Firebase("https://amber-fire-4122.firebaseio.com/users/" + uniqueid);
           // angularfire!!!///////////////////////////////////////////////////////
