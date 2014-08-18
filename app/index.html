@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="css/post.css"/>
   <link rel="stylesheet" href="css/otherprof.css">
   <link rel="stylesheet" href="css/myfriends.css">
+  <link rel="stylesheet" href="css/chat-bar.css">
   <link href='http://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <link href='http://fonts.googleapis.com/css?family=Poiret+One|Quicksand:400,700|Josefin+Sans|Just+Me+Again+Down+Here|Julius+Sans+One|Ruda' rel='stylesheet' type='text/css'>
@@ -38,17 +39,19 @@
       <div></div>
   </div>
   <div id='fb-root'></div>
-  <video autoplay loop poster="" id="bgvid" class="loging-elements" ng-class='videoClass' ng-show='showLogin'>
+  <!-- <video autoplay loop poster="" id="bgvid" class="loging-elements" ng-class='videoClass' ng-show='showLogin'>
 
     <source src="video/thevid.mov" type="video/webm">
     <source src="video/thevid.mov" type="video/mp4">
-  </video>
+  </video> -->
 
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
   <div ng-view></div>
+
+  <chat-bar class="chat-area"></chat-bar>
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>

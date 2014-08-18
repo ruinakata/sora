@@ -45,6 +45,12 @@ controller('MainController',
       console.log('Login status response:', response);
       if (response.status === 'connected') {
         FacebookPromises.userId = response.authResponse.userID;
+        FacebookPromises.query('me', 'get', { fields: 'name,picture' })
+          .then(function(response){
+            // console.log('!!!!!!!response!!!!!!!!!!',response);
+            FacebookPromises.userName = response.name;
+            FacebookPromises.userPicture = response.picture.data.url;
+          });
         $scope.showLogin = false;
         $scope.$broadcast('showElements');
         $scope.loggedInToFacebook = true;

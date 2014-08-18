@@ -1,0 +1,24 @@
+<!-- <div class="friend-chat"> -->
+	<div ng-repeat="chat in chatThreads" class="chat-line-container" ng-class="chatBar.addClass($index)">
+		<div class="chat-line-tittle">
+			<div class='friend-name-line' ng-click='chatBar.minimizeLine(chat)'>{{chat.friendName}}</div>
+			<div class='close-line' ng-click="chatBar.closeLine($index)">
+				<i class="fa fa-times"></i>
+			</div>
+		</div>
+		<ul class="chat-lines" ng-class="chatBar.setIdentifier($index)" ng-show="chat.show">
+			<li ng-repeat="line in chat.lines" chatbox-complete="chatBar.scrollDonw($index)">
+				<div class="line-container"><div ng-class="chatBar.defineLineStyle(line)">{{line.text}}</div></div>
+			</li>
+		</ul>
+		<div ng-show="chat.show"><input class="fixed-input" placeholder="Tell me..." type="text" ng-model="chat.reply" ng-keypress="chatBar.addReply($event,chat)"></div>
+	</div>
+<!-- </div> -->
+<div class="friend-list-container">
+	<div class="chat-list-tittle" ng-click='chatBar.titleClick()'><strong> <i class="fa fa-qq"></i>  Friend list</strong></div>
+	<ul class='friend-list' ng-show='friendListShow'>
+		<li ng-repeat="friend in friendList">
+			<div class="friend-container" ng-click='chatBar.startChat(friend)'>{{friend.name}}</div>
+		</li>
+	</ul>
+</div>

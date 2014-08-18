@@ -91,6 +91,13 @@ var FireBaseService = angular.module('FireBaseService',["firebase"]).
         return $firebase(newRefUsersRoom);
       },
 
+      getFriendList :function(user_id) {
+        var url = 'https://amber-fire-4122.firebaseio.com/friends/' + user_id;
+        // console.log('url:',url);
+        var friendList = new Firebase(url);
+        return $firebase(friendList);
+      },
+
       verifySoraUser : function(user_id,createUserCallBack) {
         var userReference = new Firebase('https://amber-fire-4122.firebaseio.com/users');
         userReference.child(user_id).once('value', function(snapshot) {
@@ -122,6 +129,17 @@ var FireBaseService = angular.module('FireBaseService',["firebase"]).
       retireUserFromChatRoom : function(user_id,event_id){
         var userReference = new Firebase('https://amber-fire-4122.firebaseio.com/chat_rooms/' + event_id + '/users_in_room/'+user_id);
         userReference.remove();
+      },
+
+      getChatThread : function(user_id,friend_id) {
+        var key = '';
+        if(user_id > friend_id){
+          key = user_id +'-'+friend_id;
+        } else {
+          key = friend_id +'-'+ user_id;
+        };
+        var reference = new Firebase('https://amber-fire-4122.firebaseio.com/chat_thread/' + key);
+        return $firebase(reference);
       },
 
       storeUserSession : function(user_id) {
