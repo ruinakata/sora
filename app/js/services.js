@@ -11,6 +11,10 @@ var FbService = angular.module('FbService', ['facebook']).
 
       userId : 'initial',
 
+      userName : '',
+
+      userPicture : '',
+
       checkLoginState : function(){
         var deferred = $q.defer();
         Facebook.getLoginStatus(function(response) {
