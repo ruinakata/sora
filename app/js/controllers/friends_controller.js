@@ -41,12 +41,12 @@ Sora.controller('FriendCtr',
         $scope.acceptrequest = function(reqsender){
             console.log("in acceptrequest fxn")
             // add to friend list on both ends
-            var reqsendername = reqsender.name
-            // var myname = FacebookPromises.
+            var reqsendername = reqsender.name;
+            var myname = FacebookPromises.userName;
             var ref = new Firebase("https://amber-fire-4122.firebaseio.com/friends/" + FacebookPromises.userId + "/" + reqsender.fbid)
-            ref.set({fbid: reqsender.fbid})
+            ref.set({fbid: reqsender.fbid, name: reqsendername})
             var ref = new Firebase("https://amber-fire-4122.firebaseio.com/friends/" + reqsender.fbid + "/" + FacebookPromises.userId)
-            ref.set({fbid: FacebookPromises.userId})
+            ref.set({fbid: FacebookPromises.userId, name: myname})
             //clear the friend request
             var ref = new Firebase("https://amber-fire-4122.firebaseio.com/friendreq/" + FacebookPromises.userId + "/" + reqsender.fbid)
             ref.set(null);
