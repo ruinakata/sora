@@ -181,12 +181,15 @@ home.directive('chatBar',function(){
     controller : ['$scope','FireSrv','FacebookPromises',function($scope,FireSrv,FacebookPromises){
 
       // initialazing chat feature
-      FacebookPromises.checkLoginState()
+      $scope.$on('showElements',function(){
+        FacebookPromises.checkLoginState()
         .then(function(response){
           $scope.friendList = FireSrv.getFriendList(response.authResponse.userID).$asArray();
         },function(response){
           console.log('error happened :S : ',response);
         });
+      });
+
 
       // initialazing variables
       $scope.chatThreads = [];
