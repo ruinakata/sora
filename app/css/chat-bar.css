@@ -21,6 +21,7 @@
 .friend-name-line{
 	width: 85%;
 	float: left;
+	overflow: hidden;
 }
 
 .close-line{
