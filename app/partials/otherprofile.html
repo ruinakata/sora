@@ -3,8 +3,7 @@
   <div class='content-container'>
   <div id="otherprofcont">
 
-
-      <div class="otherprofpiccont">
+      <div class="otherprofpiccont" id="otherprofpiccont">
         <img  src="{{otheruser.photos.0}}"/>
       </div>
 
@@ -12,7 +11,7 @@
         <p> {{otheruser.name}} </p>
       </div>
 
-      <div class="otherprofinfocont"><br>
+      <div class="otherprofinfocont">
         <div>
           <button ng-click="addfriend()" ng-show="showfriendbutton && notfriends" id="friendrequest">
           <i class="fa fa-users"></i> Add as Friend </button>
@@ -25,8 +24,8 @@
         </div><br>
 
         <strong><p>Photos: </p></strong>
-        <div ng-repeat="photo in otheruser.photos" >
-          <img ng-show="alreadyfriends" class="otherphoto" ng-src="{{photo}}">
+        <div ng-repeat="picture in pictures" >
+          <img ng-show="alreadyfriends" class="otherphoto" ng-src="{{picture}}">
         </div>
 
       </div>
