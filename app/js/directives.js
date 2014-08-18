@@ -162,11 +162,12 @@ home.directive('navLeft',function(){
         };
       };
       this.logout =function () {
-        FacebookPromises.logout().
-          then(function(){
-            $location.path("/login");
-          }
-        );
+        // FacebookPromises.logout().
+        //   then(function(){
+        //     $location.path("/login");
+        //   }
+        // );
+        window.FB.logout(function(){$location.path("/login");});
       };
     }],
     controllerAs : 'nav'
