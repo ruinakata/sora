@@ -70,6 +70,80 @@ home.directive(
   }]
 );
 
+home.directive(
+  "chatboxComplete",
+  ['$rootScope',function( $rootScope ) {
+
+    // Because we can have multiple ng-repeat directives in
+    // the same container, we need a way to differentiate
+    // the different sets of elements. We'll add a unique ID
+    // to each set.
+    var uuid = 0;
+
+    // I compile the DOM node before it is linked by the
+    // ng-repeat directive.
+    function compile( tElement, tAttributes ) {
+
+      // Get the unique ID that we'll be using for this
+      // particular instance of the directive.
+      var id = ++uuid;
+
+      // Add the unique ID so we know how to query for
+      // DOM elements during the digests.
+      tElement.attr( "chatbox-complete-id", id );
+
+      // Since this directive doesn't have a linking phase,
+      // remove it from the DOM node.
+      tElement.removeAttr( "chatbox-complete" );
+
+      // Keep track of the expression we're going to
+      // invoke once the ng-repeat has finished
+      // rendering.
+      var completeExpression = tAttributes.repeatComplete;
+
+      // Get the element that contains the list. We'll
+      // use this element as the launch point for our
+      // DOM search query.
+      var parent = tElement.parent();
+
+      // Get the scope associated with the parent - we
+      // want to get as close to the ngRepeat so that our
+      // watcher will automatically unbind as soon as the
+      // parent scope is destroyed.
+      var parentScope = ( parent.scope() || $rootScope );
+
+      // Since we are outside of the ng-repeat directive,
+      // we'll have to check the state of the DOM during
+      // each $digest phase; BUT, we only need to do this
+      // once, so save a referene to the un-watcher.
+      var unbindWatcher = parentScope.$watch(
+          function() {
+
+              // Now that we're in a digest, check to see
+              // if there are any ngRepeat items being
+              // rendered. Since we want to know when the
+              // list has completed, we only need the last
+              // one we can find.
+              parentScope.$broadcast('write-donw');
+              var lastItem = parent.children( "*[ chatbox-complete-id = '" + id + "' ]:last" );
+              console.log('parent!!!',parentScope);
+              // parent.scope().$eval("scrollDonw()");
+              // parent.$eval(completeExpression);
+          }
+      );
+    }
+
+    // Return the directive configuration. It's important
+    // that this compiles before the ngRepeat directive
+    // compiles the DOM node.
+    return({
+        compile: compile,
+        priority: 1001,
+        restrict: "A"
+    });
+  }]
+);
+
 home.directive('navLeft',function(){
   return {
     restrict : 'E',
@@ -142,13 +216,52 @@ home.directive('chatBar',function(){
         }
       };
 
-      this.minimizeLine = function(chat){
+      this.minimizeLine = function(chat) {
         chat.show = !chat.show;
       };
 
-      this.defineLineStyle = function(line) {
-
+      this.applyHideAligment = function(chat) {
+        if(!chat.show){
+          return "chat-line-hide-class";
+        }
       };
+
+      this.addClass = function(index) {
+        return "chat-line-"+index;
+      };
+
+      this.closeLine = function(index) {
+        $scope.chatThreads.splice(index, 1);
+      }
+
+      this.defineLineStyle = function(line) {
+        if (line.replyUsrId == FacebookPromises.userId) {
+          return 'user-line-text';
+        } else {
+          return 'friend-line-text';
+        };
+      };
+
+      this.setIdentifier = function(index) {
+        return 'line-chat-id-' + index;
+      }
+
+      this.scrollDonw = function(index){
+        var id = '.line-chat-id-' + index;
+        console.log("happening :O????");
+        if($(id)[0]){
+          $(id).scrollTop($(id)[0].scrollHeight);
+        }
+      };
+
+      that = this;
+
+      $scope.$on('write-donw',function(){
+        for(var i in [0,1,2,3]){
+          that.scrollDonw(i);
+        }
+      });
+
     }],
     controllerAs : 'chatBar'
   }
