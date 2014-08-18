@@ -27,7 +27,23 @@ Sora.controller('PostCtr',
         var keyarray = [];
         for (var k in allpostsobject) {keyarray.push(k)};
         for (var i=0; i<keyarray.length; i++) {
-          array.push(allpostsobject[keyarray[i]]);
+          console.log("thepost", allpostsobject[keyarray[i]]);
+          var thepost = allpostsobject[keyarray[i]];
+          var thepostdate = thepost.date;
+          var year = parseInt(thepostdate.slice(0,4));
+          var month = parseInt(thepostdate.slice(5,7));
+          var date = parseInt(thepostdate.slice(8, 10));
+          console.log(year, month, date)
+          var epoch = new Date(year, month, date).getTime() - 2626678266
+          var plusaday = epoch + 86400000
+          console.log("the date in epoch", epoch)
+          if (plusaday < Date.now()) {
+            console.log("it passed!")
+          }
+          else {
+            array.push(allpostsobject[keyarray[i]]);
+          }
+
         }
         $scope.$apply($scope.allposts = array.reverse());
       });
@@ -75,9 +91,19 @@ Sora.controller('PostCtr',
           var keyarray = [];
           for (var k in allpostsobject) {keyarray.push(k)};
           for (var i=0; i<keyarray.length; i++) {
+            // var thepost = allpostsobject[keyarray[i]];
+            // console.log("thepost: ", thepost)
+            console.log("thepost", allpostsobject[keyarray[i]]);
             var thepost = allpostsobject[keyarray[i]];
-            console.log("thepost: ", thepost)
-            if (thepost.city == "Boston") {
+            var thepostdate = thepost.date;
+            var year = parseInt(thepostdate.slice(0,4));
+            var month = parseInt(thepostdate.slice(5,7));
+            var date = parseInt(thepostdate.slice(8, 10));
+            console.log(year, month, date)
+            var epoch = new Date(year, month, date).getTime() - 2626678266
+            var plusaday = epoch + 86400000
+            console.log("the date in epoch", epoch)
+            if (thepost.city == "Boston" && plusaday > Date.now()) {
               array.push(allpostsobject[keyarray[i]]);
               console.log("it was in Boston!")
             }
@@ -94,13 +120,22 @@ Sora.controller('PostCtr',
           var keyarray = [];
           for (var k in allpostsobject) {keyarray.push(k)};
           for (var i=0; i<keyarray.length; i++) {
+            console.log("thepost", allpostsobject[keyarray[i]]);
             var thepost = allpostsobject[keyarray[i]];
-            console.log("thepost: ", thepost)
-            if (thepost.city == "Austin") {
+            var thepostdate = thepost.date;
+            var year = parseInt(thepostdate.slice(0,4));
+            var month = parseInt(thepostdate.slice(5,7));
+            var date = parseInt(thepostdate.slice(8, 10));
+            console.log(year, month, date)
+            var epoch = new Date(year, month, date).getTime() - 2626678266
+            var plusaday = epoch + 86400000
+            console.log("the date in epoch", epoch)
+            if (thepost.city == "Austin" && plusaday > Date.now()) {
               array.push(allpostsobject[keyarray[i]]);
               console.log("it was in Austin!")
             }
           }
+          
            $scope.$apply($scope.allposts = array.reverse());
         });
       };
@@ -113,9 +148,17 @@ Sora.controller('PostCtr',
           var keyarray = [];
           for (var k in allpostsobject) {keyarray.push(k)};
           for (var i=0; i<keyarray.length; i++) {
+            console.log("thepost", allpostsobject[keyarray[i]]);
             var thepost = allpostsobject[keyarray[i]];
-            console.log("thepost: ", thepost)
-            if (thepost.city == "NYC") {
+            var thepostdate = thepost.date;
+            var year = parseInt(thepostdate.slice(0,4));
+            var month = parseInt(thepostdate.slice(5,7));
+            var date = parseInt(thepostdate.slice(8, 10));
+            console.log(year, month, date)
+            var epoch = new Date(year, month, date).getTime() - 2626678266
+            var plusaday = epoch + 86400000
+            console.log("the date in epoch", epoch)
+            if (thepost.city == "NYC" && plusaday > Date.now()) {
               array.push(allpostsobject[keyarray[i]]);
               console.log("it was in NYC!")
             }
