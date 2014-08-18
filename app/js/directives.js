@@ -162,11 +162,12 @@ home.directive('navLeft',function(){
         };
       };
       this.logout =function () {
-        FacebookPromises.logout().
-          then(function(){
-            $location.path("/login");
-          }
-        );
+        // FacebookPromises.logout().
+        //   then(function(){
+        //     $location.path("/login");
+        //   }
+        // );
+        window.FB.logout(function(){$location.path("/login");});
       };
     }],
     controllerAs : 'nav'
@@ -209,15 +210,20 @@ home.directive('chatBar',function(){
       };
 
       this.addChatThread = function(obj) {
-        $scope.chatThreads[$scope.currentChatPost] = obj;
-        $scope.currentChatPost = $scope.currentChatPost + 1;
-        if($scope.currentChatPost > 4 ){
+        if($scope.chatThreads.length < 4){
+          $scope.chatThreads.push(obj);
           $scope.currentChatPost = 0;
+        } else {
+          $scope.chatThreads[$scope.currentChatPost] = obj;
+          $scope.currentChatPost = $scope.currentChatPost + 1;
+          if($scope.currentChatPost = 4 ){
+            $scope.currentChatPost = 0;
+          }
         }
       };
 
       this.startChat = function(friend) {
-
+        console.log('initial array',$scope.chatThreads);
         if(that.validateFriend(friend.fbid)){
           var newThread = {};
           newThread.friendUserId = friend.fbid;
@@ -227,6 +233,7 @@ home.directive('chatBar',function(){
           newThread.lines = FireSrv.getChatThread(FacebookPromises.userId,friend.fbid).$asArray();
           that.addChatThread(newThread);
         }
+        console.log('final array',$scope.chatThreads);
       };
 
       this.addReply =function($event,chat){
@@ -254,7 +261,10 @@ home.directive('chatBar',function(){
       };
 
       this.closeLine = function(index) {
+        $scope.currentChatPost = 0;
+        console.log('before cut',$scope.chatThreads);
         $scope.chatThreads.splice(index, 1);
+        console.log('after cut',$scope.chatThreads);
       }
 
       this.defineLineStyle = function(line) {
