@@ -34,6 +34,11 @@
 	font-weight: 600; 
 }
 
+.venuename:hover{
+	cursor: pointer;
+	color: #19FFD5;
+}
+
 #venuescontainer {
 	margin-bottom: 100px;
 }

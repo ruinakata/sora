@@ -12,6 +12,7 @@ Sora.controller('TrendingCtr',
    '$location',
     function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises,viewCoSrv, $location) {
       console.log("in the trending controller");
+      $scope.showthephotos = false;
 
       var latlongs = {
         cambridge: "42.3736,-71.1106",
@@ -51,12 +52,35 @@ Sora.controller('TrendingCtr',
         $.ajax({
           type: "GET",
           dataType: "json",
-          url: "https://api.foursquare.com/v2/venues/trending?client_id=JIT1ZQXZU3FXXLRTTI1XH22AZKJCPJLMDNCFF5T014AIQRSS&client_secret=HDW201LPH3UOJ3PNWGLM5IA2UH02KWYD0BBCWJLOZD3MMNMV&v=20130815&ll=" + latlong ,
+          url: "https://api.foursquare.com/v2/venues/trending?client_id=JIT1ZQXZU3FXXLRTTI1XH22AZKJCPJLMDNCFF5T014AIQRSS&client_secret=HDW201LPH3UOJ3PNWGLM5IA2UH02KWYD0BBCWJLOZD3MMNMV&v=20130815&ll=" + latlong + "&limit=100" ,
           success: function(data){
             console.log("data", data)
             callback(data.response.venues)
           }
         }); 
+      };
+
+      $scope.showpics = function(venueid){
+        $scope.showthephotos = true;
+        console.log("in showpics method")
+        getpics(venueid, function(photoarray){
+          console.log("getpics got called")
+          console.log("photoarray is", photoarray)
+        })
+
+      }
+
+      var getpics = function(venueid, callback){
+        console.log("the venueid is", venueid)
+        $.ajax({
+          type: "GET",
+          dataType: "json",
+          url: "https://api.foursquare.com/v2/venues/" + venueid+ "/photos?client_id=JIT1ZQXZU3FXXLRTTI1XH22AZKJCPJLMDNCFF5T014AIQRSS&client_secret=HDW201LPH3UOJ3PNWGLM5IA2UH02KWYD0BBCWJLOZD3MMNMV&v=20130815",
+          success: function(data){
+            // console.log("photos data:", data.response.photos.items)
+            callback(data.response.photos.items)
+          }
+        });
       };
 
       // Austin trending *************************************************************************

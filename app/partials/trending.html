@@ -42,10 +42,18 @@
 			<div id="venuescontainer" class="trending-container">
 				<div ng-repeat="venue in venuearray">
 					<div class="eachvenue"> 
-						<p class="venuename"> {{venue.name}} </p>
-						Category: {{venue.categories[0].name}} <br>
-						Here now <i class="fa fa-foursquare"></i>: {{venue.hereNow.count}} <br>
-						Location: {{venue.location.address}} {{venue.location.city}}
+						<div>
+							<p class="venuename" ng-click="showpics(venue.id)"> {{venue.name}} </p>
+							Category: {{venue.categories[0].name}} <br>
+							Here now <i class="fa fa-foursquare"></i>: {{venue.hereNow.count}} <br>
+							Location: {{venue.location.address}} {{venue.location.city}}
+						</div>
+						<div class="photoalbum" ng-show="showthephotos">
+							Photos: 
+							<div ng-repeat="photo in photos">
+								
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
