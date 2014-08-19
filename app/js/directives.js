@@ -160,6 +160,9 @@ home.directive('navLeft',function(){
         if(view == 'friends'){
           $location.path("/myfriends");
         };
+        if(view == 'trending'){
+          $location.path("/trending");
+        }
       };
       this.logout =function () {
         // FacebookPromises.logout().

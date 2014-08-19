@@ -21,7 +21,7 @@ config(['$routeProvider', 'FacebookProvider', function($routeProvider, FacebookP
   $routeProvider.when('/otherprofile/:userId', {templateUrl: 'partials/otherprofile.html', controller: 'OtherProfCtr'});
   $routeProvider.when('/home', {templateUrl: 'partials/post.html', controller: 'PostCtr'});
   $routeProvider.when('/myfriends', {templateUrl: 'partials/friends.html', controller: 'FriendCtr'});
-  $routeProvider.when('/meetups', {templateUrl: 'partials/meetup.html', controller: 'MeetupCtr'})
+  $routeProvider.when('/trending', {templateUrl: 'partials/trending.html', controller: 'TrendingCtr'});
   $routeProvider.otherwise({redirectTo: '/login'});
 
 }]).
