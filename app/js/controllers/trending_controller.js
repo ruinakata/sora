@@ -60,16 +60,6 @@ Sora.controller('TrendingCtr',
       };
 
       // Austin trending *************************************************************************
-        $.ajax({
-          type: "GET",
-          dataType: "json",
-          url: "https://api.foursquare.com/v2/venues/trending?client_id=JIT1ZQXZU3FXXLRTTI1XH22AZKJCPJLMDNCFF5T014AIQRSS&client_secret=HDW201LPH3UOJ3PNWGLM5IA2UH02KWYD0BBCWJLOZD3MMNMV&v=20130815&ll=30.25,-97.75",
-          // data: data,
-          success: function(data){
-            console.log("Austin data", data)
-            data.response.venues
-          }
-        });
 
         $scope.showAustinOptions = function(){
           $scope.austinshow = true;
@@ -83,16 +73,6 @@ Sora.controller('TrendingCtr',
 
       // NYC trending ***************************************************************************
 
-        $.ajax({
-          type: "GET",
-          dataType: "json",
-          url: "https://api.foursquare.com/v2/venues/trending?client_id=JIT1ZQXZU3FXXLRTTI1XH22AZKJCPJLMDNCFF5T014AIQRSS&client_secret=HDW201LPH3UOJ3PNWGLM5IA2UH02KWYD0BBCWJLOZD3MMNMV&v=20130815&ll=40.7127,-74.0059",
-          // data: data,
-          success: function(data){
-            console.log("NYC data", data)
-            data.response.venues
-          }
-        });
 
         $scope.showNycOptions = function(){
           $scope.nycshow = true;
@@ -110,9 +90,6 @@ Sora.controller('TrendingCtr',
         $scope.austinshow = false;
         $scope.nycshow = false;
       };
-
-
-
 
 
 

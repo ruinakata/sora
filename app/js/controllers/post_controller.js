@@ -84,6 +84,7 @@ Sora.controller('PostCtr',
        };
 
       $scope.showBoston = function(){
+        $scope.posteventclicked = false;
         console.log("in showBoston")
         postref.on('value', function(snapshot) {
           var allpostsobject = snapshot.val();
@@ -113,6 +114,7 @@ Sora.controller('PostCtr',
       };
 
       $scope.showAustin = function(){
+        $scope.posteventclicked = false;
         console.log("in showAustin")
         postref.on('value', function(snapshot) {
           var allpostsobject = snapshot.val();
@@ -141,6 +143,7 @@ Sora.controller('PostCtr',
       };
 
       $scope.showNyc = function(){
+        $scope.posteventclicked = false;
         console.log("in showNyc")
         postref.on('value', function(snapshot) {
           var allpostsobject = snapshot.val();
@@ -170,11 +173,13 @@ Sora.controller('PostCtr',
       $scope.showEventForm = function(){
         console.log("in showEventForm")
         $scope.posteventclicked = true;
+
       };
 
 
 
       $scope.showPast = function(){
+        $scope.posteventclicked = false;
         postref.on('value', function(snapshot) {
           var allpostsobject = snapshot.val();
           var array = []
