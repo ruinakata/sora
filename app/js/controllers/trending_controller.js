@@ -46,6 +46,19 @@ Sora.controller('TrendingCtr',
         }) // runs without being called and executed, executed when called in success after ajax finishes
       };
 
+
+      var trending = function(latlong, callback){
+        $.ajax({
+          type: "GET",
+          dataType: "json",
+          url: "https://api.foursquare.com/v2/venues/trending?client_id=JIT1ZQXZU3FXXLRTTI1XH22AZKJCPJLMDNCFF5T014AIQRSS&client_secret=HDW201LPH3UOJ3PNWGLM5IA2UH02KWYD0BBCWJLOZD3MMNMV&v=20130815&ll=" + latlong ,
+          success: function(data){
+            console.log("data", data)
+            callback(data.response.venues)
+          }
+        }); 
+      };
+
       // Austin trending *************************************************************************
         $.ajax({
           type: "GET",
@@ -64,17 +77,6 @@ Sora.controller('TrendingCtr',
           $scope.nycshow = false;
         };
 
-      var trending = function(latlong, callback){
-        $.ajax({
-          type: "GET",
-          dataType: "json",
-          url: "https://api.foursquare.com/v2/venues/trending?client_id=JIT1ZQXZU3FXXLRTTI1XH22AZKJCPJLMDNCFF5T014AIQRSS&client_secret=HDW201LPH3UOJ3PNWGLM5IA2UH02KWYD0BBCWJLOZD3MMNMV&v=20130815&ll=" + latlong ,
-          success: function(data){
-            console.log("data", data)
-            callback(data.response.venues)
-          }
-        }); 
-      };
 
 
 
@@ -99,19 +101,6 @@ Sora.controller('TrendingCtr',
         };
 
 
-      var trending = function(latlong, callback){
-        $.ajax({
-          type: "GET",
-          dataType: "json",
-          url: "https://api.foursquare.com/v2/venues/trending?client_id=JIT1ZQXZU3FXXLRTTI1XH22AZKJCPJLMDNCFF5T014AIQRSS&client_secret=HDW201LPH3UOJ3PNWGLM5IA2UH02KWYD0BBCWJLOZD3MMNMV&v=20130815&ll=" + latlong ,
-          success: function(data){
-            console.log("data", data)
-            callback(data.response.venues)
-          }
-        }); 
-      };
-
-
 
       // Boston trending *********************************************************************
 
@@ -122,17 +111,6 @@ Sora.controller('TrendingCtr',
         $scope.nycshow = false;
       };
 
-      var trending = function(latlong, callback){
-        $.ajax({
-          type: "GET",
-          dataType: "json",
-          url: "https://api.foursquare.com/v2/venues/trending?client_id=JIT1ZQXZU3FXXLRTTI1XH22AZKJCPJLMDNCFF5T014AIQRSS&client_secret=HDW201LPH3UOJ3PNWGLM5IA2UH02KWYD0BBCWJLOZD3MMNMV&v=20130815&ll=" + latlong ,
-          success: function(data){
-            console.log("data", data)
-            callback(data.response.venues)
-          }
-        }); 
-      };
 
 
 
