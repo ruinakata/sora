@@ -171,6 +171,40 @@ Sora.controller('PostCtr',
         console.log("in showEventForm")
         $scope.posteventclicked = true;
       };
+
+
+
+      $scope.showPast = function(){
+        postref.on('value', function(snapshot) {
+          var allpostsobject = snapshot.val();
+          var array = []
+          var keyarray = [];
+          for (var k in allpostsobject) {keyarray.push(k)};
+          for (var i=0; i<keyarray.length; i++) {
+            console.log("thepost", allpostsobject[keyarray[i]]);
+            var thepost = allpostsobject[keyarray[i]];
+            var thepostdate = thepost.date;
+            var year = parseInt(thepostdate.slice(0,4));
+            var month = parseInt(thepostdate.slice(5,7));
+            var date = parseInt(thepostdate.slice(8, 10));
+            console.log(year, month, date)
+            var epoch = new Date(year, month, date).getTime() - 2626678266
+            var plusaday = epoch + 86400000
+            console.log("the date in epoch", epoch)
+            if (plusaday < Date.now()) {
+              console.log("it passed!")
+              array.push(allpostsobject[keyarray[i]]);
+            }
+            else {
+            }
+          }
+          $scope.$apply($scope.allposts = array.reverse());
+      });
+      }
+
+
+
+
     }
   ]);
 
