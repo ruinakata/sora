@@ -11,6 +11,7 @@ Sora.controller('TrendingCtr',
    'viewCoSrv',
    '$location',
     function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises,viewCoSrv, $location) {
+
       console.log("in the trending controller");
       $scope.showthephotos = false;
 
@@ -130,6 +131,12 @@ Sora.controller('TrendingCtr',
       $scope.createpost = function(venueid, name, address, city){
         console.log("in createpost method");
         console.log("venueid, name, address, city", venueid, name, address, city)
+        viewCoSrv.venueInfo.id = venueid;
+        viewCoSrv.venueInfo.name = name;
+        viewCoSrv.venueInfo.address = address;
+        viewCoSrv.venueInfo.city = city;
+        console.log(viewCoSrv.venueInfo.name)
+        $location.path('/onepost')
       }
 
 

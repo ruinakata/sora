@@ -49,7 +49,7 @@
 							Here Now <i class="fa fa-foursquare"></i>: {{venue.hereNow.count}} <br>
 							Location: {{venue.location.address}} {{venue.location.city}} <br>
 							<!-- <div ng-controller="ModalCtr" > -->
-								<span id="makeapost" ng-click="createModal()"> Make a Post <i class="fa fa-pencil-square-o"></i></span>
+								<span id="makeapost" ng-click="createpost(venue.id, venue.name, venue.location.address, venue.location.city)"> Make a Post <i class="fa fa-pencil-square-o"></i></span>
 							<!-- </div> -->
 						</div>
 						<div class="photoalbum">

@@ -40,14 +40,14 @@
 .acceptreq {
 	width: 50px;
 	background-color: white;
-	border: 1px solid #1C79FC;
-	color: #1C79FC;
+	border: 1px solid #FC4D94;
+	color: #FC4D94;
 	border-radius: 5px;
 }
 
 .acceptreq:hover{
 	width: 50px;
-	background-color: #1C79FC;
+	background-color: #FC4D94;
 	color: white;
 	border-radius: 5px;
 }
@@ -55,14 +55,14 @@
 .declinereq {
 	width: 50px;
 	background-color: white;
-	border: 1px solid #1C79FC;
-	color: #1C79FC;
+	border: 1px solid #FC4D94;
+	color: #FC4D94;
 	border-radius: 5px;
 }
 
 .declinereq:hover{
 	width: 50px;
-	background-color: #1C79FC;
+	background-color: #FC4D94;
 	color: white;
 	border-radius: 5px;
 }

@@ -1,0 +1,17 @@
+<div class='hide-elementsview' ng-class='classView'>	
+	<nav-left class='navbar'></nav-left>
+		<div class='content-container'>
+
+			<div class="onepostcontainer">
+					<p>Find people to hang out with! </p>
+					<textarea id="posttextarea" ng-model="posttext" placeholder="Write a description here"></textarea>
+					<br><br>
+					City: {{venue.city}} <br>
+					Area: {{venue.name}} ({{venue.address}}) <br>
+					Date: <input type="date" ng-model="date"/> <br><br>
+					<button ng-click="submitPost()" class="buttons" id="submitpostbutton">SUBMIT</button>
+
+			</div>
+
+		</div>
+</div>
