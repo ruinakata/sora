@@ -34,6 +34,10 @@
 	font-weight: 600; 
 }
 
+.clickforpics {
+	color: #3664BA;
+}
+
 .clickforpics:hover{
 	cursor: pointer;
 	color: #19FFD5;
@@ -41,4 +45,13 @@
 
 #venuescontainer {
 	margin-bottom: 100px;
+}
+
+#makeapost {
+	color: #3664BA;
+}
+
+#makeapost:hover{
+	cursor: pointer;
+	color: #19FFD5;
 }

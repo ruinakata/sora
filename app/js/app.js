@@ -10,6 +10,7 @@ var Sora = angular.module('Sora', [
   'FireBaseService',
   'home',
   'firebase',
+  'ui.bootstrap',
   'viewComunicationService'
 ]).
 config(['$routeProvider', 'FacebookProvider', function($routeProvider, FacebookProvider) {

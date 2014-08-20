@@ -10,9 +10,11 @@ Sora.controller('TrendingCtr',
    'FacebookPromises',
    'viewCoSrv',
    '$location',
-    function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises,viewCoSrv, $location) {
+   '$modal',
+    function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises,viewCoSrv, $location,$modal) {
       console.log("in the trending controller");
       $scope.showthephotos = false;
+
 
       var latlongs = {
         cambridge: "42.3736,-71.1106",
@@ -34,6 +36,8 @@ Sora.controller('TrendingCtr',
         downtown: "30.2710,-97.7430",
         westcampus: "30.291351, -97.745340",
       }
+
+
 
 // show the venues!!!!!!!!!!!!!!
       $scope.showArea = function(thearea){
@@ -59,13 +63,35 @@ Sora.controller('TrendingCtr',
           }
         }); 
       };
+
+      $scope.createModal = function(){
+        console.log("in open method");
+        var modalInstance = $modal.open({
+          templateUrl: 'partials/modal.html',
+          controller: ModalInstanceCtrl,
+          size: 'sm',
+          resolve: {
+            items: function () {
+              // return $scope.items;
+            }
+          }
+        });
+
+        
+
+        modalInstance.result.then(function (selectedItem) {
+          $scope.selected = selectedItem;
+        }, function () {
+          // $log.info('Modal dismissed at: ' + new Date());
+        });
+      };
 // show the pictures!!!!!!!!!!!!!!
       $scope.showpics = function(venueid){
         $scope.showthephotos = true;
         console.log("in showpics method")
         getpics(venueid, function(photoarray){
           console.log("getpics got called")
-          console.log("photoarray is", photoarray)
+          console.log("photoarray is", photoarray) 
           var realphotoarray = [];
           var obj = {}
           for (var i=0; i<photoarray.length; i++) {
@@ -85,7 +111,6 @@ Sora.controller('TrendingCtr',
             $scope.$apply($scope.photos)
           }
         })
-
       }
 
       var getpics = function(venueid, callback){
@@ -100,6 +125,14 @@ Sora.controller('TrendingCtr',
           }
         });
       };
+
+
+// create a post for that venue
+      $scope.createpost = function(venueid, name, address, city){
+        console.log("in createpost method");
+        console.log("venueid, name, address, city", venueid, name, address, city)
+      }
+
 
       // Austin trending *************************************************************************
 
