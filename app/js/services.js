@@ -198,6 +198,12 @@ var viewComunicationService = angular.module('viewComunicationService',[]).
         photos : '',
         aboutme : '',
         education : '',
+      },
+      venueInfo : {
+        id: '',
+        name: '',
+        address: '',
+        city: ''
       }
     }
   })

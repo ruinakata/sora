@@ -104,7 +104,7 @@ Sora.controller('PostCtr',
             var epoch = new Date(year, month, date).getTime() - 2626678266
             var plusaday = epoch + 86400000
             console.log("the date in epoch", epoch)
-            if (thepost.city == "Boston" && plusaday > Date.now()) {
+            if ((thepost.city == "Boston" || thepost.city == "Cambridge") && plusaday > Date.now()) {
               array.push(allpostsobject[keyarray[i]]);
               console.log("it was in Boston!")
             }
@@ -161,7 +161,7 @@ Sora.controller('PostCtr',
             var epoch = new Date(year, month, date).getTime() - 2626678266
             var plusaday = epoch + 86400000
             console.log("the date in epoch", epoch)
-            if (thepost.city == "NYC" && plusaday > Date.now()) {
+            if ((thepost.city == "NYC" || thepost.city == "New York" || thepost.city == "Brooklyn") && plusaday > Date.now()) {
               array.push(allpostsobject[keyarray[i]]);
               console.log("it was in NYC!")
             }

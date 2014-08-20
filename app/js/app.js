@@ -24,6 +24,7 @@ config(['$routeProvider', 'FacebookProvider', function($routeProvider, FacebookP
   $routeProvider.when('/myfriends', {templateUrl: 'partials/friends.html', controller: 'FriendCtr'});
   $routeProvider.when('/trending', {templateUrl: 'partials/trending.html', controller: 'TrendingCtr'});
   $routeProvider.when('/find', {templateUrl: 'partials/find.html', controller: 'FindCtr'});
+  $routeProvider.when('/onepost', {templateUrl: 'partials/onepost.html', controller: 'OnePostCtr'});
   $routeProvider.otherwise({redirectTo: '/login'});
 
 }]).
