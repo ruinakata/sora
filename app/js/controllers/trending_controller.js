@@ -35,7 +35,7 @@ Sora.controller('TrendingCtr',
         westcampus: "30.291351, -97.745340",
       }
 
-
+// show the venues!!!!!!!!!!!!!!
       $scope.showArea = function(thearea){
         var area = thearea
         var latlong = latlongs[thearea];
@@ -59,13 +59,31 @@ Sora.controller('TrendingCtr',
           }
         }); 
       };
-
+// show the pictures!!!!!!!!!!!!!!
       $scope.showpics = function(venueid){
         $scope.showthephotos = true;
         console.log("in showpics method")
         getpics(venueid, function(photoarray){
           console.log("getpics got called")
           console.log("photoarray is", photoarray)
+          var realphotoarray = [];
+          var obj = {}
+          for (var i=0; i<photoarray.length; i++) {
+            var url = photoarray[i].prefix + "height150" + photoarray[i].suffix;
+            realphotoarray.push(url)
+            if(realphotoarray.length > 10) {
+              var array = realphotoarray.slice(0,11)
+              obj[venueid] = array
+              console.log("array", array)
+              $scope.photos = obj
+            }
+            else {
+              obj[venueid] = realphotoarray
+              $scope.photos = obj
+            }
+            console.log("photoarray is", $scope.photos)
+            $scope.$apply($scope.photos)
+          }
         })
 
       }
