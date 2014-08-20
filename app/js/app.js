@@ -14,8 +14,9 @@ var Sora = angular.module('Sora', [
   'viewComunicationService'
 ]).
 config(['$routeProvider', 'FacebookProvider', function($routeProvider, FacebookProvider) {
-  // FacebookProvider.init('358277447659197');
-  FacebookProvider.init('364072353746373');
+
+  FacebookProvider.init('358277447659197');
+  //FacebookProvider.init('364072353746373');
   $routeProvider.when('/login', {templateUrl: 'partials/login.html', controller: 'LoginCtr'});
   $routeProvider.when('/profile', {templateUrl: 'partials/profile.html', controller: 'ProfileCtr'});
   $routeProvider.when('/event/:eventId', {templateUrl: 'partials/event-room.html', controller: 'eventRoomController'});
