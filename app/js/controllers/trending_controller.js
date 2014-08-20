@@ -10,8 +10,7 @@ Sora.controller('TrendingCtr',
    'FacebookPromises',
    'viewCoSrv',
    '$location',
-   '$modal',
-    function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises,viewCoSrv, $location,$modal) {
+    function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises,viewCoSrv, $location) {
       console.log("in the trending controller");
       $scope.showthephotos = false;
 
@@ -61,29 +60,29 @@ Sora.controller('TrendingCtr',
             console.log("data", data)
             callback(data.response.venues)
           }
-        }); 
+        });
       };
 
       $scope.createModal = function(){
-        console.log("in open method");
-        var modalInstance = $modal.open({
-          templateUrl: 'partials/modal.html',
-          controller: ModalInstanceCtrl,
-          size: 'sm',
-          resolve: {
-            items: function () {
-              // return $scope.items;
-            }
-          }
-        });
+        // console.log("in open method");
+        // var modalInstance = $modal.open({
+        //   templateUrl: 'partials/modal.html',
+        //   controller: ModalInstanceCtrl,
+        //   size: 'sm',
+        //   resolve: {
+        //     items: function () {
+        //       // return $scope.items;
+        //     }
+        //   }
+        // });
 
-        
 
-        modalInstance.result.then(function (selectedItem) {
-          $scope.selected = selectedItem;
-        }, function () {
-          // $log.info('Modal dismissed at: ' + new Date());
-        });
+
+        // modalInstance.result.then(function (selectedItem) {
+        //   $scope.selected = selectedItem;
+        // }, function () {
+        //   // $log.info('Modal dismissed at: ' + new Date());
+        // });
       };
 // show the pictures!!!!!!!!!!!!!!
       $scope.showpics = function(venueid){
@@ -91,7 +90,7 @@ Sora.controller('TrendingCtr',
         console.log("in showpics method")
         getpics(venueid, function(photoarray){
           console.log("getpics got called")
-          console.log("photoarray is", photoarray) 
+          console.log("photoarray is", photoarray)
           var realphotoarray = [];
           var obj = {}
           for (var i=0; i<photoarray.length; i++) {
@@ -169,7 +168,7 @@ Sora.controller('TrendingCtr',
 
 
 
-    }  
+    }
   ]);
 
 
