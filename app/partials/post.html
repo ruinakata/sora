@@ -5,11 +5,19 @@
 			<p> Filter posts by city </p>
 			<button class="choose" id="bos" ng-click="showBoston()">BOSTON</button>
 			<button class="choose" id="aus" ng-click="showAustin()">AUSTIN</button>
-			<button class="choose" id="nyc" ng-click="showNyc()">NYC</button>
-			<p> Post an event! </p>
-			<button class="choose" ng-click="showEventForm()">
-				<i class="fa fa-calendar"></i>
-			</button>
+			<button class="choose" id="nyc" ng-click="showNyc()">NYC</button><br><br>
+			<div class="box">
+			 		Post an event! <br>
+				<button id="choose" class="choose" ng-click="showEventForm()">
+					<i class="fa fa-calendar"></i>
+				</button>
+			</div>
+			<div class="box">
+				Past events <br>
+				<button id="choose" class="choose" ng-click="showPast()">
+					<i class="fa fa-archive"></i>
+				</button>
+			</div>
 		</div>
 		<div class="postcontainer" ng-show="posteventclicked">
 			<p>Find people to hang out with! </p>

@@ -1,0 +1,57 @@
+.trending-container {
+	width: 70%;
+	margin-left: 10%;
+	margin-top: 5%;
+	padding-left: 5%;
+	padding-top: 3%;
+	padding-bottom: 3%;
+	background-color: white;
+}
+
+.choosecity {
+
+}
+
+.cityareas {
+	margin-top: 5%;
+}
+
+#thearea {
+	height: 44px;
+}
+
+#bostonareas {
+
+}
+
+.eachvenue {
+	border-bottom: 1px #C4C4C4 solid;
+	width: 90%;
+	padding-bottom: 2%;
+}
+
+.venuename {
+	font-weight: 600; 
+}
+
+.clickforpics {
+	color: #3664BA;
+}
+
+.clickforpics:hover{
+	cursor: pointer;
+	color: #19FFD5;
+}
+
+#venuescontainer {
+	margin-bottom: 100px;
+}
+
+#makeapost {
+	color: #3664BA;
+}
+
+#makeapost:hover{
+	cursor: pointer;
+	color: #19FFD5;
+}

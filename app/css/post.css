@@ -82,8 +82,14 @@ h3 {
 	border-radius: 3px;
 }
 
+.box {
+	width: 40%;
+	display: inline-block;
+}
 
-
+#choose {
+	width: 73%;
+}
 
 
 

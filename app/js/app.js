@@ -10,9 +10,11 @@ var Sora = angular.module('Sora', [
   'FireBaseService',
   'home',
   'firebase',
+  'ui.bootstrap',
   'viewComunicationService'
 ]).
 config(['$routeProvider', 'FacebookProvider', function($routeProvider, FacebookProvider) {
+
   FacebookProvider.init('358277447659197');
   //FacebookProvider.init('364072353746373');
   $routeProvider.when('/login', {templateUrl: 'partials/login.html', controller: 'LoginCtr'});
@@ -21,7 +23,8 @@ config(['$routeProvider', 'FacebookProvider', function($routeProvider, FacebookP
   $routeProvider.when('/otherprofile/:userId', {templateUrl: 'partials/otherprofile.html', controller: 'OtherProfCtr'});
   $routeProvider.when('/home', {templateUrl: 'partials/post.html', controller: 'PostCtr'});
   $routeProvider.when('/myfriends', {templateUrl: 'partials/friends.html', controller: 'FriendCtr'});
-  $routeProvider.when('/meetups', {templateUrl: 'partials/meetup.html', controller: 'MeetupCtr'})
+  $routeProvider.when('/trending', {templateUrl: 'partials/trending.html', controller: 'TrendingCtr'});
+  $routeProvider.when('/find', {templateUrl: 'partials/find.html', controller: 'FindCtr'});
   $routeProvider.otherwise({redirectTo: '/login'});
 
 }]).

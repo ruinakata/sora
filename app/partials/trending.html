@@ -1,0 +1,65 @@
+<div class='hide-elementsview' ng-class='classView'>	
+	<nav-left class='navbar'></nav-left>
+		<div class='content-container'>
+			<div class='trending-container'>
+				<div class="choosecity">
+					<p> See what everyone is up to right now!</p>
+					<p> Choose a city </p>
+					<button class="choose" ng-click="showAustinOptions()">AUSTIN</button>
+					<button class="choose" ng-click="showBostonOptions()">BOSTON</button>
+					<button class="choose" ng-click="showNycOptions()">NYC</button>
+				</div>
+
+				<div class="cityareas" id="bostonareas" ng-show="bostonshow">
+					<p>Choose an area</p>
+					<button class="choose" id="thearea" ng-click="showArea('cambridge')">CAMBRIDGE</button>
+					<button class="choose" id="thearea" ng-click="showArea('southend')">SOUTH END</button>
+					<button class="choose" id="thearea" ng-click="showArea('fenway')">FENWAY</button>
+					<button class="choose" id="thearea" ng-click="showArea('backbay')">BACK BAY</button>
+					<button class="choose" id="thearea" ng-click="showArea('northend')">NORTH END</button>
+					<button class="choose" id="thearea" ng-click="showArea('allston')">ALLSTON</button>
+				</div>
+
+				<div class="cityareas" id="nycareas" ng-show="nycshow">
+					<p>Choose an area</p>
+					<button class="choose" id="thearea" ng-click="showArea('greenwich')">GREENWICH VILLAGE</button>
+					<button class="choose" id="thearea" ng-click="showArea('tribeca')">TRIBECA</button>
+					<button class="choose" id="thearea" ng-click="showArea('hoboken')">HOBOKEN</button>
+					<button class="choose" id="thearea" ng-click="showArea('brooklyn')">BROOKLYN</button>
+					<button class="choose" id="thearea" ng-click="showArea('upperwest')">UPPER WEST</button>
+					<button class="choose" id="thearea" ng-click="showArea('timessquare')">TIMES SQUARE</button>
+				</div>
+
+				<div class="cityareas" id="austinareas" ng-show="austinshow">
+					<p>Choose an area</p>
+					<button class="choose" id="thearea" ng-click="showArea('downtown')">DOWNTOWN</button>
+					<button class="choose" id="thearea" ng-click="showArea('westcampus')">WEST CAMPUS</button>
+				</div>
+
+			</div>
+
+
+			<div id="venuescontainer" class="trending-container" >
+			<h4>Places:</h4>
+				<div ng-repeat="venue in venuearray">
+					<div class="eachvenue"> 
+						<div>
+							<p class="venuename"> {{venue.name}} </p>
+							Category: {{venue.categories[0].name}} <br>
+							Here Now <i class="fa fa-foursquare"></i>: {{venue.hereNow.count}} <br>
+							Location: {{venue.location.address}} {{venue.location.city}} <br>
+							<!-- <div ng-controller="ModalCtr" > -->
+								<span id="makeapost" ng-click="createModal()"> Make a Post <i class="fa fa-pencil-square-o"></i></span>
+							<!-- </div> -->
+						</div>
+						<div class="photoalbum">
+							<span class="clickforpics" ng-click="showpics(venue.id)">See Photos <i class="fa fa-camera"></i><br> </span>
+							<span ng-repeat="photo in photos[venue.id]">
+								<img ng-src="{{photo}}">
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
