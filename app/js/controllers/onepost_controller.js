@@ -9,8 +9,7 @@ Sora.controller('OnePostCtr',
    'FacebookPromises',
    'viewCoSrv',
    '$location',
-   '$modal',
-    function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises, viewCoSrv, $location,$modal) {
+    function($scope, $rootScope, $firebase, $http, Facebook, FacebookPromises, viewCoSrv, $location) {
       console.log("in the onepost controller");
 
       $scope.venue = viewCoSrv.venueInfo;
