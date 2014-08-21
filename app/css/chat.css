@@ -24,6 +24,7 @@
 	height: 40em;
 	padding-top: 3em;
 	display: inline-block;
+	float: left;
 	/*text-align: center;*/
 	/*border: 2px solid red;*/
 }
@@ -211,11 +212,13 @@
 
 .logged-users {
 	background-color: lavenderblush;
-	height: 28rem;
+	/*height: 40em;*/
 	width: 26%;
 	display: inline-block;
 	margin-left: 5%;
 	margin-right: 5%;
+	margin-top: 3em;
+	float: left;
 }
 
 .logged-users ul{
